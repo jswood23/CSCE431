@@ -20,9 +20,4 @@ class ExternalControllerTest < ActionDispatch::IntegrationTest
     get external_contact_url
     assert_response :success
   end
-
-  test "should get nav_bar" do
-    get external_nav_bar_url
-    assert_response :success
-  end
 end
