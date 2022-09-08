@@ -10,7 +10,4 @@ class ExternalController < ApplicationController
 
   def contact
   end
-
-  def nav_bar
-  end
 end

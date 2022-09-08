@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'external/home'
-  get 'external/events'
-  get 'external/about'
-  get 'external/contact'
-  get 'external/nav_bar'
+  # root route at external/home
+  root "external#home"
+
+  # default route
+  get ":controller(/:action(:id))"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
