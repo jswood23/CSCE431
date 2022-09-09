@@ -20,4 +20,9 @@ class ExternalControllerTest < ActionDispatch::IntegrationTest
     get external_contact_url
     assert_response :success
   end
+
+  test "should get login" do
+    get external_login_url
+    assert_response :success
+  end
 end
