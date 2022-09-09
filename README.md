@@ -20,3 +20,11 @@ To start the rails console, run the following command:
 ```
 rails console -e development
 ```
+
+## Testing the Rails App
+
+To run the unit/integration tests, run the following command:
+
+```
+rails test
+```
