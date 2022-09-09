@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The MCHSO Info Organizer is a website containing both external pages for all internet traffic and internal pages for tracking membership.
 
-Things you may want to cover:
+## Running The Server
 
-* Ruby version
+This project is developed and deployed using docker.\
+After cloning the repository, run the following commands:
 
-* System dependencies
+```
+bundle install
+bundle exec rake webpacker:install
+rails server
+```
 
-* Configuration
+## Running the Rails Console
 
-* Database creation
+To start the rails console, run the following command:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails console -e development
+```
