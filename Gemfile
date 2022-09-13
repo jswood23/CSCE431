@@ -47,8 +47,10 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  # Coverage Report Generator
+  # Coverage report generator
   gem 'simplecov', :require => false
+  # Brakeman security testing
+  gem 'brakeman'
 end
 
 group :test do
