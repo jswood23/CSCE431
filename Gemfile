@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # For Integration/Unit Testing
 gem 'rexml'
+gem 'rubocop'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
