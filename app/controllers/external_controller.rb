@@ -10,4 +10,7 @@ class ExternalController < ApplicationController
 
   def contact
   end
+
+  def login
+  end
 end

@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
   # root route at external/home
-  root "external#home"
+  root 'external#home'
+
+  # external page routes
+  get 'external/about'
+  get 'external/contact'
+  get 'external/events'
+  get 'external/home'
+  get 'external/login'
+
+  # internal page routes
+  get 'internal/members'
+  get 'internal/profile'
 
   # external page routes
   get "/home", to: "external#home"
