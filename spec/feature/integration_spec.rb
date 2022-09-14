@@ -4,7 +4,6 @@ require 'rails_helper'
 RSpec.describe 'Visiting the home page', type: :feature do
   scenario 'Correct content on nav bar' do
     visit "/home"
-    expect(page).to have_content('Nav Bar:')
     expect(page).to have_content('Home')
     expect(page).to have_content('About Us')
     expect(page).to have_content('Events')
