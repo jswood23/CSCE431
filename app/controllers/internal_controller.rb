@@ -1,7 +1,7 @@
 class InternalController < ApplicationController
-  def profile
-  end
-
   def members
+  end
+  
+  def profile
   end
 end
