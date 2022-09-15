@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get 'external/login'
 
   # internal page routes
-  get 'internal/members'
-  get 'internal/profile'
+  get '/members', to: 'internal#members'
+  get '/profile', to: 'internal#profile'
 
   # external page routes
   get "/home", to: "external#home"
