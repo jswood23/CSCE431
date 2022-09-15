@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'external/login'
 
   # internal page routes
+  get '/attend', to: 'internal#attend'
   get '/members', to: 'internal#members'
   get '/profile', to: 'internal#profile'
 
