@@ -6,13 +6,13 @@ class InternalControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get profile" do
-    get internal_profile_url
+  test "should get members" do
+    get internal_members_url
     assert_response :success
   end
 
-  test "should get members" do
-    get internal_members_url
+  test "should get profile" do
+    get internal_profile_url
     assert_response :success
   end
 end
