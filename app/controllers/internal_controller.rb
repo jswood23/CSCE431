@@ -1,7 +1,10 @@
 class InternalController < ApplicationController
-  def profile
+  def attend
   end
 
   def members
+  end
+
+  def profile
   end
 end

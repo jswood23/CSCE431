@@ -1,14 +1,14 @@
 class ExternalController < ApplicationController
-  def home
+  def about
+  end
+
+  def contact
   end
 
   def events
   end
 
-  def about
-  end
-
-  def contact
+  def home
   end
 
   def login
