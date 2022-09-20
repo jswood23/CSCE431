@@ -37,4 +37,7 @@ ActiveRecord::Schema.define(version: 2022_09_19_174247) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
 end
