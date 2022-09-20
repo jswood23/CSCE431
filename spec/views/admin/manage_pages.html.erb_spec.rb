@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "admin/manage_pages.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe "admin/manage_pages.html.erb", type: :feature do
+  scenario 'shows header content' do
+    visit '/manage_pages'
+    expect(page).to have_content('Manage Pages')
+  end
 end
