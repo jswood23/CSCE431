@@ -22,4 +22,7 @@ ActiveRecord::Schema.define(version: 2022_09_11_010527) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
 end
