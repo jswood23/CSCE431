@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :uid
       t.string :avatar_url
       t.string :provider
-      t.bool :admin
+      t.boolean :admin
 
       ## Recoverable
       t.string   :reset_password_token
