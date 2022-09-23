@@ -8,6 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
+  #google action method
   def google_oauth2
     user = User.from_omniauth(auth)
     if user.present?
