@@ -1,10 +1,30 @@
 <h1>Manage Members</h1>
 <p>You can manage members here.</p>
 
-<% @users.each do |user| %>
-  <%= user.email %>
-  &emsp;
-  <%= user.admin %>
-  &emsp;
-  <%= button_to "Make Admin", "/make_user_admin/#{user.id}", class: "btn btn-outline-dark my-2 my-sm-0 m-1" %><br/>
-<% end %>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>User Status</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.full_name %></td>
+        <td><%= user.email %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= get_user_status(user) %>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+              <li><%= link_to "Remove Admin Status", "/remove_user_admin/#{user.id}", class: "dropdown-item" %></li>
+            </ul>
+            <%# href=<%= "/make_user_admin/#{user.id}"%>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
