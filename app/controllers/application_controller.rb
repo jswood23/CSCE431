@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   def is_admin(user = current_user)
     if user
+      if current_user.id == 1 && !current_user.admin
+        current_user.admin = true
+        current_user.save()
+      end
       if user.admin
         return true
       end
