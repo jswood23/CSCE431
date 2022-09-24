@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   get '/manage_events', to: 'admin#manage_events'
 
   # admin actions
-  post '/make_user_admin/:userid', to: 'admin#make_user_admin'
-  post '/remove_user_admin/:userid', to: 'admin#remove_user_admin'
+  get '/make_user_admin/:userid', to: 'admin#make_user_admin'
+  get '/remove_user_admin/:userid', to: 'admin#remove_user_admin'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
