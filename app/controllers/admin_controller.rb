@@ -58,6 +58,7 @@ class AdminController < ApplicationController
     if is_admin
       return true
     end
+    flash.alert = "You do not have permission to access this."
     redirect_to home_path
     return false
   end
