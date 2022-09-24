@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'external#contact'
   get '/events', to: 'external#events'
   get '/home', to: 'external#home'
-  get '/login', to: 'external#login'
 
   # internal page routes
   get '/attend', to: 'internal#attend'
