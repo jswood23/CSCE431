@@ -19,11 +19,13 @@ Rails.application.routes.draw do
   match '/profile', to: 'internal#profile', :via => :all
   
   # admin page routes
-  match '/manage_members', to: 'admin#manage_members', :via => :all
-  match '/manage_pages', to: 'admin#manage_pages', :via => :all
-  match '/manage_events', to: 'admin#manage_events', :via => :all
+  get '/manage_members', to: 'admin#manage_members'
+  get '/manage_pages', to: 'admin#manage_pages'
+  get '/manage_events', to: 'admin#manage_events'
 
-  match '/make_user_admin/:userid', to: 'admin#make_user_admin', :via => :all
+  # admin actions
+  post '/make_user_admin/:userid', to: 'admin#make_user_admin'
+  post '/remove_user_admin/:userid', to: 'admin#remove_user_admin'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
