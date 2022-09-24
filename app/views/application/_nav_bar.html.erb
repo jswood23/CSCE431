@@ -57,24 +57,22 @@
         <% end %>
 
         <%# Admin Pages Dropdown List %>
-        <% if current_user %>
-          <% if current_user.admin %>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                MCHSO Admin
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%# Manage Event Page Button %>
-                <li><a class="dropdown-item" href="/manage_events">Manage Events</a></li>
-                
-                <%# Manage Members Page Button %>
-                <li><a class="dropdown-item" href="/manage_members">Manage Members</a></li>
-                
-                <%# Manage Pages Page Button %>
-                <li><a class="dropdown-item" href="/manage_pages">Manage Pages</a></li>
-              </ul>
-            </li>
-          <% end %>
+        <% if is_admin %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              MCHSO Admin
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%# Manage Event Page Button %>
+              <li><a class="dropdown-item" href="/manage_events">Manage Events</a></li>
+              
+              <%# Manage Members Page Button %>
+              <li><a class="dropdown-item" href="/manage_members">Manage Members</a></li>
+              
+              <%# Manage Pages Page Button %>
+              <li><a class="dropdown-item" href="/manage_pages">Manage Pages</a></li>
+            </ul>
+          </li>
         <% end %>
 
         <%# Login/Logout Buttons %>

@@ -2,16 +2,15 @@ class AdminController < ApplicationController
   before_action :check_has_access
 
   def check_has_access
-    if current_user
-      if current_user.admin
-        return true
-      end
+    if is_admin
+      return true
     end
     redirect_to '/home'
     return false
   end
 
   def manage_members
+    @users = User.all
     # current_user.admin = true
     # current_user.save()
   end
