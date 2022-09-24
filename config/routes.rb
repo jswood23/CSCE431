@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   match '/manage_pages', to: 'admin#manage_pages', :via => :all
   match '/manage_events', to: 'admin#manage_events', :via => :all
 
+  match '/make_user_admin/:userid', to: 'admin#make_user_admin', :via => :all
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
