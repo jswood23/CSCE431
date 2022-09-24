@@ -1,2 +1,10 @@
 <h1>Manage Members</h1>
 <p>You can manage members here.</p>
+
+<% @users.each do |user| %>
+  <%= user.email %>
+  &emsp;
+  <%= user.admin %>
+  &emsp;
+  <%= button_to "Make Admin", "/make_user_admin/#{user.id}", class: "btn btn-outline-dark my-2 my-sm-0 m-1" %><br/>
+<% end %>
