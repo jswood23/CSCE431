@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   get '/home', to: 'external#home'
 
   # internal page routes
-  get '/attend', to: 'internal#attend'
-  get '/members', to: 'internal#members'
-  get '/profile', to: 'internal#profile'
+  match '/attend', to: 'internal#attend', :via => :all
+  match '/members', to: 'internal#members', :via => :all
+  match '/profile', to: 'internal#profile', :via => :all
   
   # admin page routes
-  get '/manage_members', to: 'admin#manage_members'
-  get '/manage_pages', to: 'admin#manage_pages'
-  get '/manage_events', to: 'admin#manage_events'
+  match '/manage_members', to: 'admin#manage_members', :via => :all
+  match '/manage_pages', to: 'admin#manage_pages', :via => :all
+  match '/manage_events', to: 'admin#manage_events', :via => :all
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
