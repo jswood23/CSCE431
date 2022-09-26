@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2022_09_26_170408) do
     t.string "avatar_url"
     t.string "provider"
     t.boolean "admin"
+    t.integer "points"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
