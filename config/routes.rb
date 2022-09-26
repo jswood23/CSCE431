@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :attendances
+  resources :events
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
