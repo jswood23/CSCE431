@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
         current_user.save()
       end
       if user.admin
+        if !user.member
+          user.member = true
+          user.save()
+        end
         return true
       end
     end
