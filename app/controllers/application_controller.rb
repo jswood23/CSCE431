@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :is_admin, :is_member, :get_user_status
+  helper_method :is_admin, :is_member, :get_user_status, :get_name
 
   def is_admin(user = current_user)
     if user
@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
 
   def is_member(user = current_user)
     if user
-      return true
+      if user.member
+        return true
+      end
     end
     return false
   end
@@ -35,6 +37,16 @@ class ApplicationController < ActionController::Base
       else
         return "User (no permissions)"
       end
+    end
+    return "Does not exist"
+  end
+
+  def get_name(user = current_user)
+    if user
+      if user.full_name
+        return user.full_name
+      end
+      return "(none)"
     end
     return "Does not exist"
   end
