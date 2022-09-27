@@ -52,6 +52,44 @@ class AdminController < ApplicationController
     redirect_to '/manage_members'
   end
 
+  def make_user_member
+    # get the matching user to the id provided
+    user = User.find(params[:userid])
+    if !user
+      # return error if user does not exist
+      flash.alert = "Error: user #{params[:userid]} does not exist."
+    elsif user.member
+      # return error if user is already a member
+      flash.alert = "Error: user #{user.full_name} is already a member."
+    else
+      # otherwise: change user's member status to true
+      user.member = true
+      user.save()
+      flash.notice = "User #{user.full_name} is now a member."
+    end
+    # go back to manage_members
+    redirect_to '/manage_members'
+  end
+
+  def remove_user_member
+    # get the matching user to the id provided
+    user = User.find(params[:userid])
+    if !user
+      # return error if user does not exist
+      flash.alert = "Error: user #{params[:userid]} does not exist."
+    elsif !user.member
+      # return error if user is already not a member
+      flash.alert = "Error: user #{user.full_name} is already not a member."
+    else
+      # otherwise: change user's member status to false
+      user.member = false
+      user.save()
+      flash.notice = "User #{user.full_name} is no longer a member."
+    end
+    # go back to manage_members
+    redirect_to '/manage_members'
+  end
+
   private
 
   def check_has_access

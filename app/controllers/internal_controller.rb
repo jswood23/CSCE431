@@ -12,6 +12,8 @@ class InternalController < ApplicationController
 
   # Controller actions (without pages)
 
+  private
+
   def check_has_member_access
     if is_member
       return true
