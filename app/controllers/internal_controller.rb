@@ -10,8 +10,6 @@ class InternalController < ApplicationController
   end
 
   def attend
-    # current_user.admin = true
-    # current_user.save()
   end
 
   def members
