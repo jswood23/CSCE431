@@ -3,7 +3,8 @@ class AdminController < ApplicationController
   respond_to :js, only: :alert_message
 
   def manage_members
-    @users = User.all
+    @members = User.where(member: "true")
+    @new_users = User.where(member: "false")
   end
 
   def manage_pages
@@ -83,6 +84,7 @@ class AdminController < ApplicationController
     else
       # otherwise: change user's member status to false
       user.member = false
+      user.admin = false
       user.save()
       flash.notice = "User #{user.full_name} is no longer a member."
     end
