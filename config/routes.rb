@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   # admin actions
   get '/make_user_admin/:userid', to: 'admin#make_user_admin'
   get '/remove_user_admin/:userid', to: 'admin#remove_user_admin'
+  get '/make_user_member/:userid', to: 'admin#make_user_member'
+  get '/remove_user_member/:userid', to: 'admin#remove_user_member'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
