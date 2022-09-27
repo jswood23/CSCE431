@@ -1,27 +1,66 @@
 <h1>Manage Members</h1>
 <p>You can manage members here.</p>
 
+<% if @new_users.length > 0 %>
+  <table>
+    <caption>New Users</caption>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+    <tbody>
+      <% @new_users.each do |user| %>
+        <tr>
+          <td><%= get_name(user) %></td>
+          <td><%= user.email %></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Manage
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%# option to give user member status %>
+                <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                <%# option to delete user %>
+                <li><%= link_to "Delete User", "#", class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
 <table>
+  <caption>Members</caption>
   <thead>
     <th>Name</th>
     <th>Email</th>
-    <th>User Status</th>
+    <th>Member Status</th>
+    <th>Actions</th>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @members.each do |user| %>
       <tr>
-        <td><%= user.full_name %></td>
+        <td><%= get_name(user) %></td>
         <td><%= user.email %></td>
+        <td><%= get_user_status(user) %>
         <td>
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= get_user_status(user) %>
+              Manage
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
-              <li><%= link_to "Remove Admin Status", "/remove_user_admin/#{user.id}", class: "dropdown-item" %></li>
+              <% if user.admin %>
+                <%# option to take away user's admin status %>
+                <li><%= link_to "Remove Admin Status", "/remove_user_admin/#{user.id}", class: "dropdown-item" %></li>
+              <% else %>
+                <%# option to take away user's member status %>
+                <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
+                <%# option to give user admin status %>
+                <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+              <% end %>
             </ul>
-            <%# href=<%= "/make_user_admin/#{user.id}"%>
           </div>
         </td>
       </tr>
