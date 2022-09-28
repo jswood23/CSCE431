@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :information
+  resources :permissions
   resources :attendances
   resources :events
   devise_for :users, controllers: {

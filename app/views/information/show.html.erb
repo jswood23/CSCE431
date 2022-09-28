@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @information.uid %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @information.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @information.email %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @information.position %>
+</p>
+
+<p>
+  <strong>Bios:</strong>
+  <%= @information.bios %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @information.phone %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @information.points %>
+</p>
+
+<%= link_to 'Edit', edit_information_path(@information) %> |
+<%= link_to 'Back', information_index_path %>
