@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
 
   def is_admin(user = current_user)
     if user
-      if current_user.id == 1 && !current_user.admin
+      no_admins = User.where(admin: "true").length() == 0
+      if no_admins
         current_user.admin = true
         current_user.member = true
         current_user.save()
+        flash.notice = "User #{current_user.full_name} has been made an admin because there were no existing admins."
       end
       if user.admin
         if !user.member
