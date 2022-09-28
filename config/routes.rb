@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  # get 'events/index'
+  # get 'events/show'
+  # get 'events/new'
+  # get 'events/edit'
+  # get 'events/delete'
+
+  resources :events do
+    member do
+      get :delete
+    end
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
