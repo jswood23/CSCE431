@@ -1,9 +1,9 @@
 <h1>Manage Members</h1>
 <p>You can manage members here.</p>
 
+<h2>New Users</h2>
 <% if @new_users.length > 0 %>
   <table>
-    <caption>New Users</caption>
     <th>Name</th>
     <th>Email</th>
     <th>Actions</th>
@@ -21,7 +21,7 @@
                 <%# option to give user member status %>
                 <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
                 <%# option to delete user %>
-                <li><%= link_to "Delete User", "#", class: "dropdown-item" %></li>
+                <li><%= link_to "Delete User", "/delete_user/#{user.id}", class: "dropdown-item" %></li>
               </ul>
             </div>
           </td>
@@ -31,8 +31,8 @@
   </table>
 <% end %>
 
+<h2>Members</h2>
 <table>
-  <caption>Members</caption>
   <thead>
     <th>Name</th>
     <th>Email</th>
