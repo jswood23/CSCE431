@@ -4,7 +4,7 @@ class AdminController < ApplicationController
 
   def manage_members
     @members = User.where(member: "true")
-    @new_users = User.where(member: "false")
+    @new_users = User.where(:member => [nil, "false"])
   end
 
   def manage_pages
@@ -87,6 +87,24 @@ class AdminController < ApplicationController
       user.admin = false
       user.save()
       flash.notice = "User #{user.full_name} is no longer a member."
+    end
+    # go back to manage_members
+    redirect_to '/manage_members'
+  end
+
+  def delete_user
+    # get the matching user to the id provided
+    user = User.find(params[:userid])
+    if !user
+      # return error if user does not exist
+      flash.alert = "Error: user #{params[:userid]} does not exist."
+    elsif user.member || user.admin
+      # return error if user is member or admin
+      flash.alert = "Error: please remove user's permissions before deletion."
+    else
+      # otherwise: delete user
+      user.destroy()
+      flash.notice = "User #{user.full_name} has been successfully deleted."
     end
     # go back to manage_members
     redirect_to '/manage_members'
