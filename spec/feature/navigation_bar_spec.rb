@@ -1,15 +1,7 @@
 require 'rails_helper'
 require './spec/support/user_helpers'
 
-RSpec.configure do |c|
-  c.include UserHelpers
-end
-
 RSpec.describe 'Visiting the home page', type: :feature do
-  before(:all) do
-    create_accounts()
-  end
-
   scenario 'nav bar for non-user shows correct content' do
     visit "/home"
 
@@ -45,6 +37,8 @@ RSpec.describe 'Visiting the home page', type: :feature do
     # has user buttons
     expect(page).to have_content('Edit Account')
     expect(page).to have_content('Logout')
+    
+    log_out()
   end
 
   scenario 'nav bar for member shows correct content' do
@@ -70,6 +64,8 @@ RSpec.describe 'Visiting the home page', type: :feature do
     # has user buttons
     expect(page).to have_content('Edit Account')
     expect(page).to have_content('Logout')
+    
+    log_out()
   end
 
   scenario 'nav bar for admin shows correct content' do
@@ -99,5 +95,7 @@ RSpec.describe 'Visiting the home page', type: :feature do
     # has user buttons
     expect(page).to have_content('Edit Account')
     expect(page).to have_content('Logout')
+    
+    log_out()
   end
 end
