@@ -10,7 +10,7 @@ RSpec.describe 'Visiting the home page', type: :feature do
     create_accounts()
   end
 
-  scenario 'admin nav bar has full content' do
+  scenario 'nav bar for non-user shows correct content' do
     visit "/home"
     # main buttons
     expect(page).to have_content('Home')
@@ -25,13 +25,16 @@ RSpec.describe 'Visiting the home page', type: :feature do
     expect(page).to have_content('Create Account')
   end
 
-  # scenario 'nav bar member dropdown shows correct content when clicked' do
-  #   visit "/home"
-  #   click_on 'MCHSO Member'
-  #   expect(page).to have_content('My Profile')
-  #   expect(page).to have_content('Member List')
-  #   expect(page).to have_content('Attend an Event')
-  # end
+  scenario 'nav bar member dropdown shows correct content when clicked' do
+    log_in_member()
+    visit "/home"
+    expect(page).to have_content('MCHSO Member')
+    click_on 'MCHSO Member'
+    expect(page).to have_content('My Profile')
+    expect(page).to have_content('Member List')
+    expect(page).to have_content('Attend an Event')
+    expect(page).not_to have_content('MCHSO Admin')
+  end
 
   # scenario 'nav bar admin dropdown shows correct content when clicked' do
   #   visit "/home"
