@@ -1,6 +1,15 @@
 require 'rails_helper'
+require './spec/support/user_helpers'
+
+RSpec.configure do |c|
+  c.include UserHelpers
+end
 
 RSpec.describe 'Visiting the home page', type: :feature do
+  before(:all) do
+    create_accounts()
+  end
+
   scenario 'admin nav bar has full content' do
     visit "/home"
     # main buttons
