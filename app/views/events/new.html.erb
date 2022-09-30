@@ -3,34 +3,4 @@
 
 <%= link_to 'Back', events_path %>
 
-<%= form_with(model: @event) do |form| %>
-
-  <div class="field">
-    <%= form.label :event_name %>
-    <%= form.text_field :event_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points %>
-  </div>
-
-  <div class="field">
-    <%= form.label :passcode %>
-    <%= form.text_field :passcode %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render 'form', event: @event %>
