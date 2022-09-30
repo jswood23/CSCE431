@@ -9,7 +9,7 @@
     <th>Actions</th>
     <tbody>
       <% @new_users.each do |user| %>
-        <tr>
+        <tr id=<%= "new_user_row_#{user.id}" %>>
           <td><%= get_name(user) %></td>
           <td><%= user.email %></td>
           <td>
@@ -43,7 +43,7 @@
   </thead>
   <tbody>
     <% @members.each do |user| %>
-      <tr>
+      <tr id=<%= "member_row_#{user.id}" %>>
         <td><%= get_name(user) %></td>
         <td><%= user.email %></td>
         <td><%= get_user_status(user) %>
