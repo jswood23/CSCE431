@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
   before_action :check_has_access
   respond_to :js, only: :alert_message
@@ -7,8 +9,7 @@ class AdminController < ApplicationController
     @new_users = User.where(:member => [nil, "false"])
   end
 
-  def manage_pages
-  end
+  def manage_pages; end
 
   def manage_events
   end

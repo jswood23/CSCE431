@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   helper_method :is_admin, :is_member, :get_user_status, :get_name
 
