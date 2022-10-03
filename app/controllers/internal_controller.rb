@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 class InternalController < ApplicationController
   before_action :check_has_member_access
 
   def attend
   end
 
-  def members
-  end
+  def members; end
 
   def profile
   end

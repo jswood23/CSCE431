@@ -8,16 +8,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
-  #google action method
+  # google action method
   def google_oauth2
     user = User.from_omniauth(auth)
     if user.present?
       sign_out_all_scopes
-      flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-      sign_in_and_redirect user, event: :authentication
+      flash[:success] = t('devise.omniauth_callbacks.success', kind: 'Google')
+      sign_in_and_redirect(user, event: :authentication)
     else
-      flash[:alert] = t 'devise.omniauth_callbacks.failure', reason: "#{auth.info.email} is not authorized"
-      redirect_to new_user_session_path
+      flash[:alert] = t('devise.omniauth_callbacks.failure', reason: "#{auth.info.email} is not authorized")
+      redirect_to(new_user_session_path)
     end
   end
 
@@ -33,8 +33,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def failure
   #   super
   # end
-
-
 
   # protected
 
