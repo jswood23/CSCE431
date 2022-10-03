@@ -3,7 +3,7 @@
 
 <%= link_to 'Back', events_path %>
 
- <% if current_user %>
+<% if current_user %>
     <% if current_user.admin %>
         <%= render 'form', event: @event %>
     <% end %>

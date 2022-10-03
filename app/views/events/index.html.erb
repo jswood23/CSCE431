@@ -2,6 +2,7 @@
 <h1>Events Page</h1>
 <p>Events page stuff goes here</p>
 
+<%# Display all events %>
 <table>
 
   <thead>
@@ -30,8 +31,12 @@
 
 </table>
 
-
-<%= link_to 'Create New Event', new_event_path %>
+<%# Create Event Button %>
+<% if current_user %>
+  <% if current_user.admin %>
+    <%= link_to 'Create New Event', new_event_path %>
+  <% end %>
+<% end %>
 
 
   
