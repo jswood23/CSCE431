@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    @events = Event.all
   end
 
   def show
@@ -10,6 +11,17 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = Event.new(event_params)
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to events_path, notice: "Event was successfully created." }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
@@ -23,4 +35,15 @@ class EventsController < ApplicationController
 
   def destroy
   end
+
+
+  private
+
+    def set_event
+      @event = Event.find(params[id])
+    end
+
+    def event_params
+      params.require(:event).permit(:event_name, :description, :date, :points, :passcode)
+    end
 end
