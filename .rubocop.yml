@@ -300,6 +300,10 @@ Naming/ConstantName:
 Naming/InclusiveLanguage: # (new in 1.18)
   Enabled: true
 
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case
+
 Naming/PredicateName:
   Enabled: true
 
