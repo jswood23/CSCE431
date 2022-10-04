@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :is_admin, :is_member, :get_user_status, :get_name
+  helper_method :admin?, :member?, :get_user_status, :get_name
 
-  def is_admin(user = current_user)
+  def admin?(user = current_user)
     if user
       no_admins = User.where(admin: 'true').length.zero?
       if no_admins
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     false
   end
 
-  def is_member(user = current_user)
+  def member?(user = current_user)
     return true if user&.member
 
     false

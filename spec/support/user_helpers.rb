@@ -46,7 +46,7 @@ module UserHelpers
     expect(page).to(have_content('Signed in successfully.'))
   end
 
-  def log_in_member(is_member = true)
+  def log_in_member(member? = true)
     # give false as a parameter if this user should have no permissions
     visit('/users/sign_in')
     within('#new_user') do
@@ -58,7 +58,7 @@ module UserHelpers
 
     # change user permissions between user and member if necessary
     this_user = User.where(email: @@member_email).first
-    if is_member
+    if member?
       unless this_user.member
         this_user.member = true
         this_user.save!
