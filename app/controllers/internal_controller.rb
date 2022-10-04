@@ -1,22 +1,24 @@
 class InternalController < ApplicationController
-  before_action :check_has_access
-
-  def check_has_access
-    if current_user
-      return true
-    end
-    redirect_to '/home'
-    return false
-  end
+  before_action :check_has_member_access
 
   def attend
-    # current_user.admin = true
-    # current_user.save()
   end
 
   def members
   end
 
   def profile
+  end
+
+  # Controller actions (without pages)
+
+  private
+
+  def check_has_member_access
+    if is_member
+      return true
+    end
+    redirect_to '/home'
+    return false
   end
 end

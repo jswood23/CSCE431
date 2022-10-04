@@ -34,31 +34,31 @@
           <a class="nav-link active" aria-current="page" href="/contact">Contact Us</a>
         </li>
 
-        <%# Internal Pages Dropdown List %>
         <% if current_user %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              MCHSO Member
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%# Profile Page Button %>
-              <li><a class="dropdown-item" href="/profile">My Profile</a></li>
-              
-              <%# Member List Page Button %>
-              <li><a class="dropdown-item" href="/members">Member List</a></li>
-              
-              <%# Divider %>
-              <li><hr class="dropdown-divider"></li>
-              
-              <%# Attend Event Page Button %>
-              <li><a class="dropdown-item" href="/attend">Attend an Event</a></li>
-            </ul>
-          </li>
-        <% end %>
+          <%# Member Pages Dropdown List %>
+          <% if is_member %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                MCHSO Member
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%# Profile Page Button %>
+                <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                
+                <%# Member List Page Button %>
+                <li><a class="dropdown-item" href="/members">Member List</a></li>
+                
+                <%# Divider %>
+                <li><hr class="dropdown-divider"></li>
+                
+                <%# Attend Event Page Button %>
+                <li><a class="dropdown-item" href="/attend">Attend an Event</a></li>
+              </ul>
+            </li>
+          <% end %>
 
-        <%# Admin Pages Dropdown List %>
-        <% if current_user %>
-          <% if current_user.admin %>
+          <%# Admin Pages Dropdown List %>
+          <% if is_admin %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 MCHSO Admin
