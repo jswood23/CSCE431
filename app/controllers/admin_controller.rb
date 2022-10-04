@@ -113,7 +113,7 @@ class AdminController < ApplicationController
   private
 
   def check_has_access
-    return true if is_admin
+    return true if admin?
 
     flash.alert = 'You do not have permission to access this.'
     redirect_to(home_path)

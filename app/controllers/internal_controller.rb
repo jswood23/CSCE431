@@ -14,7 +14,7 @@ class InternalController < ApplicationController
   private
 
   def check_has_member_access
-    return true if is_member
+    return true if member?
 
     redirect_to('/home')
     false
