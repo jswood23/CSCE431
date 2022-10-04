@@ -5,53 +5,49 @@ class ApplicationController < ActionController::Base
 
   def is_admin(user = current_user)
     if user
-      no_admins = User.where(admin: "true").length() == 0
+      no_admins = User.where(admin: 'true').length.zero?
       if no_admins
         current_user.admin = true
         current_user.member = true
-        current_user.save()
+        current_user.save!
         flash.notice = "User #{current_user.full_name} has been made an admin because there were no existing admins."
       end
       if user.admin
-        if !user.member
+        unless user.member
           user.member = true
-          user.save()
+          user.save!
         end
         return true
       end
     end
-    return false
+    false
   end
 
   def is_member(user = current_user)
-    if user
-      if user.member
-        return true
-      end
-    end
-    return false
+    return true if user&.member
+
+    false
   end
 
   def get_user_status(user = current_user)
     if user
       if user.admin
-        return "Admin"
+        return 'Admin'
       elsif user.member
-        return "Member"
+        return 'Member'
       else
-        return "User (no permissions)"
+        return 'User (no permissions)'
       end
     end
-    return "Does not exist"
+    'Does not exist'
   end
 
   def get_name(user = current_user)
     if user
-      if user.full_name
-        return user.full_name
-      end
-      return "(none)"
+      return user.full_name if user.full_name
+
+      return '(none)'
     end
-    return "Does not exist"
+    'Does not exist'
   end
 end
