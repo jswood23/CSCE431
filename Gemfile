@@ -57,6 +57,7 @@ group :development do
   gem 'simplecov', require: false
   # Brakeman security testing
   gem 'brakeman'
+  gem 'letter_opener'
 end
 
 group :test do
