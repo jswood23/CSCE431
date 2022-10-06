@@ -22,10 +22,6 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     # turn new user into member
     member_email = UserHelpers.class_variable_get(:@@member_email)
 
-    puts "member user id:"
-    the_user = User.where(email: member_email)[0]
-    puts the_user.id
-
     member_row = find(:css, '#new_user_row_2')
     within(member_row) do
       expect(page).to have_content(member_email)
