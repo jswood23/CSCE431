@@ -5,21 +5,20 @@ require './spec/support/user_helpers'
 
 RSpec.describe('admin/manage_members.html.erb', type: :feature) do
   it 'shows header and subheaders' do
-    log_in_admin()
+    log_in_admin
     visit 'manage_members'
     expect(page).to(have_content('Manage Members'))
     expect(page).to(have_content('New Users'))
     expect(page).to(have_content('Members'))
-    log_out()
+    log_out
   end
 
   it 'turns new user into member' do
-    log_in_admin()
+    log_in_admin
     visit 'manage_members'
 
     # new user shows up
     expect(page).not_to(have_content('No new users.'))
-
 
     # turn new user into member
     member_email = UserHelpers.class_variable_get(:@@member_email)
@@ -69,7 +68,7 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     end
     expect(page).to(have_content('No new users.'))
     assert User.all.length == 1
-    
-    log_out()
+
+    log_out
   end
 end

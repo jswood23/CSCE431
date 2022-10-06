@@ -54,7 +54,7 @@ AllCops:
 ####################### Gemspec ###########################
 ###########################################################
 
-Gemspec/DeprecatedAttributeAssignment: # (new in 1.10)
+Gemspec/DateAssignment: # (new in 1.10)
   Enabled: true
 
 ###########################################################
