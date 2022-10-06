@@ -4,11 +4,8 @@ require 'rails_helper'
 require './spec/support/user_helpers'
 
 RSpec.describe('Creating accounts', type: :feature) do
-  before(:all) do
-    create_accounts
-  end
-
   it 'asserts that both admin account and member account exists' do
+    create_accounts
     log_in_admin
     log_out
     log_in_member

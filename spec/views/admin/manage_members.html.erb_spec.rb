@@ -36,7 +36,6 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
 
     # turns member into admin
     member_row = find(:css, '#member_row_2')
-    member_email = UserHelpers.class_variable_get(:@@member_email)
     within(member_row) do
       expect(page).to(have_content(member_email))
       click_button('Manage')
