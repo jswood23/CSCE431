@@ -1,17 +1,17 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
   before_action :check_has_access
   respond_to :js, only: :alert_message
 
   def manage_members
-    @members = User.where(member: "true")
-    @new_users = User.where(:member => [nil, "false"])
+    @members = User.where(member: 'true')
+    @new_users = User.where(member: [nil, 'false'])
   end
 
-  def manage_pages
-  end
+  def manage_pages; end
 
-  def manage_events
-  end
+  def manage_events; end
 
   # Controller actions (without pages)
 
@@ -27,11 +27,11 @@ class AdminController < ApplicationController
     else
       # otherwise: change user's admin status to true
       user.admin = true
-      user.save()
+      user.save!
       flash.notice = "User #{user.full_name} is now an admin."
     end
     # go back to manage_members
-    redirect_to '/manage_members'
+    redirect_to('/manage_members')
   end
 
   def remove_user_admin
@@ -46,11 +46,11 @@ class AdminController < ApplicationController
     else
       # otherwise: change user's admin status to false
       user.admin = false
-      user.save()
+      user.save!
       flash.notice = "User #{user.full_name} is no longer an admin."
     end
     # go back to manage_members
-    redirect_to '/manage_members'
+    redirect_to('/manage_members')
   end
 
   def make_user_member
@@ -65,11 +65,11 @@ class AdminController < ApplicationController
     else
       # otherwise: change user's member status to true
       user.member = true
-      user.save()
+      user.save!
       flash.notice = "User #{user.full_name} is now a member."
     end
     # go back to manage_members
-    redirect_to '/manage_members'
+    redirect_to('/manage_members')
   end
 
   def remove_user_member
@@ -85,11 +85,11 @@ class AdminController < ApplicationController
       # otherwise: change user's member status to false
       user.member = false
       user.admin = false
-      user.save()
+      user.save!
       flash.notice = "User #{user.full_name} is no longer a member."
     end
     # go back to manage_members
-    redirect_to '/manage_members'
+    redirect_to('/manage_members')
   end
 
   def delete_user
@@ -103,21 +103,20 @@ class AdminController < ApplicationController
       flash.alert = "Error: please remove user's permissions before deletion."
     else
       # otherwise: delete user
-      user.destroy()
+      user.destroy!
       flash.notice = "User #{user.full_name} has been successfully deleted."
     end
     # go back to manage_members
-    redirect_to '/manage_members'
+    redirect_to('/manage_members')
   end
 
   private
 
   def check_has_access
-    if is_admin
-      return true
-    end
-    flash.alert = "You do not have permission to access this."
-    redirect_to home_path
-    return false
+    return true if admin?
+
+    flash.alert = 'You do not have permission to access this.'
+    redirect_to(home_path)
+    false
   end
 end
