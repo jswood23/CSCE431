@@ -15,7 +15,7 @@ module UserHelpers
   end
 
   def create_accounts
-    # admin account
+    # create admin account
     visit('/users/sign_up')
     within('#new_user') do
       fill_in('user_email', with: @@admin_email)
@@ -26,7 +26,7 @@ module UserHelpers
     expect(page).to(have_content('User has been made an admin because there were no existing admins.'))
     log_out
 
-    # member account
+    # create member account
     visit('/users/sign_up')
     within('#new_user') do
       fill_in('user_email', with: @@member_email)

@@ -4,28 +4,31 @@ require 'rails_helper'
 require './spec/support/user_helpers'
 
 RSpec.describe('admin/manage_members.html.erb', type: :feature) do
-  before do
-    log_in_admin
-    visit 'manage_members'
-  end
-
-  after do
-    log_out
-  end
-
   it 'shows header and subheaders' do
+    log_in_admin()
+    visit 'manage_members'
     expect(page).to(have_content('Manage Members'))
     expect(page).to(have_content('New Users'))
     expect(page).to(have_content('Members'))
+    log_out()
   end
 
   it 'turns new user into member' do
+    log_in_admin()
+    visit 'manage_members'
+
     # new user shows up
     expect(page).not_to(have_content('No new users.'))
 
+
     # turn new user into member
-    member_row = find(:css, '#new_user_row_2')
     member_email = UserHelpers.class_variable_get(:@@member_email)
+
+    puts "member user id:"
+    the_user = User.where(email: member_email)[0]
+    puts the_user.id
+
+    member_row = find(:css, '#new_user_row_2')
     within(member_row) do
       expect(page).to(have_content(member_email))
       click_button('Manage')
@@ -70,5 +73,7 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     end
     expect(page).to(have_content('No new users.'))
     assert User.all.length == 1
+    
+    log_out()
   end
 end

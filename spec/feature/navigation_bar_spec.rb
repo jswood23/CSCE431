@@ -23,7 +23,7 @@ RSpec.describe('Visiting the home page', type: :feature) do
   end
 
   it 'nav bar for user with no permissions shows correct content' do
-    log_in_member(false)
+    log_in_member(member: false)
     visit '/home'
 
     # has main buttons
