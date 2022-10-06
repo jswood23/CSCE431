@@ -54,7 +54,7 @@ AllCops:
 ####################### Gemspec ###########################
 ###########################################################
 
-Gemspec/DateAssignment: # (new in 1.10)
+Gemspec/DeprecatedAttributeAssignment: # (new in 1.10)
   Enabled: true
 
 ###########################################################
@@ -466,7 +466,7 @@ RSpec/ContextWording:
   Enabled: false
 
 RSpec/ExampleLength:
-  Max: 30
+  Max: 100
 
 RSpec/IdenticalEqualityAssertion: # (new in 2.4)
   Enabled: true
