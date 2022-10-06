@@ -1,29 +1,32 @@
 require 'rails_helper'
 require './spec/support/user_helpers'
 
-RSpec.describe "admin/manage_members.html.erb", type: :feature do
-  before(:each) do
+RSpec.describe('admin/manage_members.html.erb', type: :feature) do
+  it 'shows header and subheaders' do
     log_in_admin()
     visit 'manage_members'
-  end
-
-  after(:each) do
+    expect(page).to(have_content('Manage Members'))
+    expect(page).to(have_content('New Users'))
+    expect(page).to(have_content('Members'))
     log_out()
   end
 
-  scenario 'shows header and subheaders' do
-    expect(page).to have_content('Manage Members')
-    expect(page).to have_content('New Users')
-    expect(page).to have_content('Members')
-  end
+  it 'turns new user into member' do
+    log_in_admin()
+    visit 'manage_members'
 
-  scenario 'turns new user into member' do
     # new user shows up
     expect(page).not_to have_content('No new users.')
 
+
     # turn new user into member
-    member_row = find(:css, '#new_user_row_2')
     member_email = UserHelpers.class_variable_get(:@@member_email)
+
+    puts "member user id:"
+    the_user = User.where(email: member_email)[0]
+    puts the_user.id
+
+    member_row = find(:css, '#new_user_row_2')
     within(member_row) do
       expect(page).to have_content(member_email)
       click_button("Manage")
@@ -66,7 +69,14 @@ RSpec.describe "admin/manage_members.html.erb", type: :feature do
       click_button("Manage")
       click_link("Delete User")
     end
+<<<<<<< HEAD
     expect(page).to have_content('No new users.')
     assert User.all().length() == 1
+=======
+    expect(page).to(have_content('No new users.'))
+    assert User.all.length == 1
+    
+    log_out()
+>>>>>>> rspec fixes
   end
 end

@@ -20,10 +20,10 @@ RSpec.describe 'Visiting the home page', type: :feature do
     expect(page).to have_content('Create Account')
   end
 
-  scenario 'nav bar for user with no permissions shows correct content' do
-    log_in_member(false)
-    visit "/home"
-    
+  it 'nav bar for user with no permissions shows correct content' do
+    log_in_member(member: false)
+    visit '/home'
+
     # has main buttons
     expect(page).to have_content('Home')
     expect(page).to have_content('About Us')

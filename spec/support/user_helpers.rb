@@ -15,24 +15,24 @@ module UserHelpers
   end
 
   def create_accounts
-    # admin account
-    visit "/users/sign_up"
-    within "#new_user" do
-      fill_in "user_email", :with => @@admin_email
-      fill_in "user_password", :with => @@admin_password
-      fill_in "user_password_confirmation", :with => @@admin_password
-      click_button("Sign up")
+    # create admin account
+    visit('/users/sign_up')
+    within('#new_user') do
+      fill_in('user_email', with: @@admin_email)
+      fill_in('user_password', with: @@admin_password)
+      fill_in('user_password_confirmation', with: @@admin_password)
+      click_button('Sign up')
     end
     expect(page).to have_content("User has been made an admin because there were no existing admins.")
     log_out()
 
-    # member account
-    visit "/users/sign_up"
-    within "#new_user" do
-      fill_in "user_email", :with => @@member_email
-      fill_in "user_password", :with => @@member_password
-      fill_in "user_password_confirmation", :with => @@member_password
-      click_button("Sign up")
+    # create member account
+    visit('/users/sign_up')
+    within('#new_user') do
+      fill_in('user_email', with: @@member_email)
+      fill_in('user_password', with: @@member_password)
+      fill_in('user_password_confirmation', with: @@member_password)
+      click_button('Sign up')
     end
     expect(page).to have_content("Welcome! You have signed up successfully.")
     log_out()
@@ -48,11 +48,7 @@ module UserHelpers
     expect(page).to have_content("Signed in successfully.")
   end
 
-<<<<<<< HEAD
-  def log_in_member(is_member = true)
-=======
   def log_in_member(member: true)
->>>>>>> final rubocop fixes
     # give false as a parameter if this user should have no permissions
     visit "/users/sign_in"
     within "#new_user" do
@@ -64,18 +60,8 @@ module UserHelpers
 
     # change user permissions between user and member if necessary
     this_user = User.where(email: @@member_email).first
-<<<<<<< HEAD
-    if is_member
-      if !this_user.member
-        this_user.member = true
-        this_user.save()
-      end
-    else
-      if this_user.member
-=======
     if member
       unless this_user.member
->>>>>>> final rubocop fixes
         this_user.member = true
         this_user.save()
       end
