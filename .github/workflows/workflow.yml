@@ -37,14 +37,12 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install
-      - name: Check rubocop results
-        run: rubocop
       - name: Run tests
         run: bundler exec rspec .
       - name: Run brakeman
         run: brakeman -o brakeman.txt --no-exit-on-warn
       - name: Run rubocop
-        run: bundler exec rubocop --force-exclusion vendor/*/** --out rubocop.txt
+        run: bundler exec rubocop --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
