@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_033744) do
   enable_extension "plpgsql"
 
   create_table "information", force: :cascade do |t|
-    t.integer "uid"
+    t.integer "user_id"
     t.string "position"
     t.string "bios"
     t.string "phone"

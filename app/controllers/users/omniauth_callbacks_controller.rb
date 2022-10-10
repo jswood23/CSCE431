@@ -11,9 +11,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # google action method
   def google_oauth2
     user = User.from_omniauth(auth)
-    info = Information.find_by(uid: user.id)
+    info = Information.find_by(user_id: user.id)
     unless info
-      new_info = Information.create!(uid: user.id)
+      new_info = Information.create!(user_id: user.id)
       new_info.save!
     end
     if user.present?
