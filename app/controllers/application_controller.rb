@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_points(user = current_user)
-    info = Information.find_by(uid: user.id)
+    info = Information.find_by(user_id: user.id)
     return info.points if info
 
     Rails.logger.debug { "Information db: #{Information.all.count}" }
