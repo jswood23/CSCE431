@@ -15,7 +15,7 @@ jobs:
       postgres:
         image: postgres:12
         ports:
-        - 5432:5432
+          - 5432:5432
         env:
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
@@ -37,6 +37,8 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: install
+      - name: Check rubocop results
+        run: rubocop
       - name: Run tests
         run: bundler exec rspec .
       - name: Run brakeman
@@ -61,4 +63,3 @@ jobs:
         with:
           name: brakeman-report.txt
           path: brakeman.txt
-
