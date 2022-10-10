@@ -36,7 +36,7 @@
 
         <% if current_user %>
           <%# Member Pages Dropdown List %>
-          <% if is_member %>
+          <% if member? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 MCHSO Member
@@ -58,7 +58,7 @@
           <% end %>
 
           <%# Admin Pages Dropdown List %>
-          <% if is_admin %>
+          <% if admin? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 MCHSO Admin
