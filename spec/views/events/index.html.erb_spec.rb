@@ -7,15 +7,20 @@ RSpec.describe "events/index", type: :view do
         event_name: "Event Name",
         description: "MyText",
         passcode: "Passcode",
+        date: Time.now,
         points: 2
       ),
       Event.create!(
         event_name: "Event Name",
         description: "MyText",
         passcode: "Passcode",
+        date: Time.now,
         points: 2
       )
     ])
+    
+    @upcoming_events = Event.order('date ASC').where("date >= ?", Time.now)
+    @past_events = Event.order('date DESC').where("date < ?", Time.now)
   end
 
   it "renders a list of events" do

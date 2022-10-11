@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :check_has_access
 
   # GET /events or /events.json
   def index
     #order events by date
     @events = Event.order('date ASC')
-    @upcoming_events = Event.order('date ASC').where("date > ?", Time.now)
+    @upcoming_events = Event.order('date ASC').where("date >= ?", Time.now)
     @past_events = Event.order('date DESC').where("date < ?", Time.now)
   end
 
@@ -70,4 +71,14 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:event_name, :description, :passcode, :date, :points)
     end
+
+    private
+
+  def check_has_access
+    return true if admin?
+
+    flash.alert = 'You do not have permission to access this.'
+    redirect_to(home_path)
+    false
+  end
 end

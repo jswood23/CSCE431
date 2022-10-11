@@ -19,10 +19,10 @@ RSpec.describe('Admins', type: :request) do
     end
   end
 
-  describe 'GET /manage_events' do
+  describe 'GET /events' do
     it 'returns http success' do
       # TODO: add a success scenario
-      get '/manage_events'
+      get '/events'
       expect(response).to(have_http_status(:redirect))
     end
   end
