@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   # external page routes
   get '/about', to: 'external#about'
   get '/contact', to: 'external#contact'
-  get '/events', to: 'external#events'
+  get '/view_events', to: 'external#events'
   get '/home', to: 'external#home'
 
   # internal page routes
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
   # admin page routes
   get '/manage_members', to: 'admin#manage_members'
   get '/manage_pages', to: 'admin#manage_pages'
-  get '/manage_events', to: 'admin#manage_events'
 
   # admin actions
   get '/make_user_admin/:userid', to: 'admin#make_user_admin'
