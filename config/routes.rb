@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # root route at external/home
   root 'external#home'
 
+  get '/users/auth/:provider/callback' => 'sessions#create'
+  get '/users/auth/failure', to: redirect('/users/sign_in')
+
   # external page routes
   get '/about', to: 'external#about'
   get '/contact', to: 'external#contact'
