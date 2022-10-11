@@ -6,8 +6,12 @@ RSpec.describe "events/edit", type: :view do
       event_name: "MyString",
       description: "MyText",
       passcode: "MyString",
+      date: Time.now,
       points: 1
     ))
+    
+    @upcoming_events = Event.order('date ASC').where("date >= ?", Time.now)
+    @past_events = Event.order('date DESC').where("date < ?", Time.now)
   end
 
   it "renders the edit event form" do

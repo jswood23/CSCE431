@@ -29,7 +29,7 @@ RSpec.describe "/events", type: :request do
     it "renders a successful response" do
       Event.create! valid_attributes
       get events_url
-      expect(response).to be_successful
+      expect(response).to(have_http_status(:redirect))
     end
   end
 
@@ -37,14 +37,14 @@ RSpec.describe "/events", type: :request do
     it "renders a successful response" do
       event = Event.create! valid_attributes
       get event_url(event)
-      expect(response).to be_successful
+      expect(response).to(have_http_status(:redirect))
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
       get new_event_url
-      expect(response).to be_successful
+      expect(response).to(have_http_status(:redirect))
     end
   end
 
@@ -52,7 +52,7 @@ RSpec.describe "/events", type: :request do
     it "renders a successful response" do
       event = Event.create! valid_attributes
       get edit_event_url(event)
-      expect(response).to be_successful
+      expect(response).to(have_http_status(:redirect))
     end
   end
 
@@ -79,7 +79,7 @@ RSpec.describe "/events", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post events_url, params: { event: invalid_attributes }
-        expect(response).to be_successful
+      expect(response).to(have_http_status(:redirect))
       end
     end
   end
@@ -109,7 +109,7 @@ RSpec.describe "/events", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         event = Event.create! valid_attributes
         patch event_url(event), params: { event: invalid_attributes }
-        expect(response).to be_successful
+      expect(response).to(have_http_status(:redirect))
       end
     end
   end
