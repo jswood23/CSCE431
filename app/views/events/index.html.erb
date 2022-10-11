@@ -1,0 +1,91 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Event', new_event_path, class: "btn btn-outline-dark my-2 my-sm-0 m-1"%>
+
+
+<h1>Upcomming Events</h1>
+
+<% if @upcoming_events.length > 0 %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Event Name</th>
+        <th>Passcode</th>
+        <th>Points</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @upcoming_events.each do |event| %>
+        <tr>
+          <td><%= event.date %></td>
+          <td><%= event.event_name %></td>
+          <td><%= event.passcode %></td>
+          <td><%= event.points %></td>
+          <td><%= truncate event.description, length: 40, separator: /\w+/ %></td>
+          <td>
+            <div class="btn-group dropend">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Manage
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to 'Details', event, class: "dropdown-item" %></li>
+                <li><%= link_to 'Edit', edit_event_path(event), class: "dropdown-item" %></li>
+                <li><%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No Upcomming Events</p>
+<% end %>
+
+<br>
+
+<h2>Past Events</h2>
+<% if @past_events.length > 0 %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Event Name</th>
+        <th>Passcode</th>
+        <th>Points</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @past_events.each do |event| %>
+        <tr>
+          <td><%= event.date %></td>
+          <td><%= event.event_name %></td>
+          <td><%= event.passcode %></td>
+          <td><%= event.points %></td>
+          <td><%= truncate event.description, length: 40, separator: /\w+/ %></td>
+          <td>
+            <div class="btn-group dropend">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Manage
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to 'Details', event, class: "dropdown-item" %></li>
+                <li><%= link_to 'Edit', edit_event_path(event), class: "dropdown-item" %></li>
+                <li><%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No Past Events</p>
+<% end %>
