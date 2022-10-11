@@ -6,6 +6,7 @@ RSpec.describe "events/new", type: :view do
       event_name: "MyString",
       description: "MyText",
       passcode: "MyString",
+      date: Time.now,
       points: 1
     ))
   end

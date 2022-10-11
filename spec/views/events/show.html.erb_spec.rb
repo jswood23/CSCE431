@@ -6,6 +6,7 @@ RSpec.describe "events/show", type: :view do
       event_name: "Event Name",
       description: "MyText",
       passcode: "Passcode",
+      date: Time.now,
       points: 2
     ))
   end
@@ -15,6 +16,7 @@ RSpec.describe "events/show", type: :view do
     expect(rendered).to match(/Event Name/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/Passcode/)
+    expect(rendered).to match(/Date/)
     expect(rendered).to match(/2/)
   end
 end
