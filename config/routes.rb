@@ -1,27 +1,26 @@
 Rails.application.routes.draw do
-  # get 'events/index'
-  # get 'events/show'
-  # get 'events/new'
-  # get 'events/edit'
-  # get 'events/delete'
-
-  resources :events do
-    member do
-      get :delete
-    end
-  end
+  
+  
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  # events page routes 
+  get 'events/new', to: 'events#new'
+  post '/events', to: 'events#create' 
+  # get 'events/show'
+  # get 'events/edit'
+  # get 'events/delete'
+
   # root route at external/home
   root 'external#home'
 
   # external page routes
   get '/about', to: 'external#about'
   get '/contact', to: 'external#contact'
-  get '/events', to: 'external#events'
+  get '/events', to: 'events#index'
   get '/home', to: 'external#home'
 
   # internal page routes

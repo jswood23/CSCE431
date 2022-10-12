@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   subject do 
     described_class.new(event_name: 'Meeting', description: 'Meeting for organization', date:'2022-10-01', 
                         points: 1, passcode: '123abc')
