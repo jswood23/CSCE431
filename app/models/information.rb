@@ -5,7 +5,7 @@ class Information < ApplicationRecord
 
   after_create do |info|
     info.points = 0
-    info.position = 'Member'
+    info.position = 'User'
     info.bios = ''
     info.phone = ''
     info.private = false
