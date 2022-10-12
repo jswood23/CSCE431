@@ -38,6 +38,7 @@
   <thead>
     <th>Name</th>
     <th>Email</th>
+    <th>Points</th>
     <th>Member Status</th>
     <th>Actions</th>
   </thead>
@@ -46,6 +47,7 @@
       <tr id=<%= "member_row_#{user.id}" %>>
         <td><%= get_name(user) %></td>
         <td><%= user.email %></td>
+        <td><%= get_points(user) %></td>
         <td><%= get_user_status(user) %>
         <td>
           <div class="dropdown">

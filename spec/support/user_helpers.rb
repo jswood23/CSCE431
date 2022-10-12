@@ -3,9 +3,13 @@
 # rubocop:disable Style/ClassVars
 
 module UserHelpers
-  # globals
+  # admin constants
+  @@admin_name = 'Administrator'
   @@admin_email = 'admin@email.com'
   @@admin_password = 'adminpw23'
+
+  # member constants
+  @@member_name = 'Average Joe'
   @@member_email = 'member@email.com'
   @@member_password = 'memberpw23'
 
@@ -18,17 +22,19 @@ module UserHelpers
     # create admin account
     visit('/users/sign_up')
     within('#new_user') do
+      fill_in('user_full_name', with: @@admin_name)
       fill_in('user_email', with: @@admin_email)
       fill_in('user_password', with: @@admin_password)
       fill_in('user_password_confirmation', with: @@admin_password)
       click_button('Sign up')
     end
-    expect(page).to(have_content('User has been made an admin because there were no existing admins.'))
+    expect(page).to(have_content("User #{@@admin_name} has been made an admin because there were no existing admins."))
     log_out
 
     # create member account
     visit('/users/sign_up')
     within('#new_user') do
+      fill_in('user_full_name', with: @@member_name)
       fill_in('user_email', with: @@member_email)
       fill_in('user_password', with: @@member_password)
       fill_in('user_password_confirmation', with: @@member_password)

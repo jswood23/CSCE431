@@ -1,6 +1,9 @@
+
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe 'google_auth' do
+RSpec.describe('Creating an account with google auth', type: :feature) do
   it 'login' do
     visit new_user_session_path
     find('#google_signin_button').click
