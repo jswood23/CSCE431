@@ -3,7 +3,13 @@
 class InternalController < ApplicationController
   before_action :check_has_member_access
 
-  def attend; end
+  def attend
+    # order events by date
+    @events = Event.order('date ASC')
+    @events_today = Event.where(date: Time.zone.today.all_day)
+    @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
+    @past_events = Event.order('date DESC').where('date < ?', Time.zone.now.beginning_of_day)
+  end
 
   def members; end
 
