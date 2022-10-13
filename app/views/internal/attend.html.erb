@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Time</th>
         <th>Event Name</th>
         <th>Passcode</th>
         <th>Points</th>
@@ -19,7 +20,8 @@
     <tbody>
       <% @events_today.each do |event| %>
         <tr>
-          <td><%= event.date %></td>
+          <td><%= event.date.strftime("%m-%d-%Y") %></td>
+          <td><%= event.date.strftime("%I:%M %p") %></td>
           <td><%= event.event_name %></td>
           <% if admin? %>
             <td><%= event.passcode %></td>
@@ -41,6 +43,7 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Time</th>
         <th>Event Name</th>
         <th>Passcode</th>
         <th>Points</th>
@@ -52,7 +55,8 @@
     <tbody>
       <% @upcoming_events.each do |event| %>
         <tr>
-          <td><%= event.date %></td>
+          <td><%= event.date.strftime("%m-%d-%Y") %></td>
+          <td><%= event.date.strftime("%I:%M %p") %></td>
           <td><%= event.event_name %></td>
           <% if admin? %>
             <td><%= event.passcode %></td>

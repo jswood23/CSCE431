@@ -22,8 +22,8 @@ RSpec.describe('Creating an event', type: :feature) do
       expect(page).to(have_content('Test Event'))
       expect(page).to(have_content('This is a test event'))
       expect(page).to(have_content('test'))
-      expect(page).to(have_content('2022-10-11'))
-      expect(page).to(have_content('04:00:00 UTC'))
+      expect(page).to(have_content('10-11-2022'))
+      expect(page).to(have_content('04:00'))
       expect(page).to(have_content('1'))
       expect(Event.count).to(eq(1))
       log_out
@@ -123,8 +123,8 @@ RSpec.describe('Creating an event', type: :feature) do
       expect(page).to(have_content('New Test Event'))
       expect(page).to(have_content('This is a new test event'))
       expect(page).to(have_content('newtest'))
-      expect(page).to(have_content('2023-10-11'))
-      expect(page).to(have_content('05:10:00 UTC'))
+      expect(page).to(have_content('10-11-2023'))
+      expect(page).to(have_content('05:10'))
       expect(page).to(have_content('2'))
       expect(Event.count).to(eq(1))
       log_out
