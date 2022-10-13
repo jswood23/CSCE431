@@ -22,8 +22,9 @@ RSpec.describe('events/index', type: :view) do
     ]
     )
 
-    @upcoming_events = Event.order('date ASC').where('date >= ?', Time.zone.now)
-    @past_events = Event.order('date DESC').where('date < ?', Time.zone.now)
+    @events_today = Event.where(date: Time.zone.today.all_day)
+    @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
+    @past_events = Event.order('date DESC').where('date < ?', Time.zone.now.beginning_of_day)
   end
 
   it 'renders a list of events' do
