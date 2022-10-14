@@ -11,8 +11,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :information, allow_destroy: true
 
   def self.from_omniauth(auth)
-    if self.where(email: auth.info.email).exists?
-      return_user = self.where(email: auth.info.email).first
+    if exists?(email: auth.info.email)
+      return_user = where(email: auth.info.email).first
       return_user.provider = auth.provider
       return_user.uid = auth.uid
     else
@@ -23,6 +23,5 @@ class User < ApplicationRecord
         user.avatar_url = auth.info.image
       end
     end
-    return_user
   end
 end
