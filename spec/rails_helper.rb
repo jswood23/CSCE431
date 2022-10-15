@@ -60,6 +60,25 @@ def invalid_google_login
   end
 end
 
+def existing_email_login
+  OmniAuth.configure do |c|
+    c.test_mode = true
+    c.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+      provider: 'google_oauth2',
+      uid: '12341234',
+      info: {
+        full_name: 'test account',
+        email: 'testing@email.com'
+      },
+      credentials: {
+        token: 'token',
+        refresh_token: 'refresh token'
+      }
+    }
+                                                        )
+  end
+end
+
 RSpec.configure do |config|
   config.include(UserHelpers)
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
