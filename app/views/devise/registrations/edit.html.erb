@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :full_name %><br />
-    <%= f.text_field :full_name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", placeholder: 'first last'%>
   </div>
 
   <div class="field">
@@ -41,7 +41,6 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
   <% if current_user.provider != "google_oauth2" %>
     <h3>Update Password</h3>
     <div class="field">
@@ -62,6 +61,8 @@
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <%= f.password_field :current_password, autocomplete: "current-password" %>
     </div>
+  <% else %>
+    <p>Authenticated by: Google </p>
   <% end %>
 
   <div class="actions">
