@@ -16,11 +16,12 @@ class EventsController < ApplicationController
   # GET /events/1/attend_event/password
   def attend_event
     this_event = Event.find(params[:event_id])
-    flash.notice = if this_event.passcode == params[:password]
-                     'Attended event!'
-                   else
-                     'Incorrect password.'
-                   end
+    if this_event.passcode == params[:password]
+      new_record = AttendanceRecord.create!(event_id: this_event.id, uid: current_user.id, date_log: DateTime.now, event_name: this_event.event_name)
+      flash.notice = 'Attended event!'
+    else
+      flash.notice = 'Incorrect password.'
+    end
     redirect_to('/attend')
   end
 
