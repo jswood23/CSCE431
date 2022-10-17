@@ -8,44 +8,16 @@
 <%= @print_time %>
 
 <% if @events_today.length > 0 %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Event Name</th>
-        <th>Passcode</th>
-        <th>Points</th>
-        <th>Description</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @events_today.each do |event| %>
-        <tr>
-          <td><%= event.date.strftime("%m-%d-%Y") %></td>
-          <td><%= event.date.strftime("%I:%M %p") %></td>
-          <td><%= event.event_name %></td>
-          <td><%= event.passcode %></td>
-          <td><%= event.points %></td>
-          <td><%= truncate event.description, length: 40, separator: /\w+/ %></td>
-          <td>
-            <div class="btn-group dropend">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><%= link_to 'Details', event, class: "dropdown-item" %></li>
-                <li><%= link_to 'Edit', edit_event_path(event), class: "dropdown-item" %></li>
-                <li><%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% @events_today.each do |event| %>
+    <%= render :partial => 'event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :passcode => false,
+      :edit => true
+      } %>
+  <% end %>
 <% else %>
   <p>No Events</p>
 <% end %>
@@ -53,44 +25,16 @@
 <h1>Upcoming Events</h1>
 
 <% if @upcoming_events.length > 0 %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Event Name</th>
-        <th>Passcode</th>
-        <th>Points</th>
-        <th>Description</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @upcoming_events.each do |event| %>
-        <tr>
-          <td><%= event.date.strftime("%m-%d-%Y") %></td>
-          <td><%= event.date.strftime("%I:%M %p") %></td>
-          <td><%= event.event_name %></td>
-          <td><%= event.passcode %></td>
-          <td><%= event.points %></td>
-          <td><%= truncate event.description, length: 40, separator: /\w+/ %></td>
-          <td>
-            <div class="btn-group dropend">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><%= link_to 'Details', event, class: "dropdown-item" %></li>
-                <li><%= link_to 'Edit', edit_event_path(event), class: "dropdown-item" %></li>
-                <li><%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% @upcoming_events.each do |event| %>
+    <%= render :partial => 'event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :passcode => false,
+      :edit => true
+      } %>
+  <% end %>
 <% else %>
   <p>No Upcoming Events</p>
 <% end %>
@@ -99,44 +43,16 @@
 
 <h2>Past Events</h2>
 <% if @past_events.length > 0 %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Event Name</th>
-        <th>Passcode</th>
-        <th>Points</th>
-        <th>Description</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @past_events.each do |event| %>
-        <tr>
-          <td><%= event.date.strftime("%m-%d-%Y") %></td>
-          <td><%= event.date.strftime("%I:%M %p") %></td>
-          <td><%= event.event_name %></td>
-          <td><%= event.passcode %></td>
-          <td><%= event.points %></td>
-          <td><%= truncate event.description, length: 40, separator: /\w+/ %></td>
-          <td>
-            <div class="btn-group dropend">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><%= link_to 'Details', event, class: "dropdown-item" %></li>
-                <li><%= link_to 'Edit', edit_event_path(event), class: "dropdown-item" %></li>
-                <li><%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% @past_events.each do |event| %>
+    <%= render :partial => 'event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :passcode => false,
+      :edit => true
+      } %>
+  <% end %>
 <% else %>
   <p>No Past Events</p>
 <% end %>
