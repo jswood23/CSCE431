@@ -2,7 +2,8 @@
 
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
-  before_action :check_has_access
+  before_action :check_has_admin_access, only: %i[index show new edit create update destroy]
+  before_action :check_has_member_access, only: %i[attend_event]
 
   # GET /events or /events.json
   def index
@@ -10,6 +11,17 @@ class EventsController < ApplicationController
     @events_today = Event.where(date: Time.zone.today.all_day)
     @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
     @past_events = Event.order('date DESC').where('date < ?', Time.zone.now.beginning_of_day)
+  end
+
+  # GET /events/1/attend_event/password
+  def attend_event
+    this_event = Event.find(params[:event_id])
+    flash.notice = if this_event.passcode == params[:password]
+                     'Attended event!'
+                   else
+                     'Incorrect password.'
+                   end
+    redirect_to('/attend')
   end
 
   # GET /events/1 or /events/1.json
@@ -73,8 +85,16 @@ class EventsController < ApplicationController
     params.require(:event).permit(:event_name, :description, :passcode, :date, :points)
   end
 
-  def check_has_access
+  def check_has_admin_access
     return true if admin?
+
+    flash.alert = 'You do not have permission to access this.'
+    redirect_to(home_path)
+    false
+  end
+
+  def check_has_member_access
+    return true if member?
 
     flash.alert = 'You do not have permission to access this.'
     redirect_to(home_path)

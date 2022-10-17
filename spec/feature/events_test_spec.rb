@@ -19,12 +19,14 @@ RSpec.describe('Creating an event', type: :feature) do
       fill_in 'Points', with: 1
       click_on 'Create Event'
       visit events_path
-      expect(page).to(have_content('Test Event'))
-      expect(page).to(have_content('This is a test event'))
-      expect(page).to(have_content('test'))
-      expect(page).to(have_content('10-11-2022'))
-      expect(page).to(have_content('04:00'))
-      expect(page).to(have_content('1'))
+      test_event = find(:css, '#event_1')
+      within(test_event) do
+        expect(page).to(have_content('Test Event'))
+        expect(page).to(have_content('Tuesday, October 11th, 2022 4:00am'))
+        expect(page).to(have_content('This is a test event'))
+        expect(page).to(have_content('Password: test'))
+        expect(page).to(have_content('Edit'))
+      end
       expect(Event.count).to(eq(1))
       log_out
     end
@@ -121,11 +123,10 @@ RSpec.describe('Creating an event', type: :feature) do
       click_on 'Update Event'
       visit events_path
       expect(page).to(have_content('New Test Event'))
+      expect(page).to(have_content('Wednesday, October 11th, 2023 5:10am'))
       expect(page).to(have_content('This is a new test event'))
-      expect(page).to(have_content('newtest'))
-      expect(page).to(have_content('10-11-2023'))
-      expect(page).to(have_content('05:10'))
-      expect(page).to(have_content('2'))
+      expect(page).to(have_content('Password: newtest'))
+      expect(page).to(have_content('Edit'))
       expect(Event.count).to(eq(1))
       log_out
     end
