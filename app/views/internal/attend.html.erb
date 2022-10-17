@@ -1,42 +1,23 @@
-<h1>Internal#attend</h1>
-<p>Find me in app/views/internal/attend.html.erb</p>
+<h1>Attend an Event</h1>
 
-<h1>Events Today</h1>
+<h2>Events Today</h2>
 
 <% if @events_today.length > 0 %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Event Name</th>
-        <th>Passcode</th>
-        <th>Points</th>
-        <th>Description</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @events_today.each do |event| %>
-        <tr>
-          <td><%= event.date.strftime("%m-%d-%Y") %></td>
-          <td><%= event.date.strftime("%I:%M %p") %></td>
-          <td><%= event.event_name %></td>
-          <% if admin? %>
-            <td><%= event.passcode %></td>
-          <% end %>
-          <td><%= event.points %></td>
-          <td><%= truncate event.description, length: 40, separator: /\w+/ %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% @events_today.each do |event| %>
+      <%= render :partial => 'event_card', :locals => {
+        :event_id => event.id,
+        :event_name => event.event_name,
+        :event_date => event.date,
+        :event_description => event.description,
+        :passcode => true,
+        :edit => false
+        } %>
+    <% end %>
 <% else %>
   <p>No Events</p>
 <% end %>
 
-<h1>Upcoming Events</h1>
+<h2>Upcoming Events</h2>
 
 <% if @upcoming_events.length > 0 %>
   <table>

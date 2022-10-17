@@ -1,0 +1,20 @@
+<div class=<%= "event_card event_#{event_id}"%>>
+  <h2><%= event_name %></h2>
+  <h3><%= event_date %></h3>
+  <p><%= event_description %></p>
+
+  <%# passcode form %>
+  <% if passcode %>
+    <%= form_tag('attend_event', method: 'post') do %>
+      <%= hidden_field_tag 'event_id', event_id %>
+      <%= label_tag 'password', 'Password:' %>
+      <%= text_field_tag 'password', nil, autofocus: true %>
+      <%= submit_tag "I'm here!" %>
+    <% end %>
+  <% end %>
+
+  <%# edit button %>
+  <% if edit %>
+    <%= link_to 'Edit', "/events/#{event_id}/edit" %>
+  <% end %>
+</div>
