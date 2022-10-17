@@ -1,3 +1,37 @@
-<%= stylesheet_link_tag 'application' %>
 <h1>Events Page</h1>
-<p>Events page stuff goes here</p>
+
+<h1>Events Today</h1>
+
+<% if @events_today.length > 0 %>
+  <% @events_today.each do |event| %>
+    <%= render :partial => 'shared/event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :show_passcode => nil,
+      :passcode => false,
+      :edit => false
+      } %>
+  <% end %>
+<% else %>
+  <p>No Events</p>
+<% end %>
+
+<h1>Upcoming Events</h1>
+
+<% if @upcoming_events.length > 0 %>
+  <% @upcoming_events.each do |event| %>
+    <%= render :partial => 'shared/event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :show_passcode => nil,
+      :passcode => false,
+      :edit => false
+      } %>
+  <% end %>
+<% else %>
+  <p>No Upcoming Events</p>
+<% end %>

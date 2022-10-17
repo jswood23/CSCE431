@@ -26,7 +26,7 @@
         
         <%# Events Page Button %>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/events">Events</a>
+          <a class="nav-link active" aria-current="page" href="/view_events">Events</a>
         </li>
 
         <%# Contact Page Button %>
@@ -36,14 +36,14 @@
 
         <% if current_user %>
           <%# Member Pages Dropdown List %>
-          <% if is_member %>
+          <% if member? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 MCHSO Member
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%# Profile Page Button %>
-                <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                <%# <li><a class="dropdown-item" href="/profile">My Profile</a></li>  %>
                 
                 <%# Member List Page Button %>
                 <li><a class="dropdown-item" href="/members">Member List</a></li>
@@ -58,14 +58,14 @@
           <% end %>
 
           <%# Admin Pages Dropdown List %>
-          <% if is_admin %>
+          <% if admin? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 MCHSO Admin
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%# Manage Event Page Button %>
-                <li><a class="dropdown-item" href="/manage_events">Manage Events</a></li>
+                <li><a class="dropdown-item" href="/events">Manage Events</a></li>
                 
                 <%# Manage Members Page Button %>
                 <li><a class="dropdown-item" href="/manage_members">Manage Members</a></li>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require './spec/support/user_helpers'
 
@@ -5,6 +7,8 @@ RSpec.describe('Creating accounts', type: :feature) do
   # rubocop:disable RSpec/BeforeAfterAll
   before(:all) do
     ActiveRecord::Base.connection.execute('TRUNCATE users RESTART IDENTITY;')
+    ActiveRecord::Base.connection.execute('TRUNCATE events RESTART IDENTITY;')
+    # ActiveRecord::Base.connection.execute('TRUNCATE attendance_records RESTART IDENTITY;')
     create_accounts
   end
   # rubocop:enable RSpec/BeforeAfterAll

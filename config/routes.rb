@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'internal/contact'
+  resources :events
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -8,21 +8,26 @@ Rails.application.routes.draw do
   # root route at external/home
   root 'external#home'
 
+  get '/users/auth/:provider/callback' => 'sessions#create'
+  get '/users/auth/failure', to: redirect('/users/sign_in')
+
   # external page routes
   get '/about', to: 'external#about'
   get '/contact', to: 'external#contact'
-  get '/events', to: 'external#events'
+  get '/view_events', to: 'external#events'
   get '/home', to: 'external#home'
 
   # internal page routes
   match '/attend', to: 'internal#attend', :via => :all
   match '/members', to: 'internal#members', :via => :all
   match '/profile', to: 'internal#profile', :via => :all
+
+  # internal actions
+  post 'attend_event', to: 'events#attend_event'
   
   # admin page routes
   get '/manage_members', to: 'admin#manage_members'
   get '/manage_pages', to: 'admin#manage_pages'
-  get '/manage_events', to: 'admin#manage_events'
 
   # admin actions
   get '/make_user_admin/:userid', to: 'admin#make_user_admin'

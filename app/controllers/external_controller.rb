@@ -5,7 +5,11 @@ class ExternalController < ApplicationController
 
   def contact; end
 
-  def events; end
+  def events
+    # order events by date
+    @events_today = Event.where(date: Time.zone.today.all_day)
+    @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
+  end
 
   def home; end
 end

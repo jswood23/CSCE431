@@ -10,7 +10,7 @@
     <tbody>
       <% @new_users.each do |user| %>
         <tr id=<%= "new_user_row_#{user.id}" %>>
-          <td><%= get_name(user) %></td>
+          <td><%= user.full_name %></td>
           <td><%= user.email %></td>
           <td>
             <div class="dropdown">
@@ -38,14 +38,16 @@
   <thead>
     <th>Name</th>
     <th>Email</th>
+    <th>Points</th>
     <th>Member Status</th>
     <th>Actions</th>
   </thead>
   <tbody>
     <% @members.each do |user| %>
       <tr id=<%= "member_row_#{user.id}" %>>
-        <td><%= get_name(user) %></td>
+        <td><%= user.full_name %></td>
         <td><%= user.email %></td>
+        <td><%= user.information.points %></td>
         <td><%= get_user_status(user) %>
         <td>
           <div class="dropdown">

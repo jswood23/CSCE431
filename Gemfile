@@ -73,4 +73,5 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'rails-controller-testing'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

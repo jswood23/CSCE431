@@ -14,10 +14,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.present?
       sign_out_all_scopes
       flash[:success] = t('devise.omniauth_callbacks.success', kind: 'Google')
-      sign_in_and_redirect(user, event: :authentication)
+      sign_in(user, event: :authentication)
+      info = Information.find_by(user_id: user.id)
+      unless info
+        new_info = Information.create!(user_id: user.id)
+        new_info.save!
+      end
+      redirect_to('/users/edit')
     else
       flash[:alert] = t('devise.omniauth_callbacks.failure', reason: "#{auth.info.email} is not authorized")
-      redirect_to(new_user_session_path)
+      redirect_to('/')
     end
   end
 
@@ -30,9 +36,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    redirect_to(new_user_session_path)
+  end
 
   # protected
 
