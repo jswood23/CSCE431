@@ -3,6 +3,11 @@
   <h3><%= event_date.to_formatted_s(:full_english) %></h3>
   <p><%= event_description %></p>
 
+  <%# show passcode %>
+  <% if show_passcode %>
+    <p><%= "Password: #{show_passcode}" %></p>
+  <% end %>
+
   <%# passcode form %>
   <% if passcode %>
     <%= form_tag('attend_event', method: 'post') do %>
