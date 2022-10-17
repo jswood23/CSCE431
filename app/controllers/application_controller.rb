@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :admin?, :member?, :get_user_status, :get_name, :get_points, :has_attended
+  helper_method :admin?, :member?, :get_user_status, :get_name, :get_points, :attended?
 
   def admin?(user = current_user)
     if user
