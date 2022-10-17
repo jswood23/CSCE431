@@ -1,0 +1,25 @@
+<h1>Attendance Record</h1>
+<h2>Event Name: <%= @this_event.event_name %></h2>
+<h3>Event Date: <%= @this_event.date.to_formatted_s(:get_date) + ", " + @this_event.date.to_formatted_s(:get_time) %>
+
+<% if @records.length > 0 %>
+  <h3>Members in attendance:</h3>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Time of attendance</th>
+      <th></th>
+    </thead>
+    <% @records.each do |record| %>
+      <tr id=<%= "attendance_row_#{record.uid}"%>>
+        <td><%= record.member_name %></td>
+        <td><%= record.date_log.to_formatted_s(:get_time) %>
+        <td><%= link_to 'Remove', "/events/remove_from_attendance/#{record.event_id}/#{record.uid}" %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No one has attended this event yet.</p>
+<% end %>
+
+<%= link_to 'Back', events_path %>

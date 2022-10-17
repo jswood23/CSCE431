@@ -2,7 +2,7 @@
 
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
-  before_action :check_has_admin_access, only: %i[index show new edit create update destroy]
+  before_action :check_has_admin_access, only: %i[index show new edit create update destroy show_attendance remove_from_attendance]
   before_action :check_has_member_access, only: %i[attend_event]
 
   # GET /events or /events.json
@@ -13,19 +13,53 @@ class EventsController < ApplicationController
     @past_events = Event.order('date DESC').where('date < ?', Time.zone.now.beginning_of_day)
   end
 
-  # GET /events/1/attend_event/password
+  # POST /events/1/attend_event/password
   def attend_event
     this_event = Event.find(params[:event_id])
-    flash.notice = if this_event.passcode == params[:password]
-                     'Attended event!'
-                   else
-                     'Incorrect password.'
-                   end
+    if this_event.passcode == params[:password]
+      new_record = AttendanceRecord.create!(event_id: this_event.id, uid: current_user.id, date_log: DateTime.now, event_name: this_event.event_name,
+                                            member_name: current_user.full_name
+      )
+      new_record.save!
+      current_user.information.points += this_event.points
+      current_user.information.save!
+      flash.notice = 'Attended event!'
+    else
+      flash.notice = 'Incorrect password.'
+    end
     redirect_to('/attend')
+  end
+
+  # GET events/remove_from_attendance/1/2
+  def remove_from_attendance
+    if !params[:event_id] || !params[:uid]
+      flash.notice = 'Error: event or user not specified.'
+      redirect_to('/events')
+    else
+      this_record = AttendanceRecord.where(event_id: params[:event_id], uid: params[:uid]).first
+      if this_record
+        this_user = User.find(this_record.uid)
+        this_user.information.points -= Event.find(this_record.event_id).points
+        this_user.information.save!
+        member_name = this_record.member_name
+        AttendanceRecord.where(event_id: params[:event_id], uid: params[:uid]).delete_all
+        flash.notice = "Member #{member_name} has been successfully removed from event."
+        redirect_to("/events/show_attendance/#{params[:event_id]}")
+      else
+        flash.notice = 'Error: event or user not found.'
+        redirect_to('/events')
+      end
+    end
   end
 
   # GET /events/1 or /events/1.json
   def show; end
+
+  # GET /events/show_attendance/1
+  def show_attendance
+    @this_event = Event.find(params[:event_id])
+    @records = AttendanceRecord.where(event_id: @this_event.id)
+  end
 
   # GET /events/new
   def new

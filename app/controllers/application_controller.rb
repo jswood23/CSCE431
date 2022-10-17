@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :admin?, :member?, :get_user_status, :get_name, :get_points
+  helper_method :admin?, :member?, :get_user_status, :get_name, :get_points, :attended?
 
   def admin?(user = current_user)
     if user
@@ -42,20 +42,7 @@ class ApplicationController < ActionController::Base
     'Does not exist'
   end
 
-  #  def get_name(user = current_user)
-  #    if user
-  #      return user.full_name if user.full_name
-
-  #      return '(none)'
-  #    end
-  #    'Does not exist'
-  #  end
-
-  #  def get_points(user = current_user)
-  #    info = Information.find_by(user_id: user.id)
-  #    return info.points if info
-
-  #    Rails.logger.debug { "Information db: #{Information.all.count}" }
-  #    'information object not found'
-  #  end
+  def attended?(event_id)
+    AttendanceRecord.where(event_id: event_id, uid: current_user.id).count.positive?
+  end
 end

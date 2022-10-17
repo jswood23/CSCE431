@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :points %>
-    <%= form.number_field :points %>
+    <%= form.number_field :points, :value => event.points || 1 %>
   </div>
 
   <div class="actions">

@@ -22,7 +22,8 @@ RSpec.describe('Creating an event', type: :feature) do
       test_event = find(:css, '#event_1')
       within(test_event) do
         expect(page).to(have_content('Test Event'))
-        expect(page).to(have_content('Tuesday, October 11th, 2022 4:00am'))
+        expect(page).to(have_content('10-11-2022'))
+        expect(page).to(have_content('4:00 AM'))
         expect(page).to(have_content('This is a test event'))
         expect(page).to(have_content('Password: test'))
         expect(page).to(have_content('Edit'))
@@ -93,6 +94,7 @@ RSpec.describe('Creating an event', type: :feature) do
       select '11', from: 'event[date(3i)]'
       select '04', from: 'event[date(4i)]'
       select '00', from: 'event[date(5i)]'
+      fill_in 'Points', with: ''
       click_on 'Create Event'
       expect(page).to(have_content('Points can\'t be blank'))
       expect(Event.count).to(eq(0))
@@ -123,7 +125,8 @@ RSpec.describe('Creating an event', type: :feature) do
       click_on 'Update Event'
       visit events_path
       expect(page).to(have_content('New Test Event'))
-      expect(page).to(have_content('Wednesday, October 11th, 2023 5:10am'))
+      expect(page).to(have_content('10-11-2023'))
+      expect(page).to(have_content('5:10 AM'))
       expect(page).to(have_content('This is a new test event'))
       expect(page).to(have_content('Password: newtest'))
       expect(page).to(have_content('Edit'))

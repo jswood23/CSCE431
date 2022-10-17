@@ -3,17 +3,18 @@
 <h2>Events Today</h2>
 
 <% if @events_today.length > 0 %>
-    <% @events_today.each do |event| %>
-      <%= render :partial => 'shared/event_card', :locals => {
-        :event_id => event.id,
-        :event_name => event.event_name,
-        :event_date => event.date,
-        :event_description => event.description,
-        :show_passcode => nil,
-        :passcode => true,
-        :edit => false
-        } %>
-    <% end %>
+  <% @events_today.each do |event| %>
+    <%= render :partial => 'shared/event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :show_passcode => nil,
+      :passcode => true,
+      :show_attendance => false,
+      :edit => false
+      } %>
+  <% end %>
 <% else %>
   <p>No Events</p>
 <% end %>
@@ -29,6 +30,7 @@
       :event_description => event.description,
       :show_passcode => nil,
       :passcode => false,
+      :show_attendance => false,
       :edit => false
       } %>
   <% end %>
