@@ -15,12 +15,12 @@ class EventsController < ApplicationController
   # GET /events/1/attend_event/password
   def attend_event
     this_event = Event.find(params[:event_id])
-    if this_event.passcode == params[:password]
-      flash.notice = 'Attended event!'
-    else
-      flash.notice = 'Incorrect password.'
-    end
-    redirect_to '/attend'
+    flash.notice = if this_event.passcode == params[:password]
+                     'Attended event!'
+                   else
+                     'Incorrect password.'
+                   end
+    redirect_to('/attend')
   end
 
   # GET /events/1 or /events/1.json
