@@ -10,7 +10,7 @@
     <% @members.each do |user| %>
       <tr id=<%= "member_row_#{user.id}" %>>
         <td>(picture)</td>
-        <td><%= get_name(user) %></td>
+        <td><%= user.full_name %></td>
         <td><%= get_user_status(user) %>
         <td><%= user.email %></td>
       </tr>
