@@ -1,14 +1,13 @@
+# frozen_string_literal: true
+
 class AdminController < ApplicationController
   before_action :check_has_access
 
   def check_has_access
-    if current_user
-      if current_user.admin
-        return true
-      end
-    end
+    return true if current_user&.admin
+
     redirect_to '/home'
-    return false
+    false
   end
 
   def manage_members
@@ -16,9 +15,7 @@ class AdminController < ApplicationController
     # current_user.save()
   end
 
-  def manage_pages
-  end
+  def manage_pages; end
 
-  def manage_events
-  end
+  def manage_events; end
 end

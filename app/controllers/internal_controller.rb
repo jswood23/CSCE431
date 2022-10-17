@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class InternalController < ApplicationController
   before_action :check_has_access
 
   def check_has_access
-    if current_user
-      return true
-    end
+    return true if current_user
+
     redirect_to '/home'
-    return false
+    false
   end
 
   def attend
@@ -14,9 +15,7 @@ class InternalController < ApplicationController
     # current_user.save()
   end
 
-  def members
-  end
+  def members; end
 
-  def profile
-  end
+  def profile; end
 end
