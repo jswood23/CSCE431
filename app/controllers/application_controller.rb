@@ -42,20 +42,20 @@ class ApplicationController < ActionController::Base
     'Does not exist'
   end
 
-  def get_name(user = current_user)
-    if user
-      return user.full_name if user.full_name
+  #  def get_name(user = current_user)
+  #    if user
+  #      return user.full_name if user.full_name
 
-      return '(none)'
-    end
-    'Does not exist'
-  end
+  #      return '(none)'
+  #    end
+  #    'Does not exist'
+  #  end
 
-  def get_points(user = current_user)
-    info = Information.find_by(user_id: user.id)
-    return info.points if info
+  #  def get_points(user = current_user)
+  #    info = Information.find_by(user_id: user.id)
+  #    return info.points if info
 
-    Rails.logger.debug { "Information db: #{Information.all.count}" }
-    'information object not found'
-  end
+  #    Rails.logger.debug { "Information db: #{Information.all.count}" }
+  #    'information object not found'
+  #  end
 end

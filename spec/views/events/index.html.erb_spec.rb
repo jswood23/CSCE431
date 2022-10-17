@@ -16,7 +16,14 @@ RSpec.describe('events/index', type: :view) do
         event_name: 'Event Name',
         description: 'MyText',
         passcode: 'Passcode',
-        date: Time.zone.now,
+        date: Time.zone.now + 10.days,
+        points: 2
+      ),
+      Event.create!(
+        event_name: 'Event Name',
+        description: 'MyText',
+        passcode: 'Passcode',
+        date: Time.zone.now - 10.days,
         points: 2
       )
     ]
@@ -29,9 +36,9 @@ RSpec.describe('events/index', type: :view) do
 
   it 'renders a list of events' do
     render
-    assert_select 'tr>td', text: 'Event Name'.to_s, count: 2
-    assert_select 'tr>td', text: 'MyText'.to_s, count: 2
-    assert_select 'tr>td', text: 'Passcode'.to_s, count: 2
-    assert_select 'tr>td', text: 2.to_s, count: 2
+    assert_select 'tr>td', text: 'Event Name'.to_s, count: 3
+    assert_select 'tr>td', text: 'MyText'.to_s, count: 3
+    assert_select 'tr>td', text: 'Passcode'.to_s, count: 3
+    assert_select 'tr>td', text: 2.to_s, count: 3
   end
 end
