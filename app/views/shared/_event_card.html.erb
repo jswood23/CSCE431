@@ -19,6 +19,11 @@
     <% end %>
   <% end %>
 
+  <%# show attendance button %>
+  <% if show_attendance %>
+    <%= link_to 'Show Attendance', "/events/show_attendance/#{event_id}" %>
+  <% end %>
+
   <%# edit button %>
   <% if edit %>
     <%= link_to 'Edit', "/events/#{event_id}/edit" %>
