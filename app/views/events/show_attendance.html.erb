@@ -14,7 +14,7 @@
       <tr id=<%= "attendance_row_#{record.uid}"%>>
         <td><%= record.member_name %></td>
         <td><%= record.date_log.to_formatted_s(:get_time) %>
-        <td><%= link_to 'Remove', "#" %></td>
+        <td><%= link_to 'Remove', "/events/remove_from_attendance/#{record.event_id}/#{record.uid}" %></td>
       </tr>
     <% end %>
   </table>
