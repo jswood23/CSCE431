@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_235518) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attendance", primary_key: ["event_id", "uid"], force: :cascade do |t|
+  create_table "attendance_records", primary_key: ["event_id", "uid"], force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "uid", null: false
     t.datetime "date_log"
