@@ -1,11 +1,10 @@
 <h1>Events Page</h1>
-<p>Events page stuff goes here</p>
 
 <h1>Events Today</h1>
 
 <% if @events_today.length > 0 %>
   <% @events_today.each do |event| %>
-    <%= render :partial => 'event_card', :locals => {
+    <%= render :partial => 'shared/event_card', :locals => {
       :event_id => event.id,
       :event_name => event.event_name,
       :event_date => event.date,
@@ -23,7 +22,7 @@
 
 <% if @upcoming_events.length > 0 %>
   <% @upcoming_events.each do |event| %>
-    <%= render :partial => 'event_card', :locals => {
+    <%= render :partial => 'shared/event_card', :locals => {
       :event_id => event.id,
       :event_name => event.event_name,
       :event_date => event.date,
