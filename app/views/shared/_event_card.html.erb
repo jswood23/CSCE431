@@ -11,7 +11,7 @@
 
   <%# passcode form %>
   <% if passcode %>
-    <% if has_attended(event_id) %>
+    <% if attended?(event_id) %>
       <p>You are already in attendance.</p>
     <% else %>
       <%= form_tag('attend_event', method: 'post') do %>

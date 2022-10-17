@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
     'Does not exist'
   end
 
-  def has_attended(event_id)
-    return AttendanceRecord.where(event_id: event_id, uid: current_user.id).count > 0
+  def attended?(event_id)
+    AttendanceRecord.where(event_id: event_id, uid: current_user.id).count.positive?
   end
 end
