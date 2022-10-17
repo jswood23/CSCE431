@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   def attend_event
     this_event = Event.find(params[:event_id])
     if this_event.passcode == params[:password]
-      new_record = AttendanceRecord.create!(event_id: this_event.id, uid: current_user.id, date_log: DateTime.now, event_name: this_event.event_name)
+      new_record = AttendanceRecord.create!(event_id: this_event.id, uid: current_user.id, date_log: DateTime.now, event_name: this_event.event_name, member_name: current_user.full_name)
       flash.notice = 'Attended event!'
     else
       flash.notice = 'Incorrect password.'
