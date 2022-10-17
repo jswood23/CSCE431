@@ -12,7 +12,7 @@ class InternalController < ApplicationController
 
   def members; end
 
-  def profile; end
+  # def profile; end
 
   # Controller actions (without pages)
 
