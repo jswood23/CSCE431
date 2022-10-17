@@ -1,6 +1,6 @@
 <div class=<%= "event_card event_#{event_id}"%>>
   <h2><%= event_name %></h2>
-  <h3><%= event_date %></h3>
+  <h3><%= event_date.to_formatted_s(:full_english) %></h3>
   <p><%= event_description %></p>
 
   <%# passcode form %>
