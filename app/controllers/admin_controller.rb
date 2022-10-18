@@ -97,6 +97,16 @@ class AdminController < ApplicationController
     @records = AttendanceRecord.where(uid: @this_user.id)
   end
 
+  # POST /change_user_attendance/:userid/
+  def change_user_points
+    this_user = User.find(params[:userid])
+    new_points = params[:points]
+    this_user.information.points = new_points
+    this_user.information.save!
+    flash.alert = "Changed #{this_user.full_name}'s total points to #{new_points}"
+    redirect_to("/show_user_attendance/#{this_user.id}")
+  end
+
   def delete_user
     # get the matching user to the id provided
     user = User.find(params[:userid])
