@@ -1,2 +1,13 @@
-<h1>Contact Page</h1>
-<p>Contact page stuff goes here</p>
+<div class="content" style="display: flex;">
+    <div class="container" style="margin: auto; display: flex; flex-direction: column">
+        <h1 style="margin: auto;">Contacts</h1>
+        <img src="/assets/default.jpg" alt="profile" style="width: 30vw; margin: auto; max-width: 250px;">
+        <p style="margin: auto;">Below you can find our email and social links, be sure to follow MCHSO on Facebook!</p>
+        <ul style="margin: auto">
+            <li><%= link_to "Email", @hrefs[:email] %></li>
+            <li><%= link_to "facebook", @hrefs[:facebook] %></li>
+            <li><%= link_to "store", @hrefs[:store] %></li>
+            <li><%= link_to "instagram", @hrefs[:instagram] %></li>
+        </ul>
+    </div>
+</div>

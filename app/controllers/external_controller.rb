@@ -3,7 +3,14 @@
 class ExternalController < ApplicationController
   def about; end
 
-  def contact; end
+  def contact
+    @hrefs = {
+      email: 'mailto:hannahbartosh@tamu.edu',
+      facebook: 'https://www.facebook.com/MCHSOaggies/',
+      store: 'https://tamu.estore.flywire.com/products?storeCatalog=7302',
+      instagram: 'https://www.instagram.com/mchsoaggies/?hl=en'
+    }
+  end
 
   def events
     # order events by date
