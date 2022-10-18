@@ -1,16 +1,15 @@
-class ExternalController < ApplicationController
-  def about
-  end
+# frozen_string_literal: true
 
-  def contact
-  end
+class ExternalController < ApplicationController
+  def about; end
+
+  def contact; end
 
   def events
+    # order events by date
+    @events_today = Event.where(date: Time.zone.today.all_day)
+    @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
   end
 
-  def home
-  end
-
-  def login
-  end
+  def home; end
 end
