@@ -92,6 +92,11 @@ class AdminController < ApplicationController
     redirect_to('/manage_members')
   end
 
+  def show_user_attendance
+    @this_user = User.find(params[:userid])
+    @records = AttendanceRecord.where(uid: @this_user.id)
+  end
+
   def delete_user
     # get the matching user to the id provided
     user = User.find(params[:userid])

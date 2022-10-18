@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/make_user_member/:userid', to: 'admin#make_user_member'
   get '/make_user_alumni/:userid', to: 'admin#make_user_alumni'
   get '/remove_user_member/:userid', to: 'admin#remove_user_member'
+  get '/show_user_attendance/:userid', to: 'admin#show_user_attendance'
   get '/delete_user/:userid', to: 'admin#delete_user'
 
   get '/events/show_attendance/:event_id', to: 'events#show_attendance'
