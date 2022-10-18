@@ -14,6 +14,10 @@ class InternalController < ApplicationController
 
   # def profile; end
 
+  def internal_contact
+    @members = User.where(member: 'true')
+  end
+
   # Controller actions (without pages)
 
   private

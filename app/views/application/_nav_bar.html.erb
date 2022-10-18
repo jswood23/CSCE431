@@ -23,7 +23,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/about">About Us</a>
         </li>
-        
+
         <%# Events Page Button %>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/view_events">Events</a>
@@ -46,17 +46,16 @@
                 <%# <li><a class="dropdown-item" href="/profile">My Profile</a></li>  %>
                 
                 <%# Member List Page Button %>
-                <li><a class="dropdown-item" href="/members">Member List</a></li>
+                <li><a class="dropdown-item" href="/members">Member List</a></li>s
                 
                 <%# Divider %>
                 <li><hr class="dropdown-divider"></li>
-                
+
                 <%# Attend Event Page Button %>
                 <li><a class="dropdown-item" href="/attend">Attend an Event</a></li>
               </ul>
             </li>
           <% end %>
-
           <%# Admin Pages Dropdown List %>
           <% if admin? %>
             <li class="nav-item dropdown">
@@ -66,17 +65,16 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%# Manage Event Page Button %>
                 <li><a class="dropdown-item" href="/events">Manage Events</a></li>
-                
+
                 <%# Manage Members Page Button %>
                 <li><a class="dropdown-item" href="/manage_members">Manage Members</a></li>
-                
+
                 <%# Manage Pages Page Button %>
                 <li><a class="dropdown-item" href="/manage_pages">Manage Pages</a></li>
               </ul>
             </li>
           <% end %>
         <% end %>
-
         <%# Login/Logout Buttons %>
         <form class="form-inline my-2 my-lg-0">
           <% if current_user %>
