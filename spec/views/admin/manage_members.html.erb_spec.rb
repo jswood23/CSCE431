@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './spec/support/user_helpers'
+require './spec/support/entity_helpers'
 
 RSpec.describe('admin/manage_members.html.erb', type: :feature) do
   it 'shows header and subheaders' do

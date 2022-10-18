@@ -18,6 +18,11 @@ module UserHelpers
   @@alumni_email = 'alumni@email.com'
   @@alumni_password = 'alumnipw23'
 
+  # event constants
+  @@event_name = "Test Event 1"
+  # @@event_date = DateTime.now.end_of_day
+  @@event_description = "This is a description for the test event."
+
   def log_out
     click_link('Logout')
     expect(page).to(have_content('Signed out successfully.'))
@@ -117,6 +122,12 @@ module UserHelpers
       this_user.member = true
       this_user.save!
     end
+  end
+  
+  def create_events
+    puts "here"
+    log_in_admin
+    log_out
   end
 end
 
