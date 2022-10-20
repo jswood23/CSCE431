@@ -136,6 +136,18 @@ module UserHelpers
     click_on('Create Event')
     log_out
   end
+
+  def attend_event_admin
+    log_in_admin
+    visit '/attend'
+    this_event_card = find(:css, '#event_1')
+    this_event_passcode = UserHelpers.class_variable_get(:@@event_passcode)
+    within(this_event_card) do
+      fill_in 'Password', with: this_event_passcode
+      click_on 'I\'m here!'
+    end
+    log_out
+  end
 end
 
 # rubocop:enable Style/ClassVars

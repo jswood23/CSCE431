@@ -17,19 +17,9 @@ RSpec.describe('Event Attendance', type: :feature) do
       log_out
     end
 
-    it 'user attends event and admin removes user from attendance' do
+    it 'check that user attended event' do
+      attend_event_admin
       log_in_admin
-      visit '/attend'
-
-      # attend event
-      this_event_card = find(:css, '#event_1')
-      this_event_passcode = UserHelpers.class_variable_get(:@@event_passcode)
-      within(this_event_card) do
-        fill_in 'Password', with: this_event_passcode
-        click_on 'I\'m here!'
-      end
-
-      # check that user has attended event
       expect(AttendanceRecord.where(event_id: 1).count).to(eq(1))
       visit events_path
       this_event_card = find(:css, '#event_1')
@@ -42,8 +32,22 @@ RSpec.describe('Event Attendance', type: :feature) do
         expect(page).not_to(have_content('No one has attended this event yet.'))
         expect(page).to(have_content(admin_name))
         expect(AttendanceRecord.where(event_id: 1).count).to(eq(1))
+      end
+      log_out
+    end
 
-        # remove user from event
+    it 'remove user from event attendance' do
+      attend_event_admin
+      log_in_admin
+      expect(AttendanceRecord.where(event_id: 1).count).to(eq(1))
+      visit events_path
+      this_event_card = find(:css, '#event_1')
+      within(this_event_card) do
+        click_on 'Show Attendance'
+      end
+      admin_name = UserHelpers.class_variable_get(:@@admin_name)
+      this_row = find(:css, '#attendance_row_1')
+      within(this_row) do
         click_on 'Remove'
       end
       expect(page).to(have_content("Member #{admin_name} has been successfully removed from event."))
