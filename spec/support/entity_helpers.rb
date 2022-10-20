@@ -125,8 +125,15 @@ module UserHelpers
   end
   
   def create_events
-    puts "here"
     log_in_admin
+    visit new_event_path
+    expect(page).to(have_content('New Event'))
+    fill_in 'Event name', with: @@event_name
+    fill_in 'Description', with: @@event_description
+    fill_in 'Passcode', with: @@event_passcode
+    select '23', from: 'event[date(4i)]'
+    select '59', from: 'event[date(5i)]'
+    click_on 'Create Event'
     log_out
   end
 end
