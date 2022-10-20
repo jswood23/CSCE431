@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2022_10_17_024124) do
     t.string "phone"
     t.integer "points"
     t.boolean "private"
+    t.integer "start_year"
+    t.integer "end_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 2022_10_17_024124) do
     t.string "provider"
     t.boolean "admin"
     t.boolean "member"
+    t.boolean "alumni"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

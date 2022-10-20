@@ -21,6 +21,13 @@
     </div>
 
     <div class="field">
+      <%= info_form.label :years_active %> <br />
+      <%= info_form.select :start_year, (2017..Time.now.year).to_a, :include_blank => {:year => "Select year"}, autocomplete: "start_year", :id => "start_year" %>
+      -
+      <%= info_form.select :end_year, (2017..Time.now.year).to_a, :include_blank => "current", autocomplete: "end_year", :id => "end_year" %>
+    </div>
+
+    <div class="field">
       <%= info_form.label :phone %><br />
       <%= info_form.text_field :phone, autocomplete: "phone", placeholder: '979-123-4567' %>
     </div>

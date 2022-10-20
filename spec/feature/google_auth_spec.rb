@@ -47,6 +47,13 @@ RSpec.describe('google auth', type: :feature) do
       expect(page).to(have_content('Your account has been updated successfully.'))
     end
 
+    it 'update years active' do
+      select '2017', from: 'user[information_attributes][start_year]'
+      select '2020', from: 'user[information_attributes][end_year]'
+      click_on 'Update'
+      expect(page).to(have_content('Your account has been updated successfully.'))
+    end
+
     it 'update phone' do
       fill_in 'Phone', with: '979-999-9999'
       click_on 'Update'

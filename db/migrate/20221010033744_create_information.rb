@@ -7,6 +7,8 @@ class CreateInformation < ActiveRecord::Migration[6.1]
       t.string :phone
       t.integer :points
       t.boolean :private
+      t.integer :start_year
+      t.integer :end_year
 
       t.timestamps
     end

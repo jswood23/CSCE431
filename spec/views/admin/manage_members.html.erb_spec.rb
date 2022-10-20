@@ -10,6 +10,7 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     expect(page).to(have_content('Manage Members'))
     expect(page).to(have_content('New Users'))
     expect(page).to(have_content('Members'))
+    expect(page).to(have_content('Alumni'))
     log_out
   end
 
@@ -31,7 +32,6 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
       click_link('Make Member')
     end
     assert User.find(2).member == true
-    expect(page).to(have_content('No new users.'))
 
     # turns member into admin
     member_row = find(:css, '#member_row_2')
@@ -52,6 +52,24 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     end
     assert User.find(2).admin == false
 
+    # turns member to alumni
+    within(member_row) do
+      expect(page).to(have_content(member_name))
+      expect(page).to(have_content(member_email))
+      expect(page).to(have_content('0'))
+      click_button('Manage')
+      click_link('Make Alumni')
+    end
+    assert User.find(2).alumni == true
+
+    # turns alumni into member
+    within(member_row) do
+      expect(page).to(have_content(member_email))
+      click_button('Manage')
+      click_link('Remove Alumni Status')
+    end
+    assert User.find(2).alumni == false
+
     # turns member into user
     within(member_row) do
       expect(page).to(have_content(member_email))
@@ -69,8 +87,7 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
       click_button('Manage')
       click_link('Delete User')
     end
-    expect(page).to(have_content('No new users.'))
-    assert User.all.length == 1
+    assert User.all.length == 2
 
     log_out
   end
