@@ -19,9 +19,9 @@ module UserHelpers
   @@alumni_password = 'alumnipw23'
 
   # event constants
-  @@event_name = "Test Event 1"
-  # @@event_date = DateTime.now.end_of_day
-  @@event_description = "This is a description for the test event."
+  @@event_name = 'Test Event 1'
+  @@event_description = 'This is a description for the test event.'
+  @@event_passcode = 'test_password'
 
   def log_out
     click_link('Logout')

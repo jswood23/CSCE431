@@ -55,5 +55,28 @@ RSpec.describe('Event Attendance', type: :feature) do
       expect(AttendanceRecord.where(event_id: 1).count).to(eq(0))
       log_out
     end
+
+    it 'view and change user points' do
+      attend_event_admin
+      log_in_admin
+      visit '/manage_members'
+      admin_row = find(:css, '#member_row_1')
+      within(admin_row) do
+        expect(page).to(have_content('1'))
+        click_on '1'
+      end
+      admin_name = UserHelpers.class_variable_get(:@@admin_name)
+      event_name = UserHelpers.class_variable_get(:@@event_name)
+      expect(page).to(have_content("Showing attendance for #{admin_name}"))
+      expect(page).to(have_content(event_name))
+      fill_in 'points', with: '2'
+      click_on 'Save'
+      click_on 'Back'
+      admin_row = find(:css, '#member_row_1')
+      within(admin_row) do
+        expect(page).to(have_content('2'))
+      end
+      log_out
+    end
   end
 end
