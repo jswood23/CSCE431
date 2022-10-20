@@ -51,7 +51,7 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     end
     assert User.find(2).admin == false
 
-    #turns member to alumni
+    # turns member to alumni
     within(member_row) do
       expect(page).to(have_content(member_name))
       expect(page).to(have_content(member_email))

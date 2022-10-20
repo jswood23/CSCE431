@@ -39,16 +39,16 @@ class AdminController < ApplicationController
   def make_user_member
     # get the matching user to the id provided
     user = User.find(params[:userid])
-    if !user
-      # return error if user does not exist
-      flash.alert = "Error: user #{params[:userid]} does not exist."
-    else
+    if user
       # otherwise: change user's member status to true
       user.admin = false
       user.member = true
       user.alumni = false
       user.save!
       flash.notice = "User #{user.full_name} is now a member."
+    else
+      # return error if user does not exist
+      flash.alert = "Error: user #{params[:userid]} does not exist."
     end
     # go back to manage_members
     redirect_to('/manage_members')
@@ -77,15 +77,15 @@ class AdminController < ApplicationController
 
   def make_user_alumni
     user = User.find(params[:userid])
-    if !user
-      flash.alert = "Error: user #{params[:userid]} does not exist."
-    else
+    if user
       # otherwise: change user's alumni status to true
       user.alumni = true
       user.member = true
       user.admin = false
       user.save!
       flash.notice = "User #{user.full_name} is now a alumni."
+    else
+      flash.alert = "Error: user #{params[:userid]} does not exist."
     end
     # go back to manage_members
     redirect_to('/manage_members')
