@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   respond_to :js, only: :alert_message
 
   def manage_members
-    @members = User.where("member = ? AND alumni = ?", true, false )
+    @members = User.where('member = ? AND alumni = ?', true, false)
     @new_users = User.where(member: [nil, 'false'])
     @alumni = User.where(alumni: 'true')
   end
