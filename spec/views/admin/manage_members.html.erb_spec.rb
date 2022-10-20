@@ -10,6 +10,7 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     expect(page).to(have_content('Manage Members'))
     expect(page).to(have_content('New Users'))
     expect(page).to(have_content('Members'))
+    expect(page).to(have_content('Alumni'))
     log_out
   end
 
