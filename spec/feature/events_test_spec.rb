@@ -94,7 +94,7 @@ RSpec.describe('Creating an event', type: :feature) do
       fill_in 'Event name', with: 'New Test Event'
       fill_in 'Description', with: 'This is a new test event'
       fill_in 'Passcode', with: 'newtest'
-      fill_in 'Date', with: DateTime.now + 1.years
+      fill_in 'Date', with: DateTime.now + 1.year
       fill_in 'Points', with: 2
       click_on 'Update Event'
       visit events_path
