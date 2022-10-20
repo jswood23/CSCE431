@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2022_10_17_024124) do
     t.string "phone"
     t.integer "points"
     t.boolean "private"
+    t.integer "start_year"
+    t.integer "end_year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
