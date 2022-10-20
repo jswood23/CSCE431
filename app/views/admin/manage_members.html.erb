@@ -20,6 +20,10 @@
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <%# option to give user member status %>
                 <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                <%# option to give user alumni status %>
+                <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
+                <%# option to give user admin status %>
+                <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
                 <%# option to delete user %>
                 <li><%= link_to "Delete User", "/delete_user/#{user.id}", class: "dropdown-item" %></li>
               </ul>
@@ -55,15 +59,26 @@
               Manage
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <% if user.admin %>
-                <%# option to take away user's admin status %>
-                <li><%= link_to "Remove Admin Status", "/remove_user_admin/#{user.id}", class: "dropdown-item" %></li>
-              <% else %>
-                <%# option to take away user's member status %>
-                <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
+              <% if !user.admin %>
                 <%# option to give user admin status %>
                 <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+              <% else %>
+                <%# option to give user member status %>
+                <li><%= link_to "Remove Admin Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
               <% end %>
+              <% if !user.member %>
+                <%# option to give user member status %>
+                <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+              <% end %>
+              <% if !user.alumni %>
+                <%# option to give user alumni status %>
+                <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
+              <% else %>
+                <%# option to give user member status %>
+                <li><%= link_to "Remove Alumni Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+              <% end %>
+              <%# option to take away user's member status %>
+              <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
             </ul>
           </div>
         </td>

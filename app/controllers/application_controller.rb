@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
     if user
       if user.admin
         return 'Admin'
+      elsif user.alumni
+        return 'Alumni'
       elsif user.member
         return 'Member'
       else

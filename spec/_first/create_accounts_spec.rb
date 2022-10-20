@@ -18,5 +18,7 @@ RSpec.describe('Creating accounts', type: :feature) do
     log_out
     log_in_member
     log_out
+    log_in_alumni
+    log_out
   end
 end

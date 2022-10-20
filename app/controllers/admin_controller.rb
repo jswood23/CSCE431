@@ -27,27 +27,10 @@ class AdminController < ApplicationController
     else
       # otherwise: change user's admin status to true
       user.admin = true
+      user.member = true
+      user.alumni = false
       user.save!
       flash.notice = "User #{user.full_name} is now an admin."
-    end
-    # go back to manage_members
-    redirect_to('/manage_members')
-  end
-
-  def remove_user_admin
-    # get the matching user to the id provided
-    user = User.find(params[:userid])
-    if !user
-      # return error if user does not exist
-      flash.alert = "Error: user #{params[:userid]} does not exist."
-    elsif !user.admin
-      # return error if user is already not an admin
-      flash.alert = "Error: user #{user.full_name} is already not an admin."
-    else
-      # otherwise: change user's admin status to false
-      user.admin = false
-      user.save!
-      flash.notice = "User #{user.full_name} is no longer an admin."
     end
     # go back to manage_members
     redirect_to('/manage_members')
@@ -59,12 +42,11 @@ class AdminController < ApplicationController
     if !user
       # return error if user does not exist
       flash.alert = "Error: user #{params[:userid]} does not exist."
-    elsif user.member
-      # return error if user is already a member
-      flash.alert = "Error: user #{user.full_name} is already a member."
     else
       # otherwise: change user's member status to true
+      user.admin = false
       user.member = true
+      user.alumni = false
       user.save!
       flash.notice = "User #{user.full_name} is now a member."
     end
@@ -85,8 +67,25 @@ class AdminController < ApplicationController
       # otherwise: change user's member status to false
       user.member = false
       user.admin = false
+      user.alumni = false
       user.save!
       flash.notice = "User #{user.full_name} is no longer a member."
+    end
+    # go back to manage_members
+    redirect_to('/manage_members')
+  end
+
+  def make_user_alumni
+    user = User.find(params[:userid])
+    if !user
+      flash.alert = "Error: user #{params[:userid]} does not exist."
+    else
+      # otherwise: change user's alumni status to true
+      user.alumni = true
+      user.member = true
+      user.admin = false
+      user.save!
+      flash.notice = "User #{user.full_name} is now a alumni."
     end
     # go back to manage_members
     redirect_to('/manage_members')
