@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       if no_admins
         current_user.admin = true
         current_user.member = true
+        current_user.alumni = false
         current_user.save!
         flash.notice = "User #{current_user.full_name} has been made an admin because there were no existing admins."
       end

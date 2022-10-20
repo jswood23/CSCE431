@@ -86,3 +86,53 @@
     <% end %>
   </tbody>
 </table>
+
+<h2>Alumni</h2>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Points</th>
+    <th>Member Status</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    <% @alumni.each do |user| %>
+      <tr id=<%= "member_row_#{user.id}" %>>
+        <td><%= user.full_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.information.points %></td>
+        <td><%= get_user_status(user) %>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Manage
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% if !user.admin %>
+                <%# option to give user admin status %>
+                <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+              <% else %>
+                <%# option to give user member status %>
+                <li><%= link_to "Remove Admin Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+              <% end %>
+              <% if !user.member %>
+                <%# option to give user member status %>
+                <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+              <% end %>
+              <% if !user.alumni %>
+                <%# option to give user alumni status %>
+                <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
+              <% else %>
+                <%# option to give user member status %>
+                <li><%= link_to "Remove Alumni Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+              <% end %>
+              <%# option to take away user's member status %>
+              <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
