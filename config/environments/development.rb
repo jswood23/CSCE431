@@ -49,14 +49,12 @@ Rails.application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    #user_name: ENV['GMAIL_USERNAME'],
-    #password: ENV['GMAIL_PASSWORD']
     user_name: Rails.application.credentials.dig(:gmail, :user_name),
     password: Rails.application.credentials.dig(:gmail, :password)
   }
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'https://mchso-app-mengting-mail-ploken.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode.
