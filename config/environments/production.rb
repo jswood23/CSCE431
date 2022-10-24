@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "info_organizer_production"
 
-  config.action_mailer.default_options = { from: 'mchso.website@gmail.com' }
+  config.action_mailer.default_options = { from: 'noreply@example.com' }
 
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
@@ -75,10 +75,10 @@ Rails.application.configure do
   }
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://stage-dev-app-1-info-organizer.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://mchso.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
-  # Send email in development mode.
+  # Send email in production mode.
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.perform_caching = false
