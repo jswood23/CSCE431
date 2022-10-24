@@ -1,0 +1,28 @@
+<h1>Showing attendance for <%= @this_user.full_name %></h1>
+
+<%= form_tag('change_user_points', method: 'post') do %>
+  <%= hidden_field_tag 'userid', @this_user.id %>
+  <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+  <%= label_tag 'points', 'Points:' %>
+  <%= number_field_tag 'points', @this_user.information.points %>
+  <%= submit_tag "Save" %>
+<% end %>
+
+<h2>Events Attended</h2>
+<% if @records.length.positive? %>
+  <% @records.each do |record| %>
+  <% event = Event.find(record.event_id) %>
+    <%= render :partial => 'shared/event_card', :locals => {
+      :event_id => event.id,
+      :event_name => event.event_name,
+      :event_date => event.date,
+      :event_description => event.description,
+      :show_passcode => nil,
+      :passcode => false,
+      :show_attendance => false,
+      :edit => false
+      } %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', '/manage_members' %>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './spec/support/user_helpers'
+require './spec/support/entity_helpers'
 
 RSpec.describe('Creating an event', type: :feature) do
   describe 'Creating an event' do
@@ -22,7 +22,7 @@ RSpec.describe('Creating an event', type: :feature) do
       expect(page).to(have_content('This is a test event'))
       expect(page).to(have_content('Password: test'))
       expect(page).to(have_content('Edit'))
-      expect(Event.count).to(eq(1))
+      expect(Event.count).to(eq(2))
       log_out
     end
 
@@ -35,7 +35,7 @@ RSpec.describe('Creating an event', type: :feature) do
       fill_in 'Points', with: 1
       click_on 'Create Event'
       expect(page).to(have_content('Event name can\'t be blank'))
-      expect(Event.count).to(eq(0))
+      expect(Event.count).to(eq(1))
       log_out
     end
 
@@ -48,7 +48,7 @@ RSpec.describe('Creating an event', type: :feature) do
       fill_in 'Points', with: 1
       click_on 'Create Event'
       expect(page).to(have_content('Description can\'t be blank'))
-      expect(Event.count).to(eq(0))
+      expect(Event.count).to(eq(1))
       log_out
     end
 
@@ -61,7 +61,7 @@ RSpec.describe('Creating an event', type: :feature) do
       fill_in 'Points', with: 1
       click_on 'Create Event'
       expect(page).to(have_content('Passcode can\'t be blank'))
-      expect(Event.count).to(eq(0))
+      expect(Event.count).to(eq(1))
       log_out
     end
 
@@ -75,7 +75,7 @@ RSpec.describe('Creating an event', type: :feature) do
       fill_in 'Points', with: ''
       click_on 'Create Event'
       expect(page).to(have_content('Points can\'t be blank'))
-      expect(Event.count).to(eq(0))
+      expect(Event.count).to(eq(1))
       log_out
     end
   end
@@ -90,7 +90,12 @@ RSpec.describe('Creating an event', type: :feature) do
     it 'valid updates' do
       log_in_admin
       visit events_path
-      click_on 'Edit'
+      expect(Event.count).to(eq(2))
+      this_event_id = Event.where(event_name: 'Test Event').first.id
+      this_event_card = find(:css, "#event_#{this_event_id}")
+      within this_event_card do
+        click_on 'Edit'
+      end
       fill_in 'Event name', with: 'New Test Event'
       fill_in 'Description', with: 'This is a new test event'
       fill_in 'Passcode', with: 'newtest'
@@ -105,51 +110,67 @@ RSpec.describe('Creating an event', type: :feature) do
       expect(page).to(have_content('This is a new test event'))
       expect(page).to(have_content('Password: newtest'))
       expect(page).to(have_content('Edit'))
-      expect(Event.count).to(eq(1))
       log_out
     end
 
     it 'invalid name updates' do
       log_in_admin
       visit events_path
-      click_on 'Edit'
+      expect(Event.count).to(eq(2))
+      this_event_id = Event.where(event_name: 'Test Event').first.id
+      this_event_card = find(:css, "#event_#{this_event_id}")
+      within this_event_card do
+        click_on 'Edit'
+      end
       fill_in 'Event name', with: ''
       click_on 'Update Event'
       expect(page).to(have_content('Event name can\'t be blank'))
-      expect(Event.count).to(eq(1))
+      expect(Event.count).to(eq(2))
       log_out
     end
 
     it 'invalid description updates' do
       log_in_admin
       visit events_path
-      click_on 'Edit'
+      expect(Event.count).to(eq(2))
+      this_event_id = Event.where(event_name: 'Test Event').first.id
+      this_event_card = find(:css, "#event_#{this_event_id}")
+      within this_event_card do
+        click_on 'Edit'
+      end
       fill_in 'Description', with: ''
       click_on 'Update Event'
       expect(page).to(have_content('Description can\'t be blank'))
-      expect(Event.count).to(eq(1))
       log_out
     end
 
     it 'invalid passcode updates' do
       log_in_admin
       visit events_path
-      click_on 'Edit'
+      expect(Event.count).to(eq(2))
+      this_event_id = Event.where(event_name: 'Test Event').first.id
+      this_event_card = find(:css, "#event_#{this_event_id}")
+      within this_event_card do
+        click_on 'Edit'
+      end
       fill_in 'Passcode', with: ''
       click_on 'Update Event'
       expect(page).to(have_content('Passcode can\'t be blank'))
-      expect(Event.count).to(eq(1))
       log_out
     end
 
     it 'invalid points updates' do
       log_in_admin
       visit events_path
-      click_on 'Edit'
+      expect(Event.count).to(eq(2))
+      this_event_id = Event.where(event_name: 'Test Event').first.id
+      this_event_card = find(:css, "#event_#{this_event_id}")
+      within this_event_card do
+        click_on 'Edit'
+      end
       fill_in 'Points', with: ''
       click_on 'Update Event'
       expect(page).to(have_content('Points can\'t be blank'))
-      expect(Event.count).to(eq(1))
       log_out
     end
   end
