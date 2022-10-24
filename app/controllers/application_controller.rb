@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   helper_method :admin?, :member?, :get_user_status, :get_name, :get_points, :attended?
+  before_action :default_url_options
 
   def admin?(user = current_user)
     if user
@@ -47,5 +48,10 @@ class ApplicationController < ActionController::Base
 
   def attended?(event_id)
     AttendanceRecord.where(event_id: event_id, uid: current_user.id).count.positive?
+  end
+
+  private
+  def default_url_options
+    { host: request.host_with_port }
   end
 end
