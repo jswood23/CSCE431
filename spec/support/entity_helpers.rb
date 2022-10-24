@@ -131,20 +131,19 @@ module UserHelpers
     fill_in('Event name', with: @@event_name)
     fill_in('Description', with: @@event_description)
     fill_in('Passcode', with: @@event_passcode)
-    select('23', from: 'event[date(4i)]')
-    select('59', from: 'event[date(5i)]')
+    fill_in('Date', with: DateTime.now)
     click_on('Create Event')
     log_out
   end
 
   def attend_event_admin
     log_in_admin
-    visit '/attend'
+    visit('/attend')
     this_event_card = find(:css, '#event_1')
     this_event_passcode = UserHelpers.class_variable_get(:@@event_passcode)
     within(this_event_card) do
-      fill_in 'Password', with: this_event_passcode
-      click_on 'I\'m here!'
+      fill_in('Password', with: this_event_passcode)
+      click_on('I\'m here!')
     end
     log_out
   end
