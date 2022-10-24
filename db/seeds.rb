@@ -71,3 +71,18 @@ if Page.count < 3
   ]
              )
 end
+
+PointsType.create([
+  {
+    name: 'member',
+    score: 1,
+  },
+  {
+    name: 'social',
+    score: 1,
+  },
+  {
+    name: 'philanthropy',
+    score: 1,
+  }
+])
