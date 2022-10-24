@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './spec/support/user_helpers'
+require './spec/support/entity_helpers'
 
 RSpec.describe('Mailer', type: :feature) do
   it 'sends password reset email' do
