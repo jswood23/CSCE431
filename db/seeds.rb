@@ -21,9 +21,11 @@ Page.create([
   {
     page_name: 'about',
     page_data: '{
- "purpose" : "The purpose of this organization shall be to advocate for maternal and child public health-related issues for all students.",
+ "purpose" : "The purpose of this organization shall be to advocate for 
+ maternal and child public health-related issues for all students.",
 
- "goal" : "The goal will be to enhance the quality and scope of maternal and child public health by educating students and providing them with opportunities to impact the community positively.",
+ "goal" : "The goal will be to enhance the quality and scope of maternal and 
+ child public health by educating students and providing them with opportunities to impact the community positively.",
 
  "membership_dues" : "Membership is open to any Aggie (undergraduate or graduate/ any concentration). Dues are $15 one time.",
 
