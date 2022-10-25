@@ -2,29 +2,31 @@
 <div>
     <h2>Purpose</h2>
     <p>
-        <%= JSON.parse(@page[:page_data])['purpose'] %>
+        <%= @page['purpose'] %>
     </p>
 
 </div>
 <div>
     <h2>Goal</h2>
     <p>
-        <%= JSON.parse(@page[:page_data])['goal'] %>
+        <%= @page['goal'] %>
     </p>
 
 </div>
 <div>
     <h2>Membership and Dues</h2>
     <p>
-        <%= JSON.parse(@page[:page_data])['membership_dues'] %>
+        <%= @page['membership_dues'] %>
     </p>
 
 </div>
 <div>
     <h2>Membership Expectations</h2>
     <ul>
-        <% JSON.parse(@page[:page_data])['expectations'].each do |l| %>
-            <li><%=l%></li>
+        <% if @page['expectations'] %>
+            <% @page['expectations'].each do |l| %>
+                <li><%=l%></li>
+            <% end %>
         <% end %>
     </ul>
 </div>
@@ -32,8 +34,10 @@
 <div>
     <h2>What We Do</h2>
     <ul>
-        <% JSON.parse(@page[:page_data])["what_we_do"].each do |l| %>
-            <li><%=l%></li>
+        <% if @page['what_we_do'] %>
+            <% @page["what_we_do"].each do |l| %>
+                <li><%=l%></li>
+            <% end %>
         <% end %>
     </ul>
    

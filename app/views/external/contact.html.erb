@@ -2,12 +2,13 @@
     <div class="container" style="margin: auto; display: flex; flex-direction: column">
         <h1 style="margin: auto;">Contacts</h1>
         <img src="/assets/default.jpg" alt="profile" style="width: 30vw; margin: auto; max-width: 250px;">
-        <p style="margin: auto;">Below you can find our email and social links, be sure to follow MCHSO on Facebook!</p>
+        <p style="margin: auto;"><%= @page['description'] %></p>
         <ul style="margin: auto">
-            <li><%= link_to "Email", @hrefs[:email] %></li>
-            <li><%= link_to "facebook", @hrefs[:facebook] %></li>
-            <li><%= link_to "store", @hrefs[:store] %></li>
-            <li><%= link_to "instagram", @hrefs[:instagram] %></li>
+            <% if @page['links'] %>
+                <% @page['links'].each do |key, value| %>
+                    <li><%= link_to key, value %></li>
+                <% end %>
+            <% end %>
         </ul>
     </div>
 </div>

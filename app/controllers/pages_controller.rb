@@ -2,20 +2,21 @@
 
 class PagesController < ApplicationController
   before_action :set_page, only: %i[show edit update destroy]
+  before_action :check_has_access
 
   # GET /pages or /pages.json
   def index
-    @pages = Page.all
+    redirect_to('/manage_pages')
   end
 
   # GET /pages/1 or /pages/1.json
   def show
-    @page = Page.find(params[:id])
+    redirect_to('/manage_pages')
   end
 
   # GET /pages/new
   def new
-    @page = Page.new
+    redirect_to('/manage_pages', notice: 'Page creation unavailable')
   end
 
   # GET /pages/1/edit
@@ -23,24 +24,14 @@ class PagesController < ApplicationController
 
   # POST /pages or /pages.json
   def create
-    @page = Page.new(page_params)
-
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to(page_url(@page), notice: 'Page was successfully created.') }
-        format.json { render(:show, status: :created, location: @page) }
-      else
-        format.html { render(:new, status: :unprocessable_entity) }
-        format.json { render(json: @page.errors, status: :unprocessable_entity) }
-      end
-    end
+    redirect_to('/manage_pages', notice: 'Page creation unavailable')
   end
 
   # PATCH/PUT /pages/1 or /pages/1.json
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to(page_url(@page), notice: 'Page was successfully updated.') }
+        format.html { redirect_to("/#{@page[:page_name]}", notice: 'Page was successfully updated.') }
         format.json { render(:show, status: :ok, location: @page) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -51,12 +42,7 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1 or /pages/1.json
   def destroy
-    @page.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to(pages_url, notice: 'Page was successfully destroyed.') }
-      format.json { head(:no_content) }
-    end
+    redirect_to('/manage_pages', notice: 'Page deletion unavailable')
   end
 
   private
@@ -71,6 +57,13 @@ class PagesController < ApplicationController
     params.require(:page).permit(:page_data, :page_name)
   end
 
+  def check_has_access
+    return true if admin?
+
+    flash.alert = 'You do not have permission to access this.'
+    redirect_to(home_path)
+    false
+  end
   # def event_params
   #   params.require(:event).permit(:event_name, :description, :passcode, :date, :points)
   # end

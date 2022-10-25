@@ -2,16 +2,11 @@
 
 class ExternalController < ApplicationController
   def about
-    @page = Page.order('updated_at ASC').where(page_name: 'about').first
+    @page = JSON.parse(Page.order('updated_at DESC').where(page_name: 'about').first[:page_data])
   end
 
   def contact
-    @hrefs = {
-      email: 'mailto:hannahbartosh@tamu.edu',
-      facebook: 'https://www.facebook.com/MCHSOaggies/',
-      store: 'https://tamu.estore.flywire.com/products?storeCatalog=7302',
-      instagram: 'https://www.instagram.com/mchsoaggies/?hl=en'
-    }
+    @page = JSON.parse(Page.order('updated_at DESC').where(page_name: 'contact').first[:page_data])
   end
 
   def events
@@ -20,5 +15,7 @@ class ExternalController < ApplicationController
     @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
   end
 
-  def home; end
+  def home
+    @page = JSON.parse(Page.order('updated_at DESC').where(page_name: 'home').first[:page_data])
+  end
 end
