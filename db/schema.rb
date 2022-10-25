@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_024124) do
+ActiveRecord::Schema.define(version: 2022_10_25_152651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,8 @@ ActiveRecord::Schema.define(version: 2022_10_17_024124) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.integer "pid"
-    t.integer "auto_increment"
     t.string "page_name"
-    t.json "page_data"
+    t.string "page_data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

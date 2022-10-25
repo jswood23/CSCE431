@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ExternalController < ApplicationController
-  def about; end
+  def about
+    @page = Page.order('updated_at ASC').where(page_name: 'about').first
+  end
 
   def contact
     @hrefs = {
