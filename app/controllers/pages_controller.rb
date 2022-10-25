@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
   before_action :set_page, only: %i[show edit update destroy]
 
@@ -49,7 +51,7 @@ class PagesController < ApplicationController
 
   # DELETE /pages/1 or /pages/1.json
   def destroy
-    @page.destroy
+    @page.destroy!
 
     respond_to do |format|
       format.html { redirect_to(pages_url, notice: 'Page was successfully destroyed.') }
