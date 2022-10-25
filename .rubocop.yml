@@ -109,6 +109,7 @@ Layout/LineLength:
   Max: 150
   Exclude:
     - "**/spec/**/*"
+    - "**/seeds.rb"
 
 Layout/MultilineArrayBraceLayout:
   EnforcedStyle: new_line
