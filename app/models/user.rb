@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+include ApplicationHelper
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -26,5 +28,9 @@ class User < ApplicationRecord
         user.avatar_url = auth.info.image
       end
     end
+  end
+
+  after_create do |this_user|
+    create_all_user_scores
   end
 end
