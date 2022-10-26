@@ -1,2 +1,15 @@
 <h1>Manage Pages</h1>
 <p>You can manage the external website here.</p>
+
+<h2>Pages</h2>
+<table>
+    <tbody>
+        <% @pages.each do |page| %>
+            <tr>
+                <td>
+                    <%= button_to page.page_name, '/pages/' + page.id.to_s + '/edit', :class => "btn btn-secondary", :method => :get %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

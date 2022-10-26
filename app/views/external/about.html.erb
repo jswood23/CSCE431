@@ -2,50 +2,43 @@
 <div>
     <h2>Purpose</h2>
     <p>
-    The purpose of this organization shall be to advocate for maternal and child public health-related issues for all students.
-
+        <%= @page['purpose'] %>
     </p>
 
 </div>
 <div>
     <h2>Goal</h2>
     <p>
-    The goal will be to enhance the quality and scope of maternal and child public health by educating students 
-    and providing them with opportunities to impact the community positively. 
+        <%= @page['goal'] %>
     </p>
 
 </div>
 <div>
     <h2>Membership and Dues</h2>
     <p>
-    Membership is open to any Aggie (undergraduate or graduate/ any concentration).
-    Dues are $15 one time.
+        <%= @page['membership_dues'] %>
     </p>
 
 </div>
 <div>
     <h2>Membership Expectations</h2>
     <ul>
-        <li>Attend monthly meetings</li>
-        <li>Respond in GroupMe when needed (ex. polls)</li>
-        <li>Attend supplemental meetings if able</li>
-        <li>Respect opinions of fellow members</li>
+        <% if @page['expectations'] %>
+            <% @page['expectations'].each do |l| %>
+                <li><%=l%></li>
+            <% end %>
+        <% end %>
     </ul>
 </div>
 
 <div>
     <h2>What We Do</h2>
     <ul>
-        <li>Field Trips</li>
-        <li>Volunteering</li>
-        <li>Book Club</li>
-        <li>Guest Speakers</li>
-        <li>Donation Drives</li>
-        <li>Profit Shares</li>
-        <li>Craft Events</li>
-        <li>Socials</li>
-        <li>Research Opportunities</li>
-        <li>Certificate Opportunities</li>
+        <% if @page['what_we_do'] %>
+            <% @page["what_we_do"].each do |l| %>
+                <li><%=l%></li>
+            <% end %>
+        <% end %>
     </ul>
    
 

@@ -10,7 +10,9 @@ class AdminController < ApplicationController
     @alumni = User.where(alumni: 'true')
   end
 
-  def manage_pages; end
+  def manage_pages
+    @pages = Page.all
+  end
 
   def manage_events; end
 
