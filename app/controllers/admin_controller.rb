@@ -97,15 +97,20 @@ class AdminController < ApplicationController
   def show_user_attendance
     @this_user = User.find(params[:userid])
     @records = AttendanceRecord.where(uid: @this_user.id)
+    @scores = UserScore.where(user_id: @this_user.id)
   end
 
   # POST /change_user_attendance/:userid/
   def change_user_points
     this_user = User.find(params[:userid])
-    new_points = params[:points]
-    this_user.information.points = new_points
-    this_user.information.save!
-    flash.alert = "Changed #{this_user.full_name}'s total points to #{new_points}"
+    UserScore.where(user_id: this_user.id).each do |user_score|
+      new_score = params[user_score.points_type_name].to_i
+      if new_score < 0
+        new_score = 0
+      end
+      # activerecord does not save this correctly so we send a manual sql query
+      ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{this_user.id} AND points_type_id = #{user_score.points_type_id};")
+    end
     redirect_to("/show_user_attendance/#{this_user.id}")
   end
 
