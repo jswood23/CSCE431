@@ -62,6 +62,25 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "info_organizer_production"
 
+  config.action_mailer.default_options = { from: 'noreply@example.com' }
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: Rails.application.credentials.dig(:gmail, :user_name),
+    password: Rails.application.credentials.dig(:gmail, :password)
+  }
+
+  # ActionMailer Config
+  config.action_mailer.default_url_options = { :host => 'https://mchso.herokuapp.com/' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  # Send email in production mode.
+  config.action_mailer.perform_deliveries = true
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
