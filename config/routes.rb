@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   # admin page routes
   get '/manage_members', to: 'admin#manage_members'
   get '/manage_pages', to: 'admin#manage_pages'
+  get '/update_points_types', to: 'admin#update_points_types'
 
   # admin actions
   get '/make_user_admin/:userid', to: 'admin#make_user_admin'

@@ -4,6 +4,8 @@ class AdminController < ApplicationController
   before_action :check_has_access
   respond_to :js, only: :alert_message
 
+  # admin pages ('manage_events' redirects to events/index)
+
   def manage_members
     @members = User.where('member = ? AND alumni = ?', true, false)
     @new_users = User.where(member: [nil, 'false'])
@@ -14,7 +16,9 @@ class AdminController < ApplicationController
     @pages = Page.all
   end
 
-  def manage_events; end
+  def update_points_types
+    
+  end
 
   # Controller actions (without pages)
 
