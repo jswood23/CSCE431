@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2022_10_25_152651) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_scores", primary_key: ["user_id", "points_type_id"], force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "points_type_id", null: false
+    t.string "points_type_name"
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
