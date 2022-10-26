@@ -21,10 +21,8 @@ class EventsController < ApplicationController
                                             member_name: current_user.full_name
       )
       new_record.save!
-      current_user.information.points += this_event.points
-      current_user.information.save!
-      # new_score = UserScore.where(user_id: current_user.id, points_type_id: this_event.points_type_id).first.score + this_event.points
-      # ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{current_user.id} AND points_type_id = #{this_event.points_type_id};")
+      new_score = this_event.points + UserScore.where(user_id: current_user.id, points_type_id: this_event.points_type_id).first.score
+      ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{current_user.id} AND points_type_id = #{this_event.points_type_id};")
       flash.notice = 'Attended event!'
     else
       flash.notice = 'Incorrect password.'
@@ -40,9 +38,10 @@ class EventsController < ApplicationController
     else
       this_record = AttendanceRecord.where(event_id: params[:event_id], uid: params[:uid]).first
       if this_record
+        this_event = Event.find(this_record.event_id)
         this_user = User.find(this_record.uid)
-        this_user.information.points -= Event.find(this_record.event_id).points
-        this_user.information.save!
+        new_score = this_event.points - UserScore.where(user_id: this_user.id, points_type_id: this_event.points_type_id).first.score
+        ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{this_user.id} AND points_type_id = #{this_event.points_type_id};")
         member_name = this_record.member_name
         AttendanceRecord.where(event_id: params[:event_id], uid: params[:uid]).delete_all
         flash.notice = "Member #{member_name} has been successfully removed from event."
