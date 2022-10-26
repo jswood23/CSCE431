@@ -2,6 +2,7 @@
   <h2><%= event_name %></h2>
   <h3><%= event_date.to_formatted_s(:get_date) %></h3>
   <h3><%= event_date.to_formatted_s(:get_time) %></h3>
+  <p><%= "Event Type: #{get_points_type(points_type.to_i)}" %></p>
   <p><%= event_description %></p>
 
   <%# show passcode %>
