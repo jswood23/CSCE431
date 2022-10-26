@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :admin?, :member?, :get_user_status, :attended?
+  helper_method :admin?, :member?, :get_user_status, :get_points, :attended?
 
   def admin?(user = current_user)
     if user
@@ -43,6 +43,14 @@ class ApplicationController < ActionController::Base
       end
     end
     'Does not exist'
+  end
+
+  def get_points(user = current_user)
+    total_points = 0
+    UserScore.where(user_id: user.id).each do |user_score|
+      total_points += user_score.score
+    end
+    return total_points
   end
 
   def attended?(event_id)
