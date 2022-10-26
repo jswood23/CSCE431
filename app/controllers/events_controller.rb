@@ -23,6 +23,8 @@ class EventsController < ApplicationController
       new_record.save!
       current_user.information.points += this_event.points
       current_user.information.save!
+      # new_score = UserScore.where(user_id: current_user.id, points_type_id: this_event.points_type_id).first.score + this_event.points
+      # ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{current_user.id} AND points_type_id = #{this_event.points_type_id};")
       flash.notice = 'Attended event!'
     else
       flash.notice = 'Incorrect password.'
@@ -64,14 +66,18 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @points_types = PointsType.all
   end
 
   # GET /events/1/edit
-  def edit; end
+  def edit
+    @points_types = PointsType.all
+  end
 
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    @points_types = PointsType.all
 
     respond_to do |format|
       if @event.save
@@ -116,7 +122,7 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:event_name, :description, :passcode, :date, :points)
+    params.require(:event).permit(:event_name, :description, :passcode, :date, :points_type_id, :points)
   end
 
   def check_has_admin_access

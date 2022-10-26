@@ -30,6 +30,11 @@
     <%= form.label :date %>
     <%= form.datetime_field :date %>
   </div>
+  
+  <div class="field">
+    <%= form.label :points_type_id, "Points Type" %>
+    <%= form.select :points_type_id, options_from_collection_for_select(@points_types, 'id', 'name', event.points_type_id || 1) %>
+  </div>
 
   <div class="field">
     <%= form.label :points %>
