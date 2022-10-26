@@ -8,17 +8,18 @@ RSpec.describe('Creating an event', type: :feature) do
     it 'valid inputs' do
       log_in_admin
       visit new_event_path
+      current_time = DateTime.now
       fill_in 'Event name', with: 'Test Event'
       fill_in 'Description', with: 'This is a test event'
       fill_in 'Passcode', with: 'test'
-      fill_in 'Date', with: DateTime.now
+      fill_in 'Date', with: current_time
       fill_in 'Points', with: 1
       click_on 'Create Event'
       visit events_path
       expect(page).to(have_content('Test Event'))
-      expect(page).to(have_content(DateTime.now.year))
-      expect(page).to(have_content(DateTime.now.month))
-      expect(page).to(have_content(DateTime.now.day))
+      expect(page).to(have_content(current_time.year))
+      expect(page).to(have_content(current_time.month))
+      expect(page).to(have_content(current_time.day))
       expect(page).to(have_content('This is a test event'))
       expect(page).to(have_content('Password: test'))
       expect(page).to(have_content('Edit'))
@@ -96,17 +97,18 @@ RSpec.describe('Creating an event', type: :feature) do
       within this_event_card do
         click_on 'Edit'
       end
+      updated_time = DateTime.now + 1.year
       fill_in 'Event name', with: 'New Test Event'
       fill_in 'Description', with: 'This is a new test event'
       fill_in 'Passcode', with: 'newtest'
-      fill_in 'Date', with: DateTime.now + 1.year
+      fill_in 'Date', with: updated_time
       fill_in 'Points', with: 2
       click_on 'Update Event'
       visit events_path
       expect(page).to(have_content('New Test Event'))
-      expect(page).to(have_content(DateTime.now.year + 1))
-      expect(page).to(have_content(DateTime.now.month))
-      expect(page).to(have_content(DateTime.now.day))
+      expect(page).to(have_content(updated_time.year))
+      expect(page).to(have_content(updated_time.month))
+      expect(page).to(have_content(updated_time.day))
       expect(page).to(have_content('This is a new test event'))
       expect(page).to(have_content('Password: newtest'))
       expect(page).to(have_content('Edit'))
