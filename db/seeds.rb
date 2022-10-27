@@ -74,12 +74,13 @@ end
 
 PointsType.create([
   {
-    name: 'Member',
+    name: 'Member'
   },
   {
-    name: 'Social',
+    name: 'Social'
   },
   {
-    name: 'Philanthropy',
+    name: 'Philanthropy'
   }
-])
+]
+                 )

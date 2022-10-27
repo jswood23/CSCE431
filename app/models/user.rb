@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-include ApplicationHelper
-
 class User < ApplicationRecord
+  include ApplicationHelper
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,15 +30,13 @@ class User < ApplicationRecord
     end
   end
 
-  after_create do |this_user|
+  after_create do |_this_user|
     create_all_user_scores
   end
 
   after_destroy do |this_user|
-    UserScore.all.each do |this_user_score|
-      if this_user_score.points_type_id == this_user.id
-        this_user_score.destroy!
-      end
+    UserScore.all.find_each do |this_user_score|
+      this_user_score.destroy! if this_user_score.points_type_id == this_user.id
     end
   end
 end

@@ -51,15 +51,15 @@ class ApplicationController < ActionController::Base
     UserScore.where(user_id: user.id).each do |user_score|
       total_points += user_score.score
     end
-    return total_points
+    total_points
   end
 
   def get_points_type(id = 1)
     type = PointsType.find(id)
     if type
-      return type.name
+      type.name
     else
-      return "Undefined"
+      'Undefined'
     end
   end
 

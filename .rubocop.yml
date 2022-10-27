@@ -106,7 +106,7 @@ Layout/LineEndStringConcatenationIndentation: # (new in 1.18)
   Enabled: true
 
 Layout/LineLength:
-  Max: 150
+  Max: 200
   Exclude:
     - "**/spec/**/*"
     - "**/seeds.rb"
@@ -256,7 +256,7 @@ Lint/UselessMethodDefinition:
 ###########################################################
 
 Metrics/AbcSize:
-  Max: 45
+  Max: 60
 
 Metrics/BlockLength:
   CountComments: false

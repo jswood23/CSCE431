@@ -106,7 +106,7 @@ class AdminController < ApplicationController
 
   def change_points_type
     points_type_id = params[:points_type_id]
-    if points_type_id.to_i > 0
+    if Integer(points_type_id, 10).positive?
       points_type = PointsType.find(points_type_id)
       if points_type
         new_name = params[:name]
@@ -117,7 +117,7 @@ class AdminController < ApplicationController
       new_points_type = PointsType.create!(name: 'New Points Type')
       new_points_type.save!
     end
-    redirect_to '/update_points'
+    redirect_to('/update_points')
   end
 
   def remove_points_type
@@ -126,22 +126,18 @@ class AdminController < ApplicationController
     else
       points_type_id = params[:points_type_id]
       points_type = PointsType.find(points_type_id)
-      if points_type
-        # TODO: add confirmation dialog
-        points_type.destroy!
-      end
+      # TODO: add confirmation dialog
+      points_type&.destroy!
     end
-    redirect_to '/update_points'
+    redirect_to('/update_points')
   end
 
   # POST /change_user_attendance/:userid/
   def change_user_points
     this_user = User.find(params[:userid])
     UserScore.where(user_id: this_user.id).each do |user_score|
-      new_score = params[user_score.points_type_name].to_i
-      if new_score < 0
-        new_score = 0
-      end
+      new_score = Integer(params[user_score.points_type_name], 10)
+      new_score = 0 if new_score.negative?
       # activerecord does not save this correctly so we send a manual sql query
       ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{this_user.id} AND points_type_id = #{user_score.points_type_id};")
     end
