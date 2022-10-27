@@ -104,6 +104,22 @@ class AdminController < ApplicationController
     @scores = UserScore.where(user_id: @this_user.id)
   end
 
+  def change_points_type
+    points_type_id = params[:points_type_id]
+    if points_type_id.to_i > 0
+      points_type = PointsType.find(points_type_id)
+      if PointsType
+        new_name = params[:name]
+        points_type.name = new_name
+        points_type.save!
+      end
+    else
+      new_points_type = PointsType.create!(name: 'New Points Type')
+      new_points_type.save!
+    end
+    redirect_to '/update_points'
+  end
+
   # POST /change_user_attendance/:userid/
   def change_user_points
     this_user = User.find(params[:userid])

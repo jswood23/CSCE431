@@ -38,8 +38,9 @@ Rails.application.routes.draw do
   get '/make_user_alumni/:userid', to: 'admin#make_user_alumni'
   get '/remove_user_member/:userid', to: 'admin#remove_user_member'
   get '/show_user_attendance/:userid', to: 'admin#show_user_attendance'
-  post '/show_user_attendance/change_user_points', to: 'admin#change_user_points'
   get '/delete_user/:userid', to: 'admin#delete_user'
+  post '/show_user_attendance/change_user_points', to: 'admin#change_user_points'
+  post '/change_points_type', to: 'admin#change_points_type'
 
   get '/events/show_attendance/:event_id', to: 'events#show_attendance'
   get '/events/remove_from_attendance/:event_id/:uid', to: 'events#remove_from_attendance'

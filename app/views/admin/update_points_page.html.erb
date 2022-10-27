@@ -3,6 +3,8 @@
 <% if @points_types.length > 0 %>
     <% @points_types.each do |points_type| %>
       <%= form_tag('change_points_type', method: 'post', id: "points_type_row_#{points_type.id}") do %>
+        <%= hidden_field_tag 'points_type_id', points_type.id %>
+        <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
         <%= text_field_tag('name', points_type.name) %>
         <%= submit_tag 'Update' %>
         <%= link_to 'X', "#" %>
@@ -10,6 +12,11 @@
     <% end %>
 <% else %>
   <p>No points types yet.</p>
+<% end %>
+<%= form_tag('change_points_type', method: 'post', id: 'points_type_row_0') do %>
+    <%= hidden_field_tag 'points_type_id', '0' %>
+    <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+    <%= submit_tag 'New Points Type' %>
 <% end %>
 
 <%= link_to 'Back', '/events' %>
