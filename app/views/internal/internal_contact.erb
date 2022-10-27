@@ -13,7 +13,7 @@
         <td><%= user.avatar_url %></td>
         <td><%= user.full_name %></td>
         <td><%= get_user_status(user) %>
-        <td><%= info.start_year %> - <%= info.end_year %></td>
+        <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
         <td><%= user.email %></td>
       </tr>
     <% end %>
