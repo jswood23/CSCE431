@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   match '/attend', to: 'internal#attend', :via => :all
   match '/members', to: 'internal#members', :via => :all
   match '/profile', to: 'internal#profile', :via => :all
+  match '/internal_contact', to: 'internal#internal_contact', :via => :all
 
   # internal actions
   post 'attend_event', to: 'events#attend_event'
