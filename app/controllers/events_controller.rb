@@ -65,18 +65,18 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @points_types = PointsType.all
+    @points_types = PointsType.all.order('id ASC')
   end
 
   # GET /events/1/edit
   def edit
-    @points_types = PointsType.all
+    @points_types = PointsType.all.order('id ASC')
   end
 
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
-    @points_types = PointsType.all
+    @points_types = PointsType.all.order('id ASC')
 
     respond_to do |format|
       if @event.save
