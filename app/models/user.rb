@@ -33,4 +33,12 @@ class User < ApplicationRecord
   after_create do |this_user|
     create_all_user_scores
   end
+
+  after_destroy do |this_user|
+    UserScore.all.each do |this_user_score|
+      if this_user_score.points_type_id == this_user.id
+        this_user_score.destroy!
+      end
+    end
+  end
 end
