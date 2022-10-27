@@ -16,8 +16,8 @@ class AdminController < ApplicationController
     @pages = Page.all
   end
 
-  def update_points_types
-    
+  def update_points_page
+    @points_types = PointsType.all
   end
 
   # Controller actions (without pages)

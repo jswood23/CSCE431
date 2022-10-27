@@ -1,0 +1,15 @@
+<h1>Points Types</h1>
+
+<% if @points_types.length > 0 %>
+    <% @points_types.each do |points_type| %>
+      <%= form_tag('change_points_type', method: 'post', id: "points_type_row_#{points_type.id}") do %>
+        <%= text_field_tag('name', points_type.name) %>
+        <%= submit_tag 'Update' %>
+        <%= link_to 'X', "#" %>
+      <% end %>
+    <% end %>
+<% else %>
+  <p>No points types yet.</p>
+<% end %>
+
+<%= link_to 'Back', '/events' %>
