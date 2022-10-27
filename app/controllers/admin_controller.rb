@@ -17,7 +17,7 @@ class AdminController < ApplicationController
   end
 
   def update_points_page
-    @points_types = PointsType.all
+    @points_types = PointsType.all.order('id ASC')
   end
 
   # Controller actions (without pages)
@@ -108,7 +108,7 @@ class AdminController < ApplicationController
     points_type_id = params[:points_type_id]
     if points_type_id.to_i > 0
       points_type = PointsType.find(points_type_id)
-      if PointsType
+      if points_type
         new_name = params[:name]
         points_type.name = new_name
         points_type.save!
@@ -116,6 +116,20 @@ class AdminController < ApplicationController
     else
       new_points_type = PointsType.create!(name: 'New Points Type')
       new_points_type.save!
+    end
+    redirect_to '/update_points'
+  end
+
+  def remove_points_type
+    if PointsType.all.count <= 1
+      flash.notice = 'Error: Cannot remove this points type as no other points types exist.'
+    else
+      points_type_id = params[:points_type_id]
+      points_type = PointsType.find(points_type_id)
+      if points_type
+        # TODO: add confirmation dialog
+        points_type.destroy!
+      end
     end
     redirect_to '/update_points'
   end

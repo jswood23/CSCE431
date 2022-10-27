@@ -7,7 +7,7 @@
         <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
         <%= text_field_tag('name', points_type.name) %>
         <%= submit_tag 'Update' %>
-        <%= link_to 'X', "#" %>
+        <%= link_to 'X', "/remove_points_type/#{points_type.id}" %>
       <% end %>
     <% end %>
 <% else %>

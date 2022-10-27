@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get '/remove_user_member/:userid', to: 'admin#remove_user_member'
   get '/show_user_attendance/:userid', to: 'admin#show_user_attendance'
   get '/delete_user/:userid', to: 'admin#delete_user'
+  get '/remove_points_type/:points_type_id', to: 'admin#remove_points_type'
   post '/show_user_attendance/change_user_points', to: 'admin#change_user_points'
   post '/change_points_type', to: 'admin#change_points_type'
 
