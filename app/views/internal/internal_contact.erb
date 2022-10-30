@@ -1,22 +1,26 @@
-<h1>Members Contact Information</h1>
-<table>
-  <thead>
-    <th>Picture</th>
-    <th>Name</th>
-    <th>Member Status</th>
-    <th>Years Active</th>
-    <th>Email</th>
-  </thead>
-  <tbody>
-    <% @members.each do |user| %>
-      <tr id=<%= "member_row_#{user.id}" %>>
-        <td><%= user.avatar_url %></td>
-        <td><%= user.full_name %></td>
-        <td><%= get_user_status(user) %>
-        <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Member Contact Information</h1>
+<% if @members != nil%>
+  <table>
+    <thead>
+      <th>Picture</th>
+      <th>Name</th>
+      <th>Member Status</th>
+      <th>Years Active</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+      <% @members.each do |user| %>
+        <tr id=<%= "member_row_#{user.id}" %>>
+          <td><%= user.avatar_url %></td>
+          <td><%= user.full_name %></td>
+          <td><%= get_user_status(user) %>
+          <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No members.</p>
+<% end %>
 
