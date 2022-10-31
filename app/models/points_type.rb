@@ -9,7 +9,9 @@ class PointsType < ApplicationRecord
 
   after_update do |points_type|
     create_all_user_scores
+    # rubocop:disable Rails/SkipsModelValidations
     UserScore.where(points_type_id: points_type.id).update_all(points_type_name: points_type.name)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   after_destroy do |this_points_type|
