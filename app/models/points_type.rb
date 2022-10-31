@@ -7,8 +7,9 @@ class PointsType < ApplicationRecord
     create_all_user_scores
   end
 
-  after_update do
+  after_update do |points_type|
     create_all_user_scores
+    UserScore.where(points_type_id: points_type.id).update_all(points_type_name: points_type.name)
   end
 
   after_destroy do |this_points_type|
