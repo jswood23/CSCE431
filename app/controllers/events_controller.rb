@@ -66,17 +66,20 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
   end
 
   # GET /events/1/edit
   def edit
     @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
   end
 
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
     @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
 
     respond_to do |format|
       if @event.save
@@ -92,6 +95,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1 or /events/1.json
   def update
     @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to(event_url(@event), notice: 'Event was successfully updated.') }

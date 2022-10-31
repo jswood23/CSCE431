@@ -4,6 +4,9 @@ require 'rails_helper'
 
 RSpec.describe('events/edit', type: :view) do
   before do
+    without_partial_double_verification do
+      allow(view).to(receive(:get_points_type).and_return('Member'))
+    end
     @event = assign(:event, Event.create!(
                               event_name: 'MyString',
                               description: 'MyText',
@@ -25,8 +28,6 @@ RSpec.describe('events/edit', type: :view) do
       assert_select 'textarea[name=?]', 'event[description]'
 
       assert_select 'input[name=?]', 'event[passcode]'
-
-      assert_select 'input[name=?]', 'event[points]'
     end
   end
 end
