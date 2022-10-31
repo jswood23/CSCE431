@@ -9,9 +9,11 @@ RSpec.describe('events/new', type: :view) do
                      description: 'MyText',
                      passcode: 'MyString',
                      date: Time.zone.now,
-                     points: 1
+                     points: 1,
+                     points_type_id: 1
                    )
     )
+    @points_types = PointsType.all.order('id ASC')
   end
 
   it 'renders new event form' do

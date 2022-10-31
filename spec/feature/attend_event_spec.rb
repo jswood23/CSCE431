@@ -69,12 +69,13 @@ RSpec.describe('Event Attendance', type: :feature) do
       event_name = UserHelpers.class_variable_get(:@@event_name)
       expect(page).to(have_content("Showing attendance for #{admin_name}"))
       expect(page).to(have_content(event_name))
-      fill_in 'points', with: '2'
+      first_points_type_name = PointsType.all.first.name
+      fill_in first_points_type_name, with: '13'
       click_on 'Save'
       click_on 'Back'
       admin_row = find(:css, '#member_row_1')
       within(admin_row) do
-        expect(page).to(have_content('2'))
+        expect(page).to(have_content('13'))
       end
       log_out
     end

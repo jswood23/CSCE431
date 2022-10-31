@@ -91,6 +91,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    @points_types = PointsType.all.order('id ASC')
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to(event_url(@event), notice: 'Event was successfully updated.') }

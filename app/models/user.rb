@@ -35,8 +35,7 @@ class User < ApplicationRecord
   end
 
   after_destroy do |this_user|
-    UserScore.all.find_each do |this_user_score|
-      this_user_score.destroy! if this_user_score.points_type_id == this_user.id
-    end
+    UserScore.where(user_id: this_user.id).delete_all
+    AttendanceRecord.where(uid: this_user.id).delete_all
   end
 end

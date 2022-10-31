@@ -6,7 +6,7 @@ require './spec/support/entity_helpers'
 RSpec.describe(Event, type: :model) do
   subject(:event) do
     described_class.new(event_name: 'Test Event', description: 'This is a test event',
-                        passcode: 'test', date: Time.zone.now, points: 1
+                        passcode: 'test', date: Time.zone.now, points: 1, points_type_id: 1
     )
   end
 

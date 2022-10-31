@@ -19,8 +19,6 @@ class PointsType < ApplicationRecord
         this_event.save!
       end
     end
-    UserScore.all.find_each do |this_user_score|
-      this_user_score.destroy! if this_user_score.points_type_id == this_points_type.id
-    end
+    UserScore.where(points_type_id: this_points_type.id).delete_all
   end
 end

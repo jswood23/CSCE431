@@ -8,15 +8,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create([
-  {
-    email: 'jswood@tamu.edu',
-    full_name: 'Josh test admin',
-    admin: true
-  }
-]
-           )
-
 if Page.count < 3
   Page.create([
     {
@@ -72,15 +63,17 @@ if Page.count < 3
              )
 end
 
-PointsType.create([
-  {
-    name: 'Member'
-  },
-  {
-    name: 'Social'
-  },
-  {
-    name: 'Philanthropy'
-  }
-]
-                 )
+if PointsType.all.count.zero?
+  PointsType.create([
+    {
+      name: 'Member'
+    },
+    {
+      name: 'Social'
+    },
+    {
+      name: 'Philanthropy'
+    }
+  ]
+                   )
+end
