@@ -99,3 +99,5 @@ p:after {
 .link:hover {
     color: #FF7C93;
 }
+
+.field_with_errors {display: inline;}
