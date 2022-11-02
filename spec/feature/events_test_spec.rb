@@ -84,7 +84,7 @@ RSpec.describe('Creating an event', type: :feature) do
   describe 'Editing an event' do
     before do
       Event.create!(event_name: 'Test Event', description: 'This is a test event',
-                    passcode: 'test', date: Time.zone.now, points: 1
+                    passcode: 'test', date: Time.zone.now, points: 1, points_type_id: 1
       )
     end
 
@@ -179,7 +179,7 @@ RSpec.describe('Creating an event', type: :feature) do
   # describe 'Deleting an event' do
   #    Capybara.current_driver = :webkit
   #    let!(:event) { Event.create(event_name: 'Test Event', description: 'This is a test event',
-  #            passcode: 'test', date: Time.now, points: 1)}
+  #            passcode: 'test', date: Time.now, points: 1, points_type_id: 1)}
   #
   #    scenario 'valid delete' do
   #        log_in_admin

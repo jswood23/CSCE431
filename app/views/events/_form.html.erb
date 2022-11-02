@@ -30,11 +30,30 @@
     <%= form.label :date %>
     <%= form.datetime_field :date %>
   </div>
+  
+  <% if @can_edit_points %>
+    <div class="field">
+      <%= form.label :points_type_id, "Points Type" %>
+      <%= form.select :points_type_id, options_from_collection_for_select(@points_types, 'id', 'name', event.points_type_id || 1) %>
+    </div>
 
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points, :value => event.points || 1 %>
-  </div>
+    <div class="field">
+      <%= form.label :points %>
+      <%= form.number_field :points, :value => event.points || 1 %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :points_type_id, "Points Type: #{get_points_type(event.points_type_id)}" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :points, "Points: #{event.points}" %>
+    </div>
+
+    <div class="field">
+      <%= form.label "points-notice", "Note: you cannot change the points for this event because there are members in attendance for this event." %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

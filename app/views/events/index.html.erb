@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'New Event', new_event_path, class: "btn btn-outline-dark my-2 my-sm-0 m-1"%>
+<%= link_to 'Update Points Types', '/update_points', class: "btn btn-outline-dark my-2 my-sm-0 m-1"%>
 
 
 <h1>Events Today</h1>
@@ -13,6 +14,7 @@
       :event_id => event.id,
       :event_name => event.event_name,
       :event_date => event.date,
+      :points_type_id => event.points_type_id,
       :event_description => event.description,
       :show_passcode => event.passcode,
       :passcode => false,
@@ -32,6 +34,7 @@
       :event_id => event.id,
       :event_name => event.event_name,
       :event_date => event.date,
+      :points_type_id => event.points_type_id,
       :event_description => event.description,
       :show_passcode => event.passcode,
       :passcode => false,
@@ -52,6 +55,7 @@
       :event_id => event.id,
       :event_name => event.event_name,
       :event_date => event.date,
+      :points_type_id => event.points_type_id,
       :event_description => event.description,
       :show_passcode => event.passcode,
       :passcode => false,

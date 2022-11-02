@@ -21,8 +21,8 @@ class EventsController < ApplicationController
                                             member_name: current_user.full_name
       )
       new_record.save!
-      current_user.information.points += this_event.points
-      current_user.information.save!
+      new_score = this_event.points + UserScore.where(user_id: current_user.id, points_type_id: this_event.points_type_id).first.score
+      ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{current_user.id} AND points_type_id = #{this_event.points_type_id};")
       flash.notice = 'Attended event!'
     else
       flash.notice = 'Incorrect password.'
@@ -38,9 +38,10 @@ class EventsController < ApplicationController
     else
       this_record = AttendanceRecord.where(event_id: params[:event_id], uid: params[:uid]).first
       if this_record
+        this_event = Event.find(this_record.event_id)
         this_user = User.find(this_record.uid)
-        this_user.information.points -= Event.find(this_record.event_id).points
-        this_user.information.save!
+        new_score = this_event.points - UserScore.where(user_id: this_user.id, points_type_id: this_event.points_type_id).first.score
+        ActiveRecord::Base.connection.execute("UPDATE user_scores SET score = #{new_score} WHERE user_id = #{this_user.id} AND points_type_id = #{this_event.points_type_id};")
         member_name = this_record.member_name
         AttendanceRecord.where(event_id: params[:event_id], uid: params[:uid]).delete_all
         flash.notice = "Member #{member_name} has been successfully removed from event."
@@ -64,14 +65,21 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
   end
 
   # GET /events/1/edit
-  def edit; end
+  def edit
+    @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
+  end
 
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
+    @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
 
     respond_to do |format|
       if @event.save
@@ -86,6 +94,8 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    @points_types = PointsType.all.order('id ASC')
+    @can_edit_points = !AttendanceRecord.where(event_id: @event.id).count.positive?
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to(event_url(@event), notice: 'Event was successfully updated.') }
@@ -116,7 +126,7 @@ class EventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def event_params
-    params.require(:event).permit(:event_name, :description, :passcode, :date, :points)
+    params.require(:event).permit(:event_name, :description, :passcode, :date, :points_type_id, :points)
   end
 
   def check_has_admin_access

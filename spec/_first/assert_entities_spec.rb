@@ -10,6 +10,7 @@ RSpec.describe('Creating accounts and events', type: :feature) do
     ActiveRecord::Base.connection.execute('TRUNCATE information RESTART IDENTITY;')
     ActiveRecord::Base.connection.execute('TRUNCATE events RESTART IDENTITY;')
     ActiveRecord::Base.connection.execute('TRUNCATE attendance_records RESTART IDENTITY;')
+    Rails.application.load_seed
     create_accounts
     create_events
   end
