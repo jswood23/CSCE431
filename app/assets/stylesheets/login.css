@@ -8,6 +8,7 @@ body {
     background-color: #F5D7CD;
 }
 
+/* Makes p surrounded by horizontal lines */
 p {
     display: flex;
     flex-direction: row;
@@ -36,7 +37,7 @@ p:after {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    padding: 50px;
 }
 
 .box {
@@ -102,10 +103,10 @@ p:after {
     color: #FF7C93;
 }
 
+/* Form error field styling */
 .field_with_errors {
     display: inline;
 }
-
 
 .center {
     width: 100%;
@@ -114,7 +115,18 @@ p:after {
     flex-direction: column;
 }
 
+/* Form containers */
 .new_user {
     width: 100%;
     padding: 0;
+}
+
+/* Keep checkbox small */
+input[type=checkbox] {
+    width:auto;
+}
+
+/* Make form fields uniform and fit the box */
+textarea, input, select {
+    width: 100%;
 }
