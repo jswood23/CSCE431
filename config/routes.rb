@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get '/users/auth/:provider/callback' => 'sessions#create'
   get '/users/auth/failure', to: redirect('/users/sign_in')
+  get '/users', to: redirect('/users/sign_up')
 
   # external page routes
   get '/about', to: 'external#about'

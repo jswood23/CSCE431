@@ -11,7 +11,7 @@ RSpec.describe('Mailer', type: :feature) do
     visit new_user_session_path
     find('#Forgot_Password').click
     fill_in 'Email', with: member_email
-    click_on 'Send me reset password instructions'
+    click_on 'Continue'
     expect(Devise.mailer.deliveries.count).to(eq(1))
   end
 end
