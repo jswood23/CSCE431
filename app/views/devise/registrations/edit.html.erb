@@ -5,85 +5,96 @@
   <div class="container">
     <div class="box">
       <h2>Update Information</h2>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <div class="field">
-          <%= f.label :full_name, 'Full Name' %><br />
-          <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", placeholder: 'First Last'%>
+      <div class="d-flex h-auto">
+        <div class="pe-4">
+          <% if current_user.avatar_url %>
+            <%= image_tag(current_user.avatar_url, class: 'rounded-circle', size: 100, alt: "Profile Picture") %>
+          <% else %>
+            <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 100, alt: "Profile Picture") %>
+          <% end %>
         </div>
-
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autocomplete: "email" %>
-        </div>
-
-        <%= f.fields_for :information do |info_form| %>
-
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <div class="field">
-            <%= info_form.label :position %><br />
-            <%= info_form.text_field :position, autocomplete: "position" %>
+            <%= f.label :full_name, 'Full Name' %><br />
+            <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", placeholder: 'First Last'%>
           </div>
 
           <div class="field">
-            <%= info_form.label :phone %><br />
-            <%= info_form.text_field :phone, autocomplete: "phone", placeholder: '979-123-4567' %>
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autocomplete: "email" %>
           </div>
-        
-          <div class="field">
-            <%= info_form.label :years_active, 'Years Active' %> <br />
-            <div class="d-flex">
-            <%= info_form.select :start_year, (2017..Time.now.year).to_a, :include_blank => {:year => "Select year"}, autocomplete: "start_year", :id => "start_year" %>
-            <div style="margin:0 3px 0 3px;">-</div>
-            <%= info_form.select :end_year, (2017..Time.now.year).to_a, :include_blank => "current", autocomplete: "end_year", :id => "end_year" %>
+
+          <%= f.fields_for :information do |info_form| %>
+
+            <div class="field">
+              <%= info_form.label :position %><br />
+              <%= info_form.text_field :position, autocomplete: "position" %>
             </div>
-          </div>
+
+            <div class="field">
+              <%= info_form.label :phone %><br />
+              <%= info_form.text_field :phone, autocomplete: "phone", placeholder: '979-123-4567' %>
+            </div>
           
-          <div class="field">
-            <%= info_form.label :bios %><br />
-            <%= info_form.text_area :bios %>
-          </div>
+            <div class="field">
+              <%= info_form.label :years_active, 'Years Active' %> <br />
+              <div class="d-flex">
+              <%= info_form.select :start_year, (2017..Time.now.year).to_a, :include_blank => {:year => "Select year"}, autocomplete: "start_year", :id => "start_year" %>
+              <div style="margin:0 3px 0 3px;">-</div>
+              <%= info_form.select :end_year, (2017..Time.now.year).to_a, :include_blank => "current", autocomplete: "end_year", :id => "end_year" %>
+              </div>
+            </div>
+            
+            <div class="field">
+              <%= info_form.label :bios %><br />
+              <%= info_form.text_area :bios %>
+            </div>
 
-          <div class="field" data-bs-toggle="tooltip" data-bs-placement="top" title="Enable to make information only viewable to officers">
-            <%= info_form.check_box :private %>
-            <%= info_form.label :private %>
+            <div class="field" data-bs-toggle="tooltip" data-bs-placement="top" title="Enable to make information only viewable to officers">
+              <%= info_form.check_box :private %>
+              <%= info_form.label :private %>
+            </div>
+          <% end %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <% if current_user.provider != "google_oauth2" %>
+            <hr>
+            <h4>Update Password</h4>
+            <div class="field">
+              <%= f.label :password %> <br>
+              <%= f.password_field :password, autocomplete: "new-password" %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+              <% end %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation, 'Confirm Password' %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+            <hr>
+            <div class="field">
+              <%= f.label :current_password, 'Current Password' %> <em> (Required) </em> <br>
+              <%= f.password_field :current_password %>
+            </div>
+            <br />
+          <% else %>
+            <p>Authenticated by Google </p>
+          <% end %>
+
+          <div class="center">
+            <div class="actions">
+              <%= f.submit "Update", class: "pink_button" %>
+            </div>
+            <br />
           </div>
         <% end %>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
-
-        <% if current_user.provider != "google_oauth2" %>
-          <hr>
-          <h4>Update Password</h4>
-          <div class="field">
-            <%= f.label :password %> <br>
-            <%= f.password_field :password, autocomplete: "new-password" %>
-            <% if @minimum_password_length %>
-              <br />
-              <em><%= @minimum_password_length %> characters minimum</em>
-            <% end %>
-          </div>
-          <div class="field">
-            <%= f.label :password_confirmation, 'Confirm Password' %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </div>
-          <hr>
-          <div class="field">
-            <%= f.label :current_password, 'Current Password' %> <em> (Required) </em> <br>
-            <%= f.password_field :current_password %>
-          </div>
-          <br />
-        <% else %>
-          <p>Authenticated by Google </p>
-        <% end %>
-
-        <div class="center">
-          <div class="actions">
-            <%= f.submit "Update", class: "pink_button" %>
-          </div>
-          <br />
-        </div>
-      <% end %>
+      </div>
+    </div>
+    <div class="box">
       <h4>Remove Account</h4>
       <%= button_to "Remove", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "black_button", style: "padding: 3px 0 3px 0" %>
     </div>
