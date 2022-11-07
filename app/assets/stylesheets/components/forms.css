@@ -1,0 +1,22 @@
+/* css for forms */
+
+/* Form error field styling */
+.field_with_errors {
+  display: inline;
+}
+
+/* Make form fields uniform and fit the box */
+textarea,
+input,
+select {
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  padding: 3px 12px;
+}
+
+/* checkbox input */
+input[type="checkbox"] {
+  width: auto;
+  accent-color: #cdc6e7;
+}
