@@ -34,5 +34,4 @@ RSpec.describe('internal/internal_contact.html.erb', type: :feature) do
       expect(page).to(have_content(admin_email))
     end
   end
-
 end
