@@ -37,12 +37,18 @@
 
           <div class="inner main">
             <h1 class="title-text">About Us</h1>
-            
-              <a onclick="myFunction1()"  class="btn btn-lg section-button">Purpose</a>
+                
+                <% @page.each do |attr_name, attr_value| %>
+               
+                    <a onclick="myFunction1()"  class="btn btn-lg section-button"><%= attr_name %></a>
+             
+                <% end %>
+
+              <%# <a onclick="myFunction1()"  class="btn btn-lg section-button">Purpose</a>
               <a onclick="myFunction2()"  class="btn btn-lg section-button">Goals</a>
               <a onclick="myFunction3()"  class="btn btn-lg section-button">Membership</a>
-              <a onclick="myFunction4()"  class="btn btn-lg section-button">What We Do</a>
-            </p>
+              <a onclick="myFunction4()"  class="btn btn-lg section-button">What We Do</a> %>
+            
           </div>
 
         </div>
