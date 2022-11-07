@@ -1,0 +1,18 @@
+/* css for forms */
+
+/* Form error field styling */
+.field_with_errors {
+  display: inline;
+}
+
+/* Make form fields uniform and fit the box */
+textarea,
+input,
+select {
+  width: 100%;
+}
+
+/* Keep checkbox small */
+input[type="checkbox"] {
+  width: auto;
+}
