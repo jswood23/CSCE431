@@ -14,7 +14,6 @@ RSpec.describe('internal/internal_contact.html.erb', type: :feature) do
   it 'shows subheaders' do
     log_in_member
     visit '/internal_contact'
-    expect(page).to(have_content('Picture'))
     expect(page).to(have_content('Name'))
     expect(page).to(have_content('Member Status'))
     expect(page).to(have_content('Years Active'))
