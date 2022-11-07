@@ -12,7 +12,7 @@
 <% if @members.length > 0%>
   <table>
     <thead>
-      <th>Picture</th>
+      <th> </th>
       <th>Name</th>
       <th>Member Status</th>
       <th>Years Active</th>
@@ -21,7 +21,13 @@
     <tbody>
       <% @members.each do |user| %>
         <tr id=<%= "member_row_#{user.id}" %>>
-          <td><image src= <%= user.avatar_url %> </td>
+          <td>
+            <% if user.avatar_url %>
+              <%= image_tag(user.avatar_url, class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+            <% else %>
+              <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+            <% end %>
+          </td>
           <td><%= user.full_name %></td>
           <td><%= get_user_status(user) %>
           <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
@@ -30,7 +36,13 @@
       <% end %>
       <% @alumni.each do |user| %>
         <tr id=<%= "member_row_#{user.id}" %>>
-          <td><image src= <%= user.avatar_url %> </td>
+        <td>
+          <% if user.avatar_url %>
+            <%= image_tag(user.avatar_url, class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+          <% else %>
+            <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+          <% end %>
+        </td>
           <td><%= user.full_name %></td>
           <td><%= get_user_status(user) %>
           <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
