@@ -41,7 +41,7 @@ RSpec.describe('external/events', type: :view) do
 
   it 'renders a list of events' do
     render
-    assert_select 'h2', text: 'Event Name'.to_s, count: 2
+    assert_select 'h1', text: 'Event Name'.to_s, count: 2
     assert_select 'p', text: 'MyText'.to_s, count: 2
   end
 

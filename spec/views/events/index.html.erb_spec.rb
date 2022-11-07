@@ -44,7 +44,7 @@ RSpec.describe('events/index', type: :view) do
 
   it 'renders a list of events' do
     render
-    assert_select 'h2', text: 'Event Name'.to_s, count: 3
+    assert_select 'h1', text: 'Event Name'.to_s, count: 3
     assert_select 'p', text: 'MyText'.to_s, count: 3
     assert_select 'p', text: 'Password: Passcode'.to_s, count: 3
   end
