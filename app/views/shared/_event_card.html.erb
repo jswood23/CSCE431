@@ -1,8 +1,9 @@
 <div class='event_card', id=<%= "event_#{event_id}"%>>
-  <h2><%= event_name %></h2>
-  <h3><%= event_date.to_formatted_s(:get_date) %></h3>
-  <h3><%= event_date.to_formatted_s(:get_time) %></h3>
-  <p><%= "Event Type: #{get_points_type(points_type_id.to_i)}" %></p>
+  <h1><%= event_name %></h1>
+  <div class='split-header'>
+    <h2 class='split-left'><%= event_date.to_formatted_s(:get_date) %>, <%= event_date.to_formatted_s(:get_time) %></h2>
+    <h2 class='split-right'><%= "Event Type: #{get_points_type(points_type_id.to_i)}" %></h2>
+  </div>
   <p><%= event_description %></p>
 
   <%# show passcode %>
