@@ -1,13 +1,7 @@
 @import url("./components/buttons.css");
 @import url("./components/forms.css");
 @import url("./components/containers.css");
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Sansita One";
-}
+@import url("./components/fancy_headers.css");
 
 /* Makes p surrounded by horizontal lines */
 .horizontal_line {
