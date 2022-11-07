@@ -13,15 +13,15 @@ h1,h2,h3,h4 {
 }
 
 /* Makes p surrounded by horizontal lines */
-p {
+.horizontal_line {
     display: flex;
     flex-direction: row;
     width: 100%;
     margin: 10px 0 10px;
 }
 
-p:before,
-p:after {
+.horizontal_line:before,
+.horizontal_line:after {
     content: "";
     flex: 1 1;
     border-bottom: 1px solid;
@@ -29,11 +29,11 @@ p:after {
     color: #00000050;
 }
 
-p:before {
+.horizontal_line:before {
     margin-right: 10px
 }
 
-p:after {
+.horizontal_line:after {
     margin-left: 10px
 }
 
