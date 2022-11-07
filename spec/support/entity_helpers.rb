@@ -24,7 +24,7 @@ module UserHelpers
   @@event_passcode = 'test_password'
 
   def log_out
-    click_link('Logout')
+    click_link('Log out')
     expect(page).to(have_content('Signed out successfully.'))
   end
 

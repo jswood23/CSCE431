@@ -82,7 +82,7 @@
         <% if current_user %>
           <li class="nav-item dropdown">
 
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link" href="#" id="navbarProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="/assets/person.svg" alt="person" width="25" height="25">
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -92,7 +92,7 @@
                 <% else %>
                   <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
                 <% end %>
-                <div class="d-flex flex-column m-auto px-2">
+                <div class="d-flex flex-column my-auto px-2">
                   <small><%= current_user.full_name %></small>
                   <small><%= current_user.email %></small>
                 </div>
