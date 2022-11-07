@@ -1,0 +1,39 @@
+/* styling for background, wide and narrow containers, and  */
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #f5d7cd;
+}
+
+.box {
+  padding: 60px 80px 60px 80px;
+  background-color: #ffffff90;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 5px 2px 5px #00000020;
+  gap: 10px;
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+  gap: 10px;
+}
