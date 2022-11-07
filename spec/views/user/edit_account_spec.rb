@@ -9,8 +9,8 @@ RSpec.describe('devise/registrations/edit.html.erb', type: :feature) do
     visit edit_user_registration_path
     expect(page).to(have_content('Email'))
     expect(page).to(have_content('Password'))
-    expect(page).to(have_content('Password confirmation'))
-    expect(page).to(have_content('Current password'))
+    expect(page).to(have_content('Confirm Password'))
+    expect(page).to(have_content('Current Password'))
     log_out
   end
 
@@ -18,7 +18,7 @@ RSpec.describe('devise/registrations/edit.html.erb', type: :feature) do
     log_in_admin
     visit edit_user_registration_path
     expect(page).to(have_content('Position'))
-    expect(page).to(have_content('Years active'))
+    expect(page).to(have_content('Years Active'))
     expect(page).to(have_content('Phone'))
     expect(page).to(have_content('Bios'))
     expect(page).to(have_content('Private'))
