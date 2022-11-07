@@ -1,43 +1,49 @@
 <%= stylesheet_link_tag "events" %>
 
-<h1>Attend an Event</h1>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Attend an Event</h1>
 
-<h2>Events Today</h2>
+      <h2>Events Today</h2>
 
-<% if @events_today.length > 0 %>
-  <% @events_today.each do |event| %>
-    <%= render :partial => 'shared/event_card', :locals => {
-      :event_id => event.id,
-      :event_name => event.event_name,
-      :event_date => event.date,
-      :points_type_id => event.points_type_id,
-      :event_description => event.description,
-      :show_passcode => nil,
-      :passcode => true,
-      :show_attendance => false,
-      :edit => false
-      } %>
-  <% end %>
-<% else %>
-  <p>No Events</p>
-<% end %>
+      <% if @events_today.length > 0 %>
+        <% @events_today.each do |event| %>
+          <%= render :partial => 'shared/event_card', :locals => {
+            :event_id => event.id,
+            :event_name => event.event_name,
+            :event_date => event.date,
+            :points_type_id => event.points_type_id,
+            :event_description => event.description,
+            :show_passcode => nil,
+            :passcode => true,
+            :show_attendance => false,
+            :edit => false
+            } %>
+        <% end %>
+      <% else %>
+        <p>No events today.</p>
+      <% end %>
 
-<h2>Upcoming Events</h2>
+      <h2>Upcoming Events</h2>
 
-<% if @upcoming_events.length > 0 %>
-  <% @upcoming_events.each do |event| %>
-    <%= render :partial => 'shared/event_card', :locals => {
-      :event_id => event.id,
-      :event_name => event.event_name,
-      :event_date => event.date,
-      :points_type_id => event.points_type_id,
-      :event_description => event.description,
-      :show_passcode => nil,
-      :passcode => false,
-      :show_attendance => false,
-      :edit => false
-      } %>
-  <% end %>
-<% else %>
-  <p>No Upcoming Events</p>
-<% end %>
+      <% if @upcoming_events.length > 0 %>
+        <% @upcoming_events.each do |event| %>
+          <%= render :partial => 'shared/event_card', :locals => {
+            :event_id => event.id,
+            :event_name => event.event_name,
+            :event_date => event.date,
+            :points_type_id => event.points_type_id,
+            :event_description => event.description,
+            :show_passcode => nil,
+            :passcode => false,
+            :show_attendance => false,
+            :edit => false
+            } %>
+        <% end %>
+      <% else %>
+        <p>No upcoming events.</p>
+      <% end %>
+    </div>
+  </div>
+</body>
