@@ -10,9 +10,13 @@ textarea,
 input,
 select {
   width: 100%;
+  border: none;
+  border-radius: 15px;
+  padding: 3px 12px;
 }
 
-/* Keep checkbox small */
+/* checkbox input */
 input[type="checkbox"] {
   width: auto;
+  accent-color: #cdc6e7;
 }
