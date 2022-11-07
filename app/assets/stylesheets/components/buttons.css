@@ -44,13 +44,15 @@
 }
 
 /* links */
-.link {
-  color: #747474;
+.link,
+a {
+  color: #545454;
   text-decoration: none;
   font-size: 14px;
 }
 
-.link:hover {
+.link:hover,
+a:hover {
   color: #ff7c93;
 }
 
