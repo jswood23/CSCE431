@@ -8,16 +8,20 @@ body {
     background-color: #F5D7CD;
 }
 
+h1,h2,h3,h4 {
+    font-family: "Sansita One";
+}
+
 /* Makes p surrounded by horizontal lines */
-p {
+.horizontal_line {
     display: flex;
     flex-direction: row;
     width: 100%;
     margin: 10px 0 10px;
 }
 
-p:before,
-p:after {
+.horizontal_line:before,
+.horizontal_line:after {
     content: "";
     flex: 1 1;
     border-bottom: 1px solid;
@@ -25,11 +29,11 @@ p:after {
     color: #00000050;
 }
 
-p:before {
+.horizontal_line:before {
     margin-right: 10px
 }
 
-p:after {
+.horizontal_line:after {
     margin-left: 10px
 }
 
@@ -37,7 +41,9 @@ p:after {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding: 50px;
+    gap: 10px;
 }
 
 .box {
@@ -55,8 +61,8 @@ p:after {
 .pink_button {
     background-color: #FF7C93;
     border: 0;
-    width: 100%;
-    border-radius: 5px;
+    width: 180px;
+    border-radius: 15px;
     color: white;
     text-align: center;
     padding: 3px;
@@ -75,8 +81,8 @@ p:after {
 .black_button {
     background-color: #000000;
     border: 0;
-    width: 100%;
-    border-radius: 5px;
+    width: 180px;
+    border-radius: 15px;
     color: white;
     text-align: center;
     padding: 3px;
@@ -124,9 +130,13 @@ p:after {
 /* Keep checkbox small */
 input[type=checkbox] {
     width:auto;
+    accent-color: #CDC6E7;
 }
 
 /* Make form fields uniform and fit the box */
 textarea, input, select {
     width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 3px 12px;
 }

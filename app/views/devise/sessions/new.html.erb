@@ -18,25 +18,25 @@
         <% end %>
       </div>
 
-      <p>or</p>
+      <span class="horizontal_line">or</span>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="center">
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-        </div>
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
 
-        <br>
-
-        <div class="actions">
-          <%= f.submit "Log in", :class => "pink_button" %>
+          <br>
+          
+          <div class="actions">
+            <%= f.submit "Log in", :class => "pink_button" %>
+          </div>
         </div>
       <% end %>
 
