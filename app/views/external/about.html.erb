@@ -56,10 +56,21 @@
         <i onclick="myFunction1()" class="fa-solid fa-angle-down down-button"></i>
       </div>
 
-
     </div>
+    
     <div class="description-section">
-        <div id="purpose-text" class="desc-box">
+        <% @page.each do |attr_name, attr_value| %>
+            <div class="desc-box">
+                <div class="desc-header">
+                    <%= attr_name %>
+                </div>
+                <div class="desc-text">
+                    <%= attr_value %>
+                </div>
+           </div>
+        <% end %>
+
+        <%# <div id="purpose-text" class="desc-box">
             <div class="desc-header">
 
                 Purpose
@@ -111,6 +122,6 @@
             </div>
         
         
-        </div>
+        </div> %>
         
     </div>
