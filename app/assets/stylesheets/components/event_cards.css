@@ -36,3 +36,8 @@
   flex: 1;
   text-align: right;
 }
+
+.password-box {
+  width: 24%;
+  flex-direction: column;
+}
