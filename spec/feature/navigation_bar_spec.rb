@@ -49,7 +49,7 @@ RSpec.describe('Visiting the home page', type: :feature) do
     expect(page).to(have_content('Member'))
     click_on 'Member'
     # expect(page).to(have_content('My Profile'))
-    expect(page).to(have_content('Member List'))
+    expect(page).to(have_content('Contact List'))
     expect(page).to(have_content('Attend an Event'))
 
     # does not have admin dropdown
@@ -72,7 +72,7 @@ RSpec.describe('Visiting the home page', type: :feature) do
     expect(page).to(have_content('Member'))
     click_on 'Member'
     # expect(page).to(have_content('My Profile'))
-    expect(page).to(have_content('Member List'))
+    expect(page).to(have_content('Contact List'))
     expect(page).to(have_content('Attend an Event'))
 
     # has admin dropdown
