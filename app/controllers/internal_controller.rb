@@ -12,9 +12,24 @@ class InternalController < ApplicationController
 
   def members; end
 
+  def internal_contact
+    @members = User.where('member = ? AND alumni = ?', true, false)
+    @new_users = User.where(member: [nil, 'false'])
+    @alumni = User.where(alumni: 'true')
+  end
+
   # def profile; end
 
   # Controller actions (without pages)
+
+  def search
+    if params[:search].blank?
+      redirect_to(internal_contact) and return
+    else
+      @parameter = params[:search].downcase
+      @results = User.all.where('lower(full_name) LIKE :search', search: "#{@parameter}%")
+    end
+  end
 
   private
 
