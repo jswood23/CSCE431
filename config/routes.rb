@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   # internal actions
   post 'attend_event', to: 'events#attend_event'
+  get '/search', to: "internal#search"
   
   # admin page routes
   get '/manage_members', to: 'admin#manage_members'
