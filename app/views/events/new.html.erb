@@ -1,7 +1,15 @@
 <%= stylesheet_link_tag "events" %>
 
-<h1>New Event</h1>
+<body>
+  <div class="container">
+    <div class="box">
+      <div class="center">
+        <h1>New Event</h1>
 
-<%= render 'form', event: @event %>
+        <%= render 'form', event: @event %>
 
-<%= link_to 'Back', events_path %>
+        <%= link_to 'Back', events_path, class: 'black_button' %>
+      </div>
+    </div>
+  </div>
+</body>

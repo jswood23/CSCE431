@@ -1,36 +1,45 @@
 <%= stylesheet_link_tag "events" %>
 
-<p id="notice"><%= notice %></p>
+<body>
+  <div class="container">
+    <div class="box show_event">
+      <h1>Event Details</h1>
 
-<p>
-  <strong>Event name:</strong>
-  <%= @event.event_name %>
-</p>
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+      <p>
+        <strong>Event name:</strong>
+        <%= @event.event_name %>
+      </p>
 
-<p>
-  <strong>Passcode:</strong>
-  <%= @event.passcode %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @event.description %>
+      </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+      <p>
+        <strong>Passcode:</strong>
+        <%= @event.passcode %>
+      </p>
 
-<p>
-  <strong>Points Type:</strong>
-  <%= get_points_type(@event.points_type_id) %>
-</p>
+      <p>
+        <strong>Date:</strong>
+        <%= @event.date %>
+      </p>
 
-<p>
-  <strong>Points:</strong>
-  <%= @event.points %>
-</p>
+      <p>
+        <strong>Points Type:</strong>
+        <%= get_points_type(@event.points_type_id) %>
+      </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+      <p>
+        <strong>Points:</strong>
+        <%= @event.points %>
+      </p>
+
+      <%= link_to 'Edit', edit_event_path(@event) %>
+      |
+      <%= link_to 'Back', events_path %>
+    </div>
+  </div>
+</body>
