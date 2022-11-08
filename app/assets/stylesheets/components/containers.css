@@ -22,6 +22,14 @@ body {
   gap: 10px;
 }
 
+.wide-box {
+  width: 1500px;
+}
+
+.narrow-box {
+  width: 750px;
+}
+
 .center {
   width: 100%;
   display: flex;
