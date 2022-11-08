@@ -2,7 +2,7 @@
 
 <body>
   <div class="container">
-    <div class="box">
+    <div class="box wide-box">
       <p id="notice"><%= notice %></p>
 
       <%= link_to 'New Event', new_event_path, class: "pink_button" %>
@@ -14,19 +14,21 @@
       <%= @print_time %>
 
       <% if @events_today.length > 0 %>
-        <% @events_today.each do |event| %>
-          <%= render :partial => 'shared/event_card', :locals => {
-            :event_id => event.id,
-            :event_name => event.event_name,
-            :event_date => event.date,
-            :points_type_id => event.points_type_id,
-            :event_description => event.description,
-            :show_passcode => event.passcode,
-            :passcode => false,
-            :show_attendance => true,
-            :edit => true
-            } %>
-        <% end %>
+        <div class="events_container">
+          <% @events_today.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :passcode => false,
+              :show_attendance => true,
+              :edit => true
+              } %>
+          <% end %>
+        </div>
       <% else %>
         <p>No events today.</p>
       <% end %>
@@ -34,19 +36,21 @@
       <h1>Upcoming Events</h1>
 
       <% if @upcoming_events.length > 0 %>
-        <% @upcoming_events.each do |event| %>
-          <%= render :partial => 'shared/event_card', :locals => {
-            :event_id => event.id,
-            :event_name => event.event_name,
-            :event_date => event.date,
-            :points_type_id => event.points_type_id,
-            :event_description => event.description,
-            :show_passcode => event.passcode,
-            :passcode => false,
-            :show_attendance => true,
-            :edit => true
-            } %>
-        <% end %>
+        <div class="events_container">
+          <% @upcoming_events.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :passcode => false,
+              :show_attendance => true,
+              :edit => true
+              } %>
+          <% end %>
+        </div>
       <% else %>
         <p>No upcoming events.</p>
       <% end %>
@@ -55,19 +59,21 @@
 
       <h1>Past Events</h1>
       <% if @past_events.length > 0 %>
-        <% @past_events.each do |event| %>
-          <%= render :partial => 'shared/event_card', :locals => {
-            :event_id => event.id,
-            :event_name => event.event_name,
-            :event_date => event.date,
-            :points_type_id => event.points_type_id,
-            :event_description => event.description,
-            :show_passcode => event.passcode,
-            :passcode => false,
-            :show_attendance => true,
-            :edit => true
-            } %>
-        <% end %>
+        <div class="events_container">
+          <% @past_events.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :passcode => false,
+              :show_attendance => true,
+              :edit => true
+              } %>
+          <% end %>
+        </div>
       <% else %>
         <p>No past events.</p>
       <% end %>
