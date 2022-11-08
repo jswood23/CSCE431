@@ -43,8 +43,9 @@ if Page.count < 3
       page_data: '{
         "description" : "Below you can find our email and social links, be sure to follow MCHSO on Facebook!",
 
+        "Email" : "mailto:hannahbartosh@tamu.edu",
+
         "links" : {
-          "Email" : "mailto:hannahbartosh@tamu.edu",
           "facebook" : "https://www.facebook.com/MCHSOaggies/",
           "store" : "https://tamu.estore.flywire.com/products?storeCatalog=7302",
           "instagram" : "https://www.instagram.com/mchsoaggies/?hl=en"

@@ -1,0 +1,70 @@
+@import url("./components/buttons.css");
+
+body {
+    background-color: #F5D7CD;
+}
+
+.content {
+    background-color: #F5D7CD;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+.container {
+    margin: 20px auto ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: solid;
+    border-color: #fff;
+    border-width: 8px;
+    border-radius: 6px;
+}
+
+#heading {
+    margin: auto;
+    margin: 30px auto 20px;
+    font-family: 'Sansita One';
+    font-style: italic;
+    color: #fff;
+    text-shadow: 2;
+    font-size: calc(max(10vw, 80px));
+}
+
+#blurb {
+    margin: 0px auto 20px;
+    font-family: 'Sansita One';
+    font-weight: 100;
+    color: #fff;
+    text-align: center;
+}
+
+.card-img-top {
+    width: 9rem;
+    margin: auto;
+    margin: 20px auto;
+}
+
+.card {
+    background-color: #FFFFFF90;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 5px 2px 5px #00000020;
+    width: fit-content;
+    margin: 20px;
+}
+
+.logo {
+    opacity: 70%;
+    transition: opacity .25s;
+    width: 5rem;
+    margin: 20px;
+}
+
+.logo:hover {
+    opacity: 100%;
+    cursor: pointer;
+}

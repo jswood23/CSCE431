@@ -1,14 +1,14 @@
+<%= stylesheet_link_tag "contact" %>
+
 <div class="content" style="display: flex;">
-    <div class="container" style="margin: auto; display: flex; flex-direction: column">
-        <h1 style="margin: auto;">Contacts</h1>
-        <img src="/assets/default.jpg" alt="profile" style="width: 30vw; margin: auto; max-width: 250px;">
-        <p style="margin: auto;"><%= @page['description'] %></p>
-        <ul style="margin: auto">
+    <h1 id="heading">Get In Touch</h1>
+    <h4 id="blurb">Interested in contacting MSCHO?<br> please feel free to send us an email or find us at one of the links provided below.</h4>
+    <%= link_to "Email Us", @page['Email'], class: "btn pink_button"%>
+    <div class="container">
             <% if @page['links'] %>
                 <% @page['links'].each do |key, value| %>
-                    <li><%= link_to key, value %></li>
+                    <%= link_to image_tag("/assets/"+key+".png", class: "logo"), value %>
                 <% end %>
             <% end %>
-        </ul>
     </div>
 </div>
