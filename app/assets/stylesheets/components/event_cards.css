@@ -23,7 +23,6 @@
   flex: 1;
   background-color: #ff7c93;
   font-size: 25px;
-  height: 200px;
   display: table;
 }
 
@@ -38,6 +37,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  user-select: none;
 }
 
 .event_month {
@@ -56,7 +56,7 @@
 }
 
 .event_info {
-  flex: 2;
+  flex: 3;
 }
 
 /*
