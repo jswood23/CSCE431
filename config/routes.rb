@@ -22,11 +22,12 @@ Rails.application.routes.draw do
 
   # internal page routes
   match '/attend', to: 'internal#attend', :via => :all
-  match '/members', to: 'internal#members', :via => :all
   match '/profile', to: 'internal#profile', :via => :all
+  match '/internal_contact', to: 'internal#internal_contact', :via => :all
 
   # internal actions
   post 'attend_event', to: 'events#attend_event'
+  get '/search', to: "internal#search"
   
   # admin page routes
   get '/manage_members', to: 'admin#manage_members'
