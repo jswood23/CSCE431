@@ -3,7 +3,7 @@
    <% if @results.length > 0%>
   <table>
     <thead>
-      <th>Picture</th>
+      <th> </th>
       <th>Name</th>
       <th>Member Status</th>
       <th>Years Active</th>
@@ -12,7 +12,13 @@
     <tbody>
       <% @results.each do |result| %>
         <tr id=<%= "member_row_#{result.id}" %>>
-          <td><image src= <%= result.avatar_url %> </td>
+        <td>
+          <% if result.avatar_url %>
+            <%= image_tag(result.avatar_url, class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+          <% else %>
+            <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+          <% end %>
+        </td>
           <td><%= result.full_name %></td>
           <td><%= get_user_status(result) %>
           <td><%= result.information.start_year %> - <%= result.information.end_year %></td>
