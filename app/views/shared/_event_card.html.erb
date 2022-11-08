@@ -1,44 +1,51 @@
 <div class='event_card', id=<%= "event_#{event_id}"%>>
-  <h1><%= event_name %></h1>
-  <div class='split-header'>
-    <h2 class='split-left'><%= event_date.to_formatted_s(:get_date) %>, <%= event_date.to_formatted_s(:get_time) %></h2>
-    <h2 class='split-right'><%= "Event Type: #{get_points_type(points_type_id.to_i)}" %></h2>
-  </div>
-  <p><%= event_description %></p>
-
-  <%# show passcode %>
-  <% if show_passcode %>
-    <p><%= "Password: #{show_passcode}" %></p>
-  <% end %>
-
-
-  <%# passcode form %>
-  <% if passcode %>
-    <div class='password-box'>
-      <% if attended?(event_id) %>
-        <p>You are already in attendance.</p>
-      <% else %>
-        <%= form_tag('attend_event', method: 'post') do %>
-          <%= hidden_field_tag 'event_id', event_id %>
-          <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
-          <%= label_tag 'password', 'Password:' %>
-          <%= text_field_tag 'password', nil, autofocus: true %>
-          <%= submit_tag "I'm here!", class: 'pink_button' %>
-        <% end %>
-      <% end %>
+  <div class='event_date'>
+    <div class='date_text'>
+      <p class='event_month'><%= event_date.to_formatted_s(:get_month) %></p>
+      <p class='event_day'><%= event_date.to_formatted_s(:get_day) %></p>
+      <p class='event_year'><%= event_date.to_formatted_s(:get_year) %></p>
     </div>
-  <% end %>
+  </div>
+  <div class='event_info'>
+    <h1><%= event_name %></h1>
+    <p><%= "Event Type: #{get_points_type(points_type_id.to_i)}" %></p>
+    <p><%= event_date.to_formatted_s(:get_time) %></p>
+    <p><%= event_description %></p>
 
-  <p>
-    <%# show attendance button %>
-    <% if show_attendance %>
-      <%= link_to 'Show Attendance', "/events/show_attendance/#{event_id}" %>
-      |
+    <%# show passcode %>
+    <% if show_passcode %>
+      <p><%= "Password: #{show_passcode}" %></p>
     <% end %>
-    
-    <%# edit button %>
-    <% if edit %>
-      <%= link_to 'Edit', "/events/#{event_id}/edit" %>
+
+
+    <%# passcode form %>
+    <% if passcode %>
+      <div class='password-box'>
+        <% if attended?(event_id) %>
+          <p>You are already in attendance.</p>
+        <% else %>
+          <%= form_tag('attend_event', method: 'post') do %>
+            <%= hidden_field_tag 'event_id', event_id %>
+            <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+            <%= label_tag 'password', 'Password:' %>
+            <%= text_field_tag 'password', nil, autofocus: true %>
+            <%= submit_tag "I'm here!", class: 'pink_button' %>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
-  </p>
+
+    <p>
+      <%# show attendance button %>
+      <% if show_attendance %>
+        <%= link_to 'Show Attendance', "/events/show_attendance/#{event_id}" %>
+        |
+      <% end %>
+      
+      <%# edit button %>
+      <% if edit %>
+        <%= link_to 'Edit', "/events/#{event_id}/edit" %>
+      <% end %>
+    </p>
+  </div>
 </div>
