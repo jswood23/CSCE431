@@ -7,7 +7,7 @@
         <h1>Editing Event</h1>
 
         <%= render 'form', event: @event %>
-
+        <%= link_to 'Delete Event', event_path(@event), method: :delete, class: 'black_button' %>
         <p>
           <%= link_to 'Show', @event %> |
           <%= link_to 'Back', events_path %>

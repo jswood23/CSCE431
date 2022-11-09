@@ -109,10 +109,11 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
+    # TODO: add confirmation message
     @event.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(events_url, notice: 'Event was successfully destroyed.') }
+      format.html { redirect_to(events_url, notice: 'Event was successfully deleted.') }
       format.json { head(:no_content) }
     end
   end
