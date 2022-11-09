@@ -9,18 +9,16 @@
   </div>
 
   <div class='event_info'>
-    <%# show time in top right %>
-    <p class='event_time'><%= event_date.to_formatted_s(:get_time) %></p>
-    <h1 class='event_name'><%= event_name %></h1>
-    <p><%= event_description %></p>
-
-    <% if is_admin || is_attend %>
-      <p></p>
-    <% end %>
+    <div class='event_body'>
+      <p class='event_time'><%= event_date.to_formatted_s(:get_time) %></p>
+      <h1 class='event_name'><%= event_name %></h1>
+      <p><%= event_description %></p>
+    </div>
 
     <% if is_attend %>
       <%# password form %>
-      <div class='password-box'>
+      <div style='user-select:none;'><br/><br/><br/><br/><br/></div>
+      <div class='password-box event_card_footer'>
         <p>
           <%# show event type %>
           Event type: <b><%= get_points_type(points_type_id.to_i) %></b><br/>
@@ -40,16 +38,17 @@
     <% end %>
 
     <% if is_admin %>
-      <p>
+      <div style='user-select:none;'><br/><br/><br/><br/></div>
+      <p class='event_card_footer'>
         <%# show event type %>
         Event type: <b><%= get_points_type(points_type_id.to_i) %></b> <br/>
         <%# show password %>
-        Password: <b><%= show_passcode %></b> <br/>
+        Password: <b><%= show_passcode %></b> <br/><br/>
         <%# show attendance button %>
-        <%= link_to 'Show Attendance', "/events/show_attendance/#{event_id}" %>
-        |
+        <%= link_to 'Show Attendance', "/events/show_attendance/#{event_id}", class: 'pink_button event_card_button' %>
+        &ensp;
         <%# edit button %>
-        <%= link_to 'Edit', "/events/#{event_id}/edit" %>
+        <%= link_to 'Edit', "/events/#{event_id}/edit", class: 'black_button event_card_button' %>
       </p>
     <% end%>
   </div>

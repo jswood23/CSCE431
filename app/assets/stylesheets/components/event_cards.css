@@ -69,6 +69,7 @@
 .event_info {
   flex: 3;
   padding: 1em;
+  position: relative;
 }
 
 .event_time {
@@ -90,6 +91,16 @@
 
 .event_password_input {
   border: 1px solid black;
+}
+
+.event_card_button {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.event_card_footer {
+  position: absolute;
+  bottom: 0;
 }
 
 /*
