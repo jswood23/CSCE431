@@ -18,12 +18,15 @@
   flex-direction: row;
 }
 
-/* styling for event date */
+/* styling for event date (left section of event card) */
+
 .event_date {
   flex: 1;
   background-color: #ff7c93;
   font-size: 25px;
   display: table;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .date_text {
@@ -37,7 +40,11 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  /* don't allow user to select date text */
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .event_month {
@@ -55,8 +62,27 @@
   line-height: 1em;
 }
 
+/* styling for event info (right section of event card) */
+
 .event_info {
   flex: 3;
+  padding: 1em;
+}
+
+.event_time {
+  text-align: right;
+  font-size: 1.25em;
+  font-weight: bold;
+  line-height: 0;
+}
+
+.event_name {
+  text-decoration: none;
+  border-bottom: none;
+  text-align: left;
+  line-height: 0;
+  margin-bottom: 0.5em;
+  margin-top: 0;
 }
 
 /*
