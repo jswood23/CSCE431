@@ -25,10 +25,10 @@
           <% if attended?(event_id) %>
             <p>You are already in attendance.</p>
           <% else %>
-            Password: 
             <%= form_tag('attend_event', method: 'post') do %>
               <%= hidden_field_tag 'event_id', event_id %>
               <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+              <%= label_tag :password %>
               <%= text_field_tag 'password', nil, autofocus: true, class: 'event_password_input' %>
               <%= submit_tag "I'm here!", class: 'pink_button' %>
             <% end %>
