@@ -31,7 +31,7 @@
             <%= form_tag('attend_event', method: 'post') do %>
               <%= hidden_field_tag 'event_id', event_id %>
               <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
-              <%= text_field_tag 'password', nil, autofocus: true %>
+              <%= text_field_tag 'password', nil, autofocus: true, class: 'event_password_input' %>
               <%= submit_tag "I'm here!", class: 'pink_button' %>
             <% end %>
           <% end %>
