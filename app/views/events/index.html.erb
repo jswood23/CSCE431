@@ -23,6 +23,8 @@
               :points_type_id => event.points_type_id,
               :event_description => event.description,
               :show_passcode => event.passcode,
+              :is_attend => false,
+              :is_admin => true,
               :passcode => false,
               :show_attendance => true,
               :edit => true
@@ -45,9 +47,8 @@
               :points_type_id => event.points_type_id,
               :event_description => event.description,
               :show_passcode => event.passcode,
-              :passcode => false,
-              :show_attendance => true,
-              :edit => true
+              :is_attend => false,
+              :is_admin => true
               } %>
           <% end %>
         </div>
@@ -68,9 +69,8 @@
               :points_type_id => event.points_type_id,
               :event_description => event.description,
               :show_passcode => event.passcode,
-              :passcode => false,
-              :show_attendance => true,
-              :edit => true
+              :is_attend => false,
+              :is_admin => true
               } %>
           <% end %>
         </div>

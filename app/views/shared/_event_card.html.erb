@@ -14,42 +14,43 @@
     <h1 class='event_name'><%= event_name %></h1>
     <p><%= event_description %></p>
 
-    <p><%= "Event Type: #{get_points_type(points_type_id.to_i)}" %></p>
-
-    <%# show passcode %>
-    <% if show_passcode %>
-      <p><%= "Password: #{show_passcode}" %></p>
+    <% if is_admin || is_attend %>
+      <p></p>
     <% end %>
 
-
-    <%# passcode form %>
-    <% if passcode %>
+    <% if is_attend %>
+      <%# password form %>
       <div class='password-box'>
-        <% if attended?(event_id) %>
-          <p>You are already in attendance.</p>
-        <% else %>
-          <%= form_tag('attend_event', method: 'post') do %>
-            <%= hidden_field_tag 'event_id', event_id %>
-            <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
-            <%= label_tag 'password', 'Password:' %>
-            <%= text_field_tag 'password', nil, autofocus: true %>
-            <%= submit_tag "I'm here!", class: 'pink_button' %>
+        <p>
+          <%# show event type %>
+          Event type: <b><%= get_points_type(points_type_id.to_i) %></b><br/>
+          <% if attended?(event_id) %>
+            <p>You are already in attendance.</p>
+          <% else %>
+            Password: 
+            <%= form_tag('attend_event', method: 'post') do %>
+              <%= hidden_field_tag 'event_id', event_id %>
+              <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+              <%= text_field_tag 'password', nil, autofocus: true %>
+              <%= submit_tag "I'm here!", class: 'pink_button' %>
+            <% end %>
           <% end %>
-        <% end %>
+        </p>
       </div>
     <% end %>
 
-    <p>
-      <%# show attendance button %>
-      <% if show_attendance %>
+    <% if is_admin %>
+      <p>
+        <%# show event type %>
+        Event type: <b><%= get_points_type(points_type_id.to_i) %></b> <br/>
+        <%# show password %>
+        Password: <b><%= show_passcode %></b> <br/>
+        <%# show attendance button %>
         <%= link_to 'Show Attendance', "/events/show_attendance/#{event_id}" %>
         |
-      <% end %>
-      
-      <%# edit button %>
-      <% if edit %>
+        <%# edit button %>
         <%= link_to 'Edit', "/events/#{event_id}/edit" %>
-      <% end %>
-    </p>
+      </p>
+    <% end%>
   </div>
 </div>
