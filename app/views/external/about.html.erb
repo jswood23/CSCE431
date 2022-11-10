@@ -7,27 +7,16 @@
 
     </head>
     <script>
-        function myFunction1() {
-            var e = document.getElementById("purpose-text");
+        function buttonOnClick(attr_name) {
+            var e = document.getElementById(attr_name);
             e.scrollIntoView(true);
-        }
-  
-        function myFunction2() {
-            var e = document.getElementById("goals-text");
-            e.scrollIntoView(true);
-        }
-  
-        function myFunction3() {
-            var e = document.getElementById("membership-text");
-            e.scrollIntoView(true); 
-            console.log("3");
         }
 
-         function myFunction4() {
-            var e = document.getElementById("whatwedo-text");
+        function downButtonOnClick() {
+            var e = document.getElementById("desc-section");
             e.scrollIntoView(true);
-        
         }
+  
     </script>
     <div class="top-section">
 
@@ -40,27 +29,22 @@
                 
                 <% @page.each do |attr_name, attr_value| %>
                
-                    <a onclick="myFunction1()"  class="btn btn-lg section-button"><%= attr_name %></a>
+                    <a onclick="buttonOnClick('<%= attr_name %>')"  class="btn btn-lg section-button"><%= attr_name %></a>
              
                 <% end %>
 
-              <%# <a onclick="myFunction1()"  class="btn btn-lg section-button">Purpose</a>
-              <a onclick="myFunction2()"  class="btn btn-lg section-button">Goals</a>
-              <a onclick="myFunction3()"  class="btn btn-lg section-button">Membership</a>
-              <a onclick="myFunction4()"  class="btn btn-lg section-button">What We Do</a> %>
-            
           </div>
 
         </div>
        
-        <i onclick="myFunction1()" class="fa-solid fa-angle-down down-button"></i>
+        <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
       </div>
 
     </div>
     
-    <div class="description-section">
+    <div class="description-section" id="desc-section">
         <% @page.each do |attr_name, attr_value| %>
-            <div class="desc-box">
+            <div class="desc-box" id="<%= attr_name %>">
                 <div class="desc-header">
                     <%= attr_name %>
                 </div>
