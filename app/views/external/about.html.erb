@@ -1,5 +1,5 @@
 
-    <<%= stylesheet_link_tag "about" %>
+    <%= stylesheet_link_tag "about" %>
     <head>
     
     
@@ -16,32 +16,35 @@
             var e = document.getElementById("desc-section");
             e.scrollIntoView(true);
         }
-  
+    
     </script>
+
     <div class="top-section">
 
-      <div class="site-wrapper-inner">
+        <div class="site-wrapper-inner">
 
-        <div class="container">
+            <div class="container">
 
-          <div class="inner main">
-            <h1 class="title-text">About Us</h1>
+            <div class="inner main">
+                <h1 class="title-text">About Us</h1>
+                    
+                    <div class="title-buttons" id="test">
+                    <% @page.each do |attr_name, attr_value| %>
                 
-                <% @page.each do |attr_name, attr_value| %>
-               
-                    <a onclick="buttonOnClick('<%= attr_name %>')"  class="btn btn-lg section-button"><%= attr_name %></a>
-             
-                <% end %>
+                        <a onclick="buttonOnClick('<%= attr_name %>')"  class="btn btn-lg section-button"><%= attr_name %></a>
+                
+                    <% end %>
+                    </div>
+                    
+            </div>
 
-          </div>
-
+            </div>
+        
+            <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
         </div>
-       
-        <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
-      </div>
 
     </div>
-    
+
     <div class="description-section" id="desc-section">
         <% @page.each do |attr_name, attr_value| %>
             <div class="desc-box" id="<%= attr_name %>">
@@ -51,61 +54,9 @@
                 <div class="desc-text">
                     <%= attr_value %>
                 </div>
-           </div>
+            </div>
         <% end %>
-
-        <%# <div id="purpose-text" class="desc-box">
-            <div class="desc-header">
-
-                Purpose
-            </div>
-            <div class="desc-text">
-                The purpose of this organization shall be to advocate for maternal and child public health-related issues for all students.
-            </div>
-        
-        
-        </div>
-        <div id="goals-text" class="desc-box">
-            <div class="desc-header">
-
-                Goals
-            </div>
-            <div class="desc-text">
-                The goal will be to enhance the quality and scope of maternal and child public health by educating students and providing them with opportunities to impact the community positively.
-            </div>
-        
-        
-        </div>
-        <div id="membership-text" class="desc-box">
-            <div class="desc-header">
-
-                Membership
-            </div>
-            <div class="desc-text">
-                Membership is open to any Aggie (undergraduate or graduate/ any concentration). Dues are $15 one time.
-            </div>
-        
-        
-        </div>
-        <div id="whatwedo-text" class="desc-box">
-            <div class="desc-header">
-
-                What We Do
-            </div>
-            <div class="desc-text">
-                Things we do include - Field Trips
-                Volunteering
-                Book Club
-                Guest Speakers
-                Donation Drives
-                Profit Shares
-                Craft Events
-                Socials
-                Research Opportunities
-                Certificate Opportunities
-            </div>
-        
-        
-        </div> %>
         
     </div>
+
+    
