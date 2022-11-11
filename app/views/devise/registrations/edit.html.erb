@@ -3,7 +3,7 @@
 <body>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="container">
-    <div class="box">
+    <div class="box narrow">
       <h2>Update Information</h2>
       <div class="d-flex h-auto">
         <div class="pe-4">
@@ -94,7 +94,7 @@
         <% end %>
       </div>
     </div>
-    <div class="box">
+    <div class="box narrow">
       <h4>Remove Account</h4>
       <%= button_to "Remove", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "black_button", style: "padding: 3px 0 3px 0" %>
     </div>
