@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     # order events by date
-    @events_today = Event.where(date: Time.zone.today.all_day)
+    @events_today = Event.where(date: Time.zone.today.all_day).order('date ASC')
     @upcoming_events = Event.order('date ASC').where('date > ?', Time.zone.now.end_of_day)
     @past_events = Event.order('date DESC').where('date < ?', Time.zone.now.beginning_of_day)
   end
@@ -109,10 +109,11 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
+    # TODO: add confirmation message
     @event.destroy!
 
     respond_to do |format|
-      format.html { redirect_to(events_url, notice: 'Event was successfully destroyed.') }
+      format.html { redirect_to(events_url, notice: 'Event was successfully deleted.') }
       format.json { head(:no_content) }
     end
   end
