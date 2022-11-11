@@ -57,6 +57,7 @@ body {
   background-color: #F5D7CD;
   display: flex;
   flex-direction: column;
+  font-family: Sansita One;
 }
 
 .desc-box {
