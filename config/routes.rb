@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'external#contact'
   get '/view_events', to: 'external#events'
   get '/home', to: 'external#home'
+  get '/faq', to: 'external#faq'
 
   # internal page routes
   match '/attend', to: 'internal#attend', :via => :all
