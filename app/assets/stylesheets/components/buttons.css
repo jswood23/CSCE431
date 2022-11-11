@@ -47,9 +47,19 @@
 .link {
   color: #747474;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .link:hover {
   color: #ff7c93;
+}
+
+/* pink links */
+.pink-link {
+  color: #ff7c93;
+  text-decoration: none;
+}
+
+.pink-link:hover {
+  color: #747474;
 }
