@@ -21,7 +21,7 @@
 }
 
 /* sizing for mobile */
-@media (min-width: 480px) and (max-width: 768px) {
+@media (max-width: 768px) {
   .event_card {
     flex: 1 0 90%;
     max-width: 90%;

@@ -23,12 +23,12 @@ body {
 }
 
 /* sizing for mobile */
-@media (min-width: 480px) {
+@media (max-width: 768px) {
   .wide-box {
-    width: 480px;
+    max-width: 480px;
   }
   .narrow-box {
-    width: 360px;
+    max-width: 360px;
   }
 }
 
@@ -74,6 +74,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   gap: 10px;
 }
