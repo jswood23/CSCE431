@@ -1,66 +1,55 @@
+<%= stylesheet_link_tag "about" %>
+<head>
 
-    <%= stylesheet_link_tag "about" %>
-    <head>
-    
-    
-    <script src="https://kit.fontawesome.com/0c70f2312b.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0c70f2312b.js" crossorigin="anonymous"></script>
 
-    </head>
-    <script>
-        function buttonOnClick(attr_name) {
-            var e = document.getElementById(attr_name);
-            e.scrollIntoView(true);
-        }
+</head>
+<script>
+    // button action handlers to scroll to corresponding description boxes 
+    function buttonOnClick(attr_name) {
+        var e = document.getElementById(attr_name);
+        e.scrollIntoView(true);
+    }
 
-        function downButtonOnClick() {
-            var e = document.getElementById("desc-section");
-            e.scrollIntoView(true);
-        }
-    
-    </script>
-    <div class="about-container">
+    function downButtonOnClick() {
+        var e = document.getElementById("desc-section");
+        e.scrollIntoView(true);
+    }
 
-        <div class="top-section">
+</script>
+<div class="about-container">
 
-            <div class="site-wrapper-inner">
+    <div class="top-section">
 
-                <div class="container">
-
-                <div class="inner main">
+            <div class="inner">
                     <h1 class="title-text">About Us</h1>
-                        
-                        <div class="title-buttons" id="test">
+                    
+                    <div class="title-buttons">
+                        <%# button for each header %>
                         <% @page.each do |attr_name, attr_value| %>
-                    
                             <a onclick="buttonOnClick('<%= attr_name %>')"  class="btn btn-lg section-button"><%= attr_name %></a>
-                    
                         <% end %>
-                        </div>
-                        
-                </div>
-
-                </div>
-            
-                <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
+                    </div>
+                    
             </div>
 
+            <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
         </div>
 
-        <div class="description-section" id="desc-section">
-            <% @page.each do |attr_name, attr_value| %>
-                <div class="desc-box" id="<%= attr_name %>">
-                    <div class="desc-header">
-                        <%= attr_name %>
-                    </div>
-                    <div class="desc-text">
-                        <%= attr_value %>
-                    </div>
-                </div>
-            <% end %>
-            
-        </div>
     </div>
 
-
-
-    
+    <div class="description-section" id="desc-section">
+        <%# description text corresponding to each header  %>
+        <% @page.each do |attr_name, attr_value| %>
+            <div class="desc-box" id="<%= attr_name %>">
+                <div class="desc-header">
+                    <%= attr_name %>
+                </div>
+                <div class="desc-text">
+                    <%= attr_value %>
+                </div>
+            </div>
+        <% end %>
+        
+    </div>
+</div>

@@ -12,6 +12,7 @@ RSpec.describe('external/about.html.erb', type: :feature) do
     expect(page).to(have_content('About Us'))
   end
 
+  # all subheaders in database exist and match those shown on the page
   it 'shows correct subheaders' do
     about_page = Page.where(page_name: 'about').pluck(:page_data)
     about_page.each do |attr|
@@ -22,6 +23,7 @@ RSpec.describe('external/about.html.erb', type: :feature) do
     end
   end
 
+  # all descriptions in database exist and match those shown on the page
   it 'shows correct descriptions' do
     about_page = Page.where(page_name: 'about').pluck(:page_data)
     about_page.each do |attr|
