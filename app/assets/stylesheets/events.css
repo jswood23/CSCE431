@@ -5,7 +5,6 @@
 @import url("./components/event_cards.css");
 
 .show_event {
-  width: 100%;
   display: block;
   justify-content: start;
 }
