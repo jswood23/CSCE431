@@ -19,6 +19,5 @@ class ExternalController < ApplicationController
     @page = JSON.parse(Page.order('updated_at DESC').where(page_name: 'home').first[:page_data])
   end
 
-  def faq;
-  end
+  def faq; end
 end
