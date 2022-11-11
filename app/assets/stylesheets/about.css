@@ -1,8 +1,9 @@
 
-a,
-a:focus,
-a:hover {
-  color: #fff;
+
+.section-button:focus,
+.section-button:hover {
+  background-color:#FFFFFF90;
+ 
 }
 
 .section-button {
@@ -11,6 +12,7 @@ a:hover {
     text-shadow: none;
     border: 1px solid rgb(0, 0, 0); 
     margin: 20px;
+    transition-duration: .3s;
 }
 
 
@@ -22,6 +24,12 @@ body {
   text-align: center;
 }
 
+
+.about-container {
+  height: 100%;
+  font-family: Sansita One;
+  
+}
 
 .top-section {
   display: table;

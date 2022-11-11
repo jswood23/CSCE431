@@ -18,45 +18,49 @@
         }
     
     </script>
+    <div class="about-container">
 
-    <div class="top-section">
+        <div class="top-section">
 
-        <div class="site-wrapper-inner">
+            <div class="site-wrapper-inner">
 
-            <div class="container">
+                <div class="container">
 
-            <div class="inner main">
-                <h1 class="title-text">About Us</h1>
+                <div class="inner main">
+                    <h1 class="title-text">About Us</h1>
+                        
+                        <div class="title-buttons" id="test">
+                        <% @page.each do |attr_name, attr_value| %>
                     
-                    <div class="title-buttons" id="test">
-                    <% @page.each do |attr_name, attr_value| %>
-                
-                        <a onclick="buttonOnClick('<%= attr_name %>')"  class="btn btn-lg section-button"><%= attr_name %></a>
-                
-                    <% end %>
-                    </div>
+                            <a onclick="buttonOnClick('<%= attr_name %>')"  class="btn btn-lg section-button"><%= attr_name %></a>
                     
+                        <% end %>
+                        </div>
+                        
+                </div>
+
+                </div>
+            
+                <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
             </div>
 
-            </div>
-        
-            <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
         </div>
 
+        <div class="description-section" id="desc-section">
+            <% @page.each do |attr_name, attr_value| %>
+                <div class="desc-box" id="<%= attr_name %>">
+                    <div class="desc-header">
+                        <%= attr_name %>
+                    </div>
+                    <div class="desc-text">
+                        <%= attr_value %>
+                    </div>
+                </div>
+            <% end %>
+            
+        </div>
     </div>
 
-    <div class="description-section" id="desc-section">
-        <% @page.each do |attr_name, attr_value| %>
-            <div class="desc-box" id="<%= attr_name %>">
-                <div class="desc-header">
-                    <%= attr_name %>
-                </div>
-                <div class="desc-text">
-                    <%= attr_value %>
-                </div>
-            </div>
-        <% end %>
-        
-    </div>
+
 
     
