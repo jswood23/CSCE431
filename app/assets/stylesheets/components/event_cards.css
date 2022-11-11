@@ -20,6 +20,14 @@
   flex-direction: row;
 }
 
+/* sizing for mobile */
+@media (min-width: 480px) and (max-width: 768px) {
+  .event_card {
+    flex: 1 0 90%;
+    max-width: 90%;
+  }
+}
+
 /* styling for event date (left section of event card) */
 
 .event_date {
