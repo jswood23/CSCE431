@@ -18,7 +18,7 @@ RSpec.describe('Creating an event', type: :feature) do
       visit events_path
       expect(page).to(have_content('Test Event'))
       expect(page).to(have_content(current_time.year))
-      expect(page).to(have_content(current_time.month))
+      expect(page).to(have_content(current_time.to_formatted_s(:get_month)))
       expect(page).to(have_content('This is a test event'))
       expect(page).to(have_content('Password: test'))
       expect(page).to(have_content('Edit'))
@@ -106,7 +106,7 @@ RSpec.describe('Creating an event', type: :feature) do
       visit events_path
       expect(page).to(have_content('New Test Event'))
       expect(page).to(have_content(updated_time.year))
-      expect(page).to(have_content(updated_time.month))
+      expect(page).to(have_content(updated_time.to_formatted_s(:get_month)))
       expect(page).to(have_content('This is a new test event'))
       expect(page).to(have_content('Password: newtest'))
       expect(page).to(have_content('Edit'))
