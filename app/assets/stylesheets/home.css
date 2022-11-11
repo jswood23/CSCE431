@@ -1,3 +1,6 @@
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+
 .container {
   display: flex;
   align-items: center;
@@ -6,14 +9,6 @@
 
 .image {
   flex-basis: 40%;
-  width: 20vw;
   height: auto;
   order: 2;
-}
-
-h1 {
-  padding-left: 2vw;
-  font-size: 4vw;
-  /* color: #CD5C5C; */
-  /* font: italic 20px "Fira Sans", serif; */
 }
