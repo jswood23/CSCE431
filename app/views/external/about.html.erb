@@ -15,6 +15,15 @@
         var e = document.getElementById("desc-section");
         e.scrollIntoView(true);
     }
+    
+    // jump back to top when page is refreshed 
+    window.onbeforeunload = function () {
+        window.scroll({
+        top: -200,
+        behavior: 'instant'
+    })
+        
+    }
 
 </script>
 <div class="about-container">
