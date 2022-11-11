@@ -1,14 +1,22 @@
 <%= stylesheet_link_tag "contact" %>
 
-<div class="content" style="display: flex;">
-    <h1 id="heading">Get In Touch</h1>
-    <h4 id="blurb">Interested in contacting MSCHO?<br> please feel free to send us an email or find us at one of the links provided below.</h4>
-    <%= link_to "Email Us", @page['Email'], class: "btn pink_button"%>
-    <div class="container">
-            <% if @page['links'] %>
-                <% @page['links'].each do |key, value| %>
-                    <%= link_to image_tag("/assets/"+key+".png", class: "logo"), value %>
-                <% end %>
-            <% end %>
+<body>
+  <div class="container">
+    <div class="box">
+        <div class="content" style="display: flex;">
+            <h1 id="heading">Get In Touch</h1><br/>
+            <h2 id="blurb">Interested in contacting MCHSO?</h2>
+            <p>Please feel free to send us an email or find us at one of the links provided below.</p>
+            
+            <%= link_to "Email Us", @page['Email'], class: "btn pink_button"%>
+            <div class="container">
+                    <% if @page['links'] %>
+                        <% @page['links'].each do |key, value| %>
+                            <%= link_to image_tag("/assets/"+key+".png", class: "logo"), value %>
+                        <% end %>
+                    <% end %>
+            </div>
+        </div>
     </div>
-</div>
+  </div>
+</body>
