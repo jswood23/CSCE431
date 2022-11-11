@@ -1,3 +1,5 @@
+@import url("./components/buttons.css");
+
 html,
 body {
   width: 100%;
@@ -18,6 +20,13 @@ body {
   width: 100%;
   height: 100%;
   background-color: #F5D7CD;
+}
+
+.about_button {
+  margin: 20px;
+  padding: 20px;
+  scale: 1.5; 
+  cursor: pointer;
 }
 
 .section-button:focus,
@@ -47,7 +56,7 @@ body {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 /* flex display so new sections are added vertically */
