@@ -23,25 +23,11 @@ body {
 }
 
 .about_button {
-  margin: 20px;
+  margin: 40px;
   padding: 20px;
   scale: 1.5; 
   cursor: pointer;
-}
-
-.section-button:focus,
-.section-button:hover {
-  background-color:#FFFFFF90;
- 
-}
-
-.section-button {
-  background-color: rgb(255, 255, 255);
-  width: 200px;
-  text-shadow: none;
-  border: 1px solid rgb(0, 0, 0); 
-  margin: 20px;
-  transition-duration: .3s;
+  text-decoration: none;
 }
 
 .inner {
