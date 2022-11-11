@@ -1,0 +1,13 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Sansita One";
+}
+
+h1 {
+  width: 100%;
+  display: block;
+  text-align: center;
+  border-bottom: black 1px dotted;
+}

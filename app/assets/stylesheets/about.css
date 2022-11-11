@@ -1,4 +1,5 @@
 @import url("./components/buttons.css");
+@import url("./components/fancy_headers.css");
 
 html,
 body {
@@ -12,7 +13,6 @@ body {
 
 .about-container {
   height: 100%;
-  font-family: Sansita One;
 }
 
 .top-section {
@@ -66,7 +66,6 @@ body {
   background-color: #F5D7CD;
   display: flex;
   flex-direction: column;
-  font-family: Sansita One;
 }
 
 .desc-box {

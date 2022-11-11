@@ -51,9 +51,9 @@
         <%# description text corresponding to each header  %>
         <% @page.each do |attr_name, attr_value| %>
             <div class="desc-box" id="<%= attr_name %>">
-                <div class="desc-header">
+                <h4 class="desc-header">
                     <%= attr_name %>
-                </div>
+                </h4>
                 <div class="desc-text">
                     <%= attr_value %>
                 </div>
