@@ -22,6 +22,7 @@
 
 .pink_button:link {
   text-decoration: none;
+  padding: 10px 20px;
 }
 
 .pink_button:hover {
@@ -52,6 +53,7 @@
 .black_button:link {
   text-decoration: none;
   color: white;
+  padding: 10px 20px;
 }
 
 .black_button:hover {

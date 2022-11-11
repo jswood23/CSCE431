@@ -1,0 +1,32 @@
+@import url("./components/buttons.css");
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+@import url("./components/forms.css");
+
+.update_points_type_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.update_points_type_form input {
+  flex: 2;
+  margin-right: 10px;
+  max-height: 38px;
+}
+
+.pink_button {
+  flex: 1;
+  margin-right: 10px;
+  height: 38px;
+  margin-top: 0;
+}
+
+.update_points_type_form a {
+  flex: 1;
+  margin-top: 0;
+}
+
+.black_button:link {
+  max-height: 38px;
+  padding: 3px;
+}
