@@ -49,7 +49,7 @@
   color: white;
   font-weight: bold;
   margin: 0;
-  padding: 0;
+  padding: 0 0.25em 0;
   text-align: center;
   /* don't allow user to select date text */
   user-select: none;
