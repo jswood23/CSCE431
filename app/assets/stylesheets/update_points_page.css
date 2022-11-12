@@ -28,5 +28,6 @@
 
 .black_button:link {
   max-height: 38px;
-  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

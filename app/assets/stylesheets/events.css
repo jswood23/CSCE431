@@ -8,3 +8,8 @@
   display: block;
   justify-content: start;
 }
+
+.pink_button:link,
+.black_button:link {
+  padding: 10px 20px;
+}
