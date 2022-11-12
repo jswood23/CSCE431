@@ -1,4 +1,6 @@
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+
 table {
-    background-color:#F5D7CD;
-    font-family: Sansita One;
+    background-color: white;
 }
