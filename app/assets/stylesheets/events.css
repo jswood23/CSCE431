@@ -9,7 +9,6 @@
   justify-content: start;
 }
 
-.pink_button:link,
-.black_button:link {
+.link_button {
   padding: 10px 20px;
 }
