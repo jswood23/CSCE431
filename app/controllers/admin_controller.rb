@@ -110,8 +110,10 @@ class AdminController < ApplicationController
       points_type = PointsType.find(points_type_id)
       if points_type
         new_name = params[:name]
-        points_type.name = new_name
-        points_type.save!
+        if points_type != new_name
+          points_type.name = new_name
+          points_type.save!
+        end
       end
     else
       new_points_type = PointsType.create!(name: 'New Points Type')
