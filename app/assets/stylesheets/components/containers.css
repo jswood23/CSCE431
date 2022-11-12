@@ -6,6 +6,7 @@ html {
 }
 
 body {
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   background-color: #f5d7cd;
 }
@@ -24,40 +25,40 @@ body {
 
 /* sizing for mobile */
 @media (max-width: 768px) {
-  .wide-box {
+  .box {
     max-width: 480px;
   }
-  .narrow-box {
+  .narrow {
     max-width: 360px;
   }
 }
 
 /* sizing for tablet */
 @media (min-width: 769px) {
-  .wide-box {
+  .box {
     width: 769px;
   }
-  .narrow-box {
+  .narrow {
     width: 500px;
   }
 }
 
 /* sizing for small desktop */
 @media (min-width: 992px) {
-  .wide-box {
+  .box {
     width: 992px;
   }
-  .narrow-box {
+  .narrow {
     width: 600px;
   }
 }
 
 /* sizing for wide desktop */
 @media (min-width: 1200px) {
-  .wide-box {
+  .box {
     width: 1200px;
   }
-  .narrow-box {
+  .narrow {
     width: 600px;
   }
 }

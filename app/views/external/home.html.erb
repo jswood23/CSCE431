@@ -2,24 +2,50 @@
 <html>
    <head>
       <%= stylesheet_link_tag "home" %>
-
       <title> Home Page </title>
    </head>
    <body>
       <div class = "container">
          <div class="box">
-            <div>
-               <img class="image" src="/assets/mchso-logo.png" alt="logo">
+            <div class="box-title-logo">
+               <img class="image-logo" src="/assets/mchso-logo.png" alt="logo" />
+               <h1 class= "home-title"> 
+                  The Maternal and Child Health Student Organization
+               </h1>
             </div>
             <div>
-               <h1> <%= @page['title'] %> </h1>
+               <h3> “The well-being of women & children determines the health of future generations” </h3>
+               <h2> Learning Leads To Change </h2>
+            <div>
+            <div class="p-horiz">
+               <p> Maternal health is the health of women during pregnancy, 
+                  childbirth, and the postnatal period while child health is 
+                  the extent to which children are able to thrive, satisfy 
+                  their needs, and devlop the capacities that allow them to 
+                  interact successfully with their enviroments. Maternal and 
+                  child health is the overlap and interaction between the 
+                  development, needs, and health of both the mother and child. 
+               </p>
+               <b> What are some components of MCH? </b>
+                  <ul>
+                     <li> Family planning and reproductive health services</li>
+                     <li>Maternal, newborn, and child health servies</li>               
+                     <li>Health communications</li>
+                     <li>Health commodiites and supplies</li>
+                     <li>Health systems strenghening</li>
+                  </ul>
+               <h3> Learn more about maternal and child health, gain certificates, 
+                  volunteer, network and share your passion for MCH!
+               </h3>
             </div>
-         <div>
+            <div class="image-center"> 
+               <img class = "image-heart" src="/assets/MchsoWordCloud.png" alt="word cloud with various values of MCHSO" />
+            </div>
+         </div>
       </div>
-
-      </div>
-         <p> <%= @page['blurb'] %> </p>
-      <div>
-
    </body>
 </html>
+
+<%#= @page['title'] %> 
+<%#= @page['blurb'] %>
+
