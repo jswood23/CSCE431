@@ -1,22 +1,22 @@
 <%= form_with(model: page) do |form| %>
   <% if page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
-
-      <ul>
-        <% page.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+      <% page.errors.each do |error| %>
+        <% flash.alert =  "Update failed: " + error.full_message%>
+      <% end %>
   <% end %>
 
-  <div class="field">
-    <%= form.label :page_data %>
-    <%= form.text_area :page_data, style: 'width:60vw; height:40vh;'%>
-  </div>
+  <div class="container">
+    <div class="box wide-box">
+      <h1>Manage <%= page.page_name%></h1>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <div class="field">
+        <%= form.text_area :page_data, style: 'width:60vw; height:40vh;'%>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Update page", :class => "pink_button" %>
+      </div>
 <% end %>
+      <%= link_to 'Back', '/manage_pages' %>
+    </div>
+  </div>
