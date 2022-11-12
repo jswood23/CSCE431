@@ -77,7 +77,10 @@ rails console -e development
 
 ## Environmental Variables/Files ##
 
-** (Add instructions/description if your application requires it.)
+** Credentials.yml contains:
+** Google Client ID
+** Google Client Secret
+** Google app password
 
 
 ## Deployment ##
