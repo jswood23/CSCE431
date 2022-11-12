@@ -1,0 +1,18 @@
+@import url("./components/containers.css");
+@import url("./components/event_cards.css");
+@import url("./components/fancy_headers.css");
+@import url("./components/forms.css");
+
+.events_container {
+  justify-content: center;
+}
+
+th {
+  font-family: "Sansita One";
+  font-size: 1.5em;
+}
+
+.user_table {
+  border-collapse: separate;
+  border-spacing: 3em 0.75em;
+}
