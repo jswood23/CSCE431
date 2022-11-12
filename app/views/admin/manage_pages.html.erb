@@ -1,15 +1,21 @@
-<h1>Manage Pages</h1>
-<p>You can manage the external website here.</p>
+<%= stylesheet_link_tag "manage_pages" %>
 
-<h2>Pages</h2>
-<table>
-    <tbody>
-        <% @pages.each do |page| %>
-            <tr>
-                <td>
-                    <%= button_to page.page_name, '/pages/' + page.id.to_s + '/edit', :class => "btn btn-secondary", :method => :get %>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<div class="container">
+    <div class="narrow-box box">
+        <h1>Manage Pages</h1>
+        <p>You can manage the external website here.</p>
+        <table>
+            <tbody>
+                <% @pages.each do |page| %>
+                    <tr>
+                        <td>
+                            <%= button_to page.page_name, '/pages/' + page.id.to_s + '/edit', :class => "pink_button", :method => :get %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
