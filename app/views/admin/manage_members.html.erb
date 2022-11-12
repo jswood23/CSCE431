@@ -1,16 +1,19 @@
 <%= stylesheet_link_tag "managemembers" %>
 
+<div class="manage-container">
+
 <h1>Manage Members</h1>
-<p>You can manage members here.</p>
+<p class="center">You can manage members here.</p>
+
 
 <div class="box">
-  <h2>New Users</h2>
+  <h1 class="table-title">New Users</h1>
   <% if @new_users.length > 0 %>
-    <table>
+    <table class="table border border-dark table-borderless">
 
-    <th>Name</th>
-    <th>Email</th>
-    <th>Actions</th>
+    <th><h2>Name</h2></th>
+    <th><h2>Email</h2></th>
+    <th><h2>Actions</h2></th>
     <tbody>
       <% @new_users.each do |user| %>
         <tr id=<%= "new_user_row_#{user.id}" %>>
@@ -18,7 +21,7 @@
           <td><%= user.email %></td>
           <td>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Manage
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -43,15 +46,17 @@
 </div>
 
 <div class="box">
-  <h2>Members</h2>
+  <h1 class="table-title">Members</h1>
   <% if @members.length > 0 %>
-    <table class="table">
+
+  
+    <table class="table border border-dark table-borderless">
       <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Points</th>
-        <th>Member Status</th>
-        <th>Actions</th>
+        <th><h2>Name</h2></th>
+        <th><h2>Email</h2></th>
+        <th><h2>Points</h2></th>
+        <th><h2>Member Status</h2></th>
+        <th><h2>Actions </h2></th>
       </thead>
       <tbody>
         <% @members.each do |user| %>
@@ -62,7 +67,7 @@
             <td><%= get_user_status(user) %>
             <td>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Manage
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -93,21 +98,22 @@
         <% end %>
       </tbody>
     </table>
+  
   <% else %>
     <p>No members.</p>
   <% end %>
 </div>
 
 <div class="box">
-  <h2>Alumni</h2>
+  <h1 class="table-title">Alumni</h1>
   <% if @alumni.length > 0 %>
-    <table>
+    <table class="table border border-dark table-borderless">
       <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Points</th>
-        <th>Member Status</th>
-        <th>Actions</th>
+        <th><h2>Name</h2></th>
+        <th><h2>Email</h2></th>
+        <th><h2>Points</h2></th>
+        <th><h2>Member Status</h2></th>
+        <th><h2>Actions</h2></th>
       </thead>
       <tbody>
         <% @alumni.each do |user| %>
@@ -118,7 +124,7 @@
             <td><%= get_user_status(user) %>
             <td>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Manage
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -152,4 +158,5 @@
   <% else %>
     <p>No alumni.</p>
   <% end %>
+</div>
 </div>

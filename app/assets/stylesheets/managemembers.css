@@ -1,6 +1,26 @@
 @import url("./components/containers.css");
 @import url("./components/fancy_headers.css");
+@import url("./components/buttons.css");
 
 table {
     background-color: white;
+}
+
+.table-title {
+    border-style: none;   
+}
+
+.pink_button {
+    margin-top: 0px;
+}
+
+.box {
+    margin: 30px 30px 30px 30px;
+}
+
+.manage-container {
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+  gap: 10px;
 }
