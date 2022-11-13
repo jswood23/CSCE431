@@ -63,7 +63,7 @@
           <tr id=<%= "member_row_#{user.id}" %>>
             <td><%= user.full_name %></td>
             <td><%= user.email %></td>
-            <td><%= link_to get_points(user), "/show_user_attendance/#{user.id}" %></td>
+            <td><%= link_to get_points(user), "/show_user_attendance/#{user.id}", class:'pink-link' %></td>
             <td><%= get_user_status(user) %>
             <td>
               <div class="dropdown">
