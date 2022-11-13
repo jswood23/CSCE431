@@ -55,7 +55,7 @@ if Page.count < 3
     {
       page_name: 'home',
       page_data: '{
-        "title" : "Welcome to the Maternal and Child Health Student Organization",
+        "title" : "The Maternal and Child Health Student Organization",
 
         "blurb" : "Welcome blurb, summary of the history and basic information of the org."
   }'
