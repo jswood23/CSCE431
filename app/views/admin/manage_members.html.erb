@@ -1,146 +1,173 @@
+<%= stylesheet_link_tag "managemembers" %>
+
+<div class="manage-container">
+
 <h1>Manage Members</h1>
-<p>You can manage members here.</p>
+<p class="caption-text">You can manage members here.</p>
 
-<h2>New Users</h2>
-<% if @new_users.length > 0 %>
-  <table>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Actions</th>
-    <tbody>
-      <% @new_users.each do |user| %>
-        <tr id=<%= "new_user_row_#{user.id}" %>>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%# option to give user member status %>
-                <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <%# option to give user alumni status %>
-                <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
-                <%# option to give user admin status %>
-                <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
-                <%# option to delete user %>
-                <li><%= link_to "Delete User", "/delete_user/#{user.id}", class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No new users.</p>
-<% end %>
-
-<h2>Members</h2>
-<% if @members.length > 0 %>
-  <table>
+<div class="box">
+  <h1 class="table-title">New Users</h1>
+  <% if @new_users.length > 0 %>
+  
+    <table class="table table-borderless table-class">
     <thead>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Points</th>
-      <th>Member Status</th>
-      <th>Actions</th>
+    <tr>
+      <th><h2>Name</h2></th>
+      <th><h2>Email</h2></th>
+      <th><h2>Actions</h2></th>
+    
+    </tr>
     </thead>
-    <tbody>
-      <% @members.each do |user| %>
-        <tr id=<%= "member_row_#{user.id}" %>>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td><%= link_to get_points(user), "/show_user_attendance/#{user.id}" %></td>
-          <td><%= get_user_status(user) %>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <% if !user.admin %>
-                  <%# option to give user admin status %>
-                  <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
-                <% else %>
-                  <%# option to give user member status %>
-                  <li><%= link_to "Remove Admin Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <% end %>
-                <% if !user.member %>
+      <tbody>
+        <% @new_users.each do |user| %>
+          <tr id=<%= "new_user_row_#{user.id}" %>>
+            <td scope="row" data-label="Name"><%= user.full_name %></td>
+            <td data-label="Email"><%= user.email %></td>
+            <td>
+              <div class="btn-group dropdown">
+                <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <%# option to give user member status %>
                   <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <% end %>
-                <% if !user.alumni %>
                   <%# option to give user alumni status %>
                   <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
-                <% else %>
-                  <%# option to give user member status %>
-                  <li><%= link_to "Remove Alumni Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <% end %>
-                <%# option to take away user's member status %>
-                <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No members.</p>
-<% end %>
-
-<h2>Alumni</h2>
-<% if @alumni.length > 0 %>
-  <table>
-    <thead>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Points</th>
-      <th>Member Status</th>
-      <th>Actions</th>
-    </thead>
-    <tbody>
-      <% @alumni.each do |user| %>
-        <tr id=<%= "member_row_#{user.id}" %>>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td><%= user.information.points %></td>
-          <td><%= get_user_status(user) %>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <% if !user.admin %>
                   <%# option to give user admin status %>
                   <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
-                <% else %>
-                  <%# option to give user member status %>
-                  <li><%= link_to "Remove Admin Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <% end %>
-                <% if !user.member %>
-                  <%# option to give user member status %>
-                  <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <% end %>
-                <% if !user.alumni %>
-                  <%# option to give user alumni status %>
-                  <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
-                <% else %>
-                  <%# option to give user member status %>
-                  <li><%= link_to "Remove Alumni Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <% end %>
-                <%# option to take away user's member status %>
-                <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No alumni.</p>
-<% end %>
+                  <%# option to delete user %>
+                  <li><%= link_to "Delete User", "/delete_user/#{user.id}", class: "dropdown-item" %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+ 
+  <% else %>
+    <p class="caption-text">No new users.</p>
+  <% end %>
+</div>
+
+<div class="box">
+  <h1 class="table-title">Members</h1>
+  <% if @members.length > 0 %>
+    <table class="table table-borderless table-class">
+      <thead>
+      <tr>
+        <th><h2>Name</h2></th>
+        <th><h2>Email</h2></th>
+        <th><h2>Points</h2></th>
+        <th><h2>Member Status</h2></th>
+        <th><h2>Actions </h2></th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @members.each do |user| %>
+          <tr id=<%= "member_row_#{user.id}" %>>
+            <td scope="row" data-label="Name"><%= user.full_name %></td>
+            <td data-label="Email"><%= user.email %></td>
+            <td data-label="Points"><%= link_to get_points(user), "/show_user_attendance/#{user.id}", class:'pink-link' %></td>
+            <td data-label="Member Status"><%= get_user_status(user) %>
+            <td data-label="Actions">
+              <div class="btn-group dropdown">
+                <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <% if !user.admin %>
+                    <%# option to give user admin status %>
+                    <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+                  <% else %>
+                    <%# option to give user member status %>
+                    <li><%= link_to "Remove Admin Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <% end %>
+                  <% if !user.member %>
+                    <%# option to give user member status %>
+                    <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <% end %>
+                  <% if !user.alumni %>
+                    <%# option to give user alumni status %>
+                    <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
+                  <% else %>
+                    <%# option to give user member status %>
+                    <li><%= link_to "Remove Alumni Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <% end %>
+                  <%# option to take away user's member status %>
+                  <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  
+  
+  <% else %>
+    <p class="caption-text">No members.</p>
+  <% end %>
+</div>
+
+<div class="box">
+  <h1 class="table-title">Alumni</h1>
+  <% if @alumni.length > 0 %>
+  
+    <table class="table table-borderless table-class">
+      <thead>
+      <tr>
+        <th><h2>Name</h2></th>
+        <th><h2>Email</h2></th>
+        <th><h2>Points</h2></th>
+        <th><h2>Member Status</h2></th>
+        <th><h2>Actions</h2></th>
+      </tr>  
+      </thead>
+      <tbody>
+        <% @alumni.each do |user| %>
+          <tr id=<%= "member_row_#{user.id}" %>>
+            <td scope="row" data-label="Name"><%= user.full_name %></td>
+            <td data-label="Email"><%= user.email %></td>
+            <td data-label="Points"><%= user.information.points %></td>
+            <td data-label="Member Status"><%= get_user_status(user) %>
+            <td data-label="Actions">
+              <div class="btn-group dropdown">
+                <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <% if !user.admin %>
+                    <%# option to give user admin status %>
+                    <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+                  <% else %>
+                    <%# option to give user member status %>
+                    <li><%= link_to "Remove Admin Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <% end %>
+                  <% if !user.member %>
+                    <%# option to give user member status %>
+                    <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <% end %>
+                  <% if !user.alumni %>
+                    <%# option to give user alumni status %>
+                    <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
+                  <% else %>
+                    <%# option to give user member status %>
+                    <li><%= link_to "Remove Alumni Status", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <% end %>
+                  <%# option to take away user's member status %>
+                  <li><%= link_to "Remove Member Status", "/remove_user_member/#{user.id}", class: "dropdown-item" %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% else %>
+    <p class="caption-text">No alumni.</p>
+  <% end %>
+
+
+</div>
