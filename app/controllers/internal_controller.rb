@@ -24,7 +24,7 @@ class InternalController < ApplicationController
 
   def search
     if params[:search].blank?
-      redirect_to(internal_contact) and return
+      redirect_to('/internal_contact') and return
     else
       @parameter = params[:search].downcase
       @results = User.all.where('lower(full_name) LIKE :search', search: "#{@parameter}%")
