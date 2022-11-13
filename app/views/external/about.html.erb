@@ -4,6 +4,7 @@
 <script src="https://kit.fontawesome.com/0c70f2312b.js" crossorigin="anonymous"></script>
 
 </head>
+
 <script>
     // button action handlers to scroll to corresponding description boxes 
     function buttonOnClick(attr_name) {
@@ -26,28 +27,25 @@
     }
 
 </script>
+
 <div class="about-container">
-
     <div class="top-section">
-
-            <div class="inner">
-                    <h1 class="title-text">About Us</h1>
+        <div class="inner">
+            <h1 class="title-text">About Us</h1>
                     
-                    <div class="title-buttons">
-                        <%# button for each header %>
-                        <% @page.each do |attr_name, attr_value| %>
-                            <a onclick="buttonOnClick('<%= attr_name %>')"  class="about_button black_button"><%= attr_name %></a>
-                        <% end %>
-                    </div>
-                    
+            <div class="title-buttons">
+                <%# button for each header %>
+                <% @page.each do |attr_name, attr_value| %>
+                    <a onclick="buttonOnClick('<%= attr_name %>')"  class="about_button black_button"><%= attr_name %></a>
+                <% end %>
             </div>
-
-            <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down down-button"></i>
+                    
         </div>
+      
+        <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down fa-xl down-button"></i>
+     </div>
 
-    </div>
-
-    <div class="description-section" id="desc-section">
+     <div class="description-section" id="desc-section">
         <%# description text corresponding to each header  %>
         <% @page.each do |attr_name, attr_value| %>
             <div class="desc-box" id="<%= attr_name %>">
