@@ -1,0 +1,27 @@
+table {
+   /* margin: 2%; */
+   /* border:grey 1px solid; */
+   width:55vw;
+}
+
+.table-style {
+   display:flex;
+   justify-content: center;
+   margin: 2%;
+   /* border:black 1px solid; */
+   overflow-x:auto;
+   
+}
+
+th {
+   font-family: "Sansita One";
+   margin-bottom:4%;
+}
+
+td {
+   font-family: 'Roboto';
+   /* padding-top:2%;
+   padding-right:2%;
+   padding-bottom:2%; */
+   min-width:max-content;
+}

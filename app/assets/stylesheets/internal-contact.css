@@ -1,0 +1,45 @@
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+@import url("./components/buttons.css");
+@import url("./components/forms.css");
+@import url("./components/member_table.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+   padding: 2%;
+   border:none;
+}
+
+.input-group {
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-evenly;
+   align-content: center;
+   padding-bottom: 4%;
+   border-bottom: black 1px dotted;
+   height:auto;
+   margin:none;
+}
+
+.search-bar {
+   width:50vw;
+   padding-top:8px;
+   padding-left:2%;
+   padding-right:2%;
+
+}
+
+.rounded-circle {
+   /* padding:25%; */
+   /* min-width: 20px;
+   min-height:20px; */
+}
+
