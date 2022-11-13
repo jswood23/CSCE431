@@ -45,9 +45,9 @@
               <tr id=<%= "member_row_#{user.id}" %>>
               <td>
                 <% if user.avatar_url %>
-                  <%= image_tag(user.avatar_url, class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+                  <%= image_tag(user.avatar_url, class: 'rounded-circle', size: 40, alt: "Profile Picture") %>
                 <% else %>
-                  <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+                  <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 40, alt: "Profile Picture") %>
                 <% end %>
               </td>
                 <td><%= user.full_name %></td>
