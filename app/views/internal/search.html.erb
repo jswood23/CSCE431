@@ -5,7 +5,6 @@
   <div class="box">
 
     <h3>Search Results</h3>
-    <br>
       <% if @results.length > 0%>
       <div class="table-style">
         <table>
@@ -14,7 +13,7 @@
             <th>Name</th>
             <th>Member Status</th>
             <th>Years Active</th>
-            <th>Email</th>
+            <th class="long-cell">Email</th>
           </thead>
           <tbody>
             <% @results.each do |result| %>
@@ -29,16 +28,15 @@
                 <td><%= result.full_name %></td>
                 <td><%= get_user_status(result) %>
                 <td><%= result.information.start_year %> - <%= result.information.end_year %></td>
-                <td><%= result.email %></td>
+                <td class="long-cell"><%= result.email %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
     <% else %>
-      <p>No members found.</p>
+      <p class="no-results">No members found.</p>
     <% end %>
-    <br>
     <%= link_to 'Back', '/internal_contact', class: "btn pink_button"%>
   </div>
 <div>

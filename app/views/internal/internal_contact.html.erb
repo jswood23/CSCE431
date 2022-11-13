@@ -23,7 +23,7 @@
             <th> Name</th>
             <th> Member Status</th>
             <th> Years Active</th>
-            <th> Email</th>
+            <th class="long-cell"> Email</th>
           </thead>
           <tbody>
             <% @members.each do |user| %>
@@ -38,7 +38,7 @@
                 <td><%= user.full_name %></td>
                 <td><%= get_user_status(user) %>
                 <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
-                <td><%= user.email %></td>
+                <td class="long-cell"><%= user.email %></td>
               </tr>
             <% end %>
             <% @alumni.each do |user| %>
@@ -53,7 +53,7 @@
                 <td><%= user.full_name %></td>
                 <td><%= get_user_status(user) %>
                 <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
-                <td><%= user.email %></td>
+                <td class="long-cell"><%= user.email %></td>
               </tr>
             <% end %>
           </tbody>

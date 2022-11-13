@@ -11,6 +11,11 @@ h1 {
    border:none;
 }
 
+.no-results{
+   font-family: 'Roboto';
+   font-size: 200%;
+}
+
 .input-group {
    position: relative;
    display: flex;
@@ -19,14 +24,13 @@ h1 {
    justify-content: space-evenly;
    align-content: center;
    padding-bottom: 4%;
-   /* border-bottom: black 1px dotted; */
    height:auto;
    margin:none;
 }
 
 .table-avatar {
-   text-align: right;
-   padding-right: 5%;
+   text-align: center;
+   width:fit-content;
 }
 
 .search-bar {
@@ -37,16 +41,13 @@ h1 {
    width:100%;
 }
 
-.rounded-circle {
-   /* padding:25%; */
-   /* min-width: 20px;
-   min-height:20px; */
-}
+tr:hover {background-color: #f5d7cd;}
+
 
 /* sizing for mobile */
 @media (max-width: 768px) {
    th, td {
-      font-size: .75rem;
+      font-size: .72rem;
    }
 
    .rounded-circle {
@@ -77,6 +78,7 @@ h1 {
    .search-bar {
       width:70%;
    }
+
  }
  
  /* sizing for small desktop */

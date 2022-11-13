@@ -1,29 +1,31 @@
 table {
-   /* margin: 2%; */
-   /* border:grey 1px solid; */
    width:100%;
-   table-layout:fixed;
+   table-layout:auto;
 }
 
 .table-style {
    display:flex;
    justify-content: center;
    margin: 2%;
-   /* border:black 1px solid; */
    overflow-x:auto;
-   
+
+   border-collapse: separate;
+   background-color: white;
+   border-radius: 20px;
+
+   border: 1px solid black;
+   padding: 2%;  
+   width:100%;
 }
+
 
 th {
    font-family: "Sansita One";
    margin-bottom:4%;
-   /* width:120px; */
+   padding:2%;
 }
 
 td {
    font-family: 'Roboto';
-   /* padding-top:2%;
-   padding-right:2%;
-   padding-bottom:2%; */
-   /* width:120px; */
+   padding:2%;
 }
