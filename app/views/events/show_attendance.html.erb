@@ -29,7 +29,7 @@
             <tr id=<%= "attendance_row_#{record.uid}"%>>
               <td><%= record.member_name %></td>
               <td><%= record.date_log.to_formatted_s(:get_time) %>
-              <td><%= link_to 'Remove', "/events/remove_from_attendance/#{record.event_id}/#{record.uid}" %></td>
+              <td><%= link_to 'Remove', "/events/remove_from_attendance/#{record.event_id}/#{record.uid}", class: 'remove_link' %></td>
             </tr>
           <% end %>
         </table>
@@ -37,7 +37,7 @@
         <p>No one has attended this event yet.</p>
       <% end %>
 
-      <%= link_to 'Back', events_path %>
+      <%= link_to 'Back', events_path, class: 'black_button' %>
     </div>
   </div>
 </body>

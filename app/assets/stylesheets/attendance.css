@@ -7,6 +7,10 @@
   justify-content: center;
 }
 
+.remove_link {
+  font-size: 1.2em;
+}
+
 th {
   font-family: "Sansita One";
   font-size: 1.5em;
