@@ -47,7 +47,7 @@ Page.create([
 
       "blurb" : "Welcome blurb, summary of the history and basic information of the org."
  }'
- }
+  }
 ]
            )
 # end
