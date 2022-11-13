@@ -78,4 +78,8 @@
   table td:last-child {
     border-bottom: 0;
   }
+
+  table tr:last-child {
+    border-bottom: 0;
+  }
 }

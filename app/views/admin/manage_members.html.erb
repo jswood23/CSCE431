@@ -9,19 +9,23 @@
 <div class="box">
   <h1 class="table-title">New Users</h1>
   <% if @new_users.length > 0 %>
-  <div style="overflow-x:auto, overflow-y:visible">
+  
     <table class="table table-borderless table-class">
-
+    <thead>
+    <tr>
       <th><h2>Name</h2></th>
       <th><h2>Email</h2></th>
       <th><h2>Actions</h2></th>
+    
+    </tr>
+    </thead>
       <tbody>
         <% @new_users.each do |user| %>
           <tr id=<%= "new_user_row_#{user.id}" %>>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
+            <td scope="row" data-label="Name"><%= user.full_name %></td>
+            <td data-label="Email"><%= user.email %></td>
             <td>
-              <div class="dropdown">
+              <div class="btn-group dropdown">
                 <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Manage
                 </button>
@@ -41,7 +45,7 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+ 
   <% else %>
     <p>No new users.</p>
   <% end %>
@@ -110,24 +114,26 @@
 <div class="box">
   <h1 class="table-title">Alumni</h1>
   <% if @alumni.length > 0 %>
-  <div style="overflow-x:auto, overflow-y:visible">
+  
     <table class="table table-borderless table-class">
       <thead>
+      <tr>
         <th><h2>Name</h2></th>
         <th><h2>Email</h2></th>
         <th><h2>Points</h2></th>
         <th><h2>Member Status</h2></th>
         <th><h2>Actions</h2></th>
+      </tr>  
       </thead>
       <tbody>
         <% @alumni.each do |user| %>
           <tr id=<%= "member_row_#{user.id}" %>>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.information.points %></td>
-            <td><%= get_user_status(user) %>
-            <td>
-              <div class="dropdown">
+            <td scope="row" data-label="Name"><%= user.full_name %></td>
+            <td data-label="Email"><%= user.email %></td>
+            <td data-label="Points"><%= user.information.points %></td>
+            <td data-label="Member Status"><%= get_user_status(user) %>
+            <td data-label="Actions">
+              <div class="btn-group dropdown">
                 <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Manage
                 </button>
@@ -159,7 +165,7 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+
   <% else %>
     <p>No alumni.</p>
   <% end %>
