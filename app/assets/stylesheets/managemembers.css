@@ -2,19 +2,17 @@
 @import url("./components/fancy_headers.css");
 @import url("./components/buttons.css");
 
-
 .table-class {
-    border-collapse: separate;
-    background-color: white;
-    border-radius: 20px;
-    margin: auto;
-    border: 1px solid black;
-    padding: 20px;
-    
+  border-collapse: separate;
+  background-color: white;
+  border-radius: 20px;
+  margin: auto;
+  border: 1px solid black;
+  padding: 20px;
 }
 
 .table-title {
-  border-style: none;   
+  border-style: none;
 }
 
 .caption-text {
@@ -23,20 +21,17 @@
 }
 
 .pink_button {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .box {
-    margin: 30px 30px 30px 30px;
+  margin: 30px 30px 30px 30px;
 }
 
 .manage-container {
-
-  padding-top: 50px;
-  padding-bottom: 50px;
-  
+  padding: 50px;
 }
-  
+
 @media (max-width: 825px) {
   .pink_button {
     width: 100px;
@@ -45,7 +40,7 @@
   table {
     border: 0;
   }
-  
+
   table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -56,30 +51,28 @@
     position: absolute;
     width: 1px;
   }
-  
+
   table tr {
     border-bottom: 1px solid grey;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 0.625em;
   }
-  
+
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
-    font-size: .8em;
+    font-size: 0.8em;
     text-align: right;
   }
-  
+
   table td::before {
-    
     content: attr(data-label);
     font-family: "Sansita One";
     float: left;
     font-weight: bold;
     font-size: 22px;
-    
   }
-  
+
   table td:last-child {
     border-bottom: 0;
   }
