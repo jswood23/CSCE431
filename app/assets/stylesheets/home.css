@@ -3,10 +3,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Sansita&display=swap');
 
-.container {
-  display: flex;
-  align-items: center;
-}
 
 .box-title-logo {
   display: flex;
