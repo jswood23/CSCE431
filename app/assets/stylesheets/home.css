@@ -3,6 +3,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Sansita&display=swap');
 
+.box {
+  overflow-wrap: break-word;
+  word-wrap    : break-word;
+}
 
 .box-title-logo {
   display: flex;
@@ -22,6 +26,7 @@
 .home-title {
   font-size:5vw;
   border: none;
+  overflow-wrap: break-word;
 }
 
 /* larger quote */
@@ -90,6 +95,7 @@ h3 {
 .image-center {
   display: flex;
   justify-content: center;
+  width:75vw;
 }
 
 .home-title {
