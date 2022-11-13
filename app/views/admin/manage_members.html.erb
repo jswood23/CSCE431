@@ -1,50 +1,47 @@
 <%= stylesheet_link_tag "managemembers" %>
 
-
-
-
 <div class="manage-container">
 
 <h1>Manage Members</h1>
 <p class="center">You can manage members here.</p>
 
 
-
-
 <div class="box">
   <h1 class="table-title">New Users</h1>
   <% if @new_users.length > 0 %>
+  <div style="overflow-x:auto, overflow-y:visible">
     <table class="table table-borderless table-class">
 
-    <th><h2>Name</h2></th>
-    <th><h2>Email</h2></th>
-    <th><h2>Actions</h2></th>
-    <tbody>
-      <% @new_users.each do |user| %>
-        <tr id=<%= "new_user_row_#{user.id}" %>>
-          <td><%= user.full_name %></td>
-          <td><%= user.email %></td>
-          <td>
-            <div class="dropdown">
-              <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Manage
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%# option to give user member status %>
-                <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
-                <%# option to give user alumni status %>
-                <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
-                <%# option to give user admin status %>
-                <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
-                <%# option to delete user %>
-                <li><%= link_to "Delete User", "/delete_user/#{user.id}", class: "dropdown-item" %></li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <th><h2>Name</h2></th>
+      <th><h2>Email</h2></th>
+      <th><h2>Actions</h2></th>
+      <tbody>
+        <% @new_users.each do |user| %>
+          <tr id=<%= "new_user_row_#{user.id}" %>>
+            <td><%= user.full_name %></td>
+            <td><%= user.email %></td>
+            <td>
+              <div class="dropdown">
+                <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Manage
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%# option to give user member status %>
+                  <li><%= link_to "Make Member", "/make_user_member/#{user.id}", class: "dropdown-item" %></li>
+                  <%# option to give user alumni status %>
+                  <li><%= link_to "Make Alumni", "/make_user_alumni/#{user.id}", class: "dropdown-item" %></li>
+                  <%# option to give user admin status %>
+                  <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>
+                  <%# option to delete user %>
+                  <li><%= link_to "Delete User", "/delete_user/#{user.id}", class: "dropdown-item" %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <% else %>
     <p>No new users.</p>
   <% end %>
@@ -53,25 +50,25 @@
 <div class="box">
   <h1 class="table-title">Members</h1>
   <% if @members.length > 0 %>
-  
-  <div style="overflow-x:auto, overflow-y:visible">
     <table class="table table-borderless table-class">
       <thead>
+      <tr>
         <th><h2>Name</h2></th>
         <th><h2>Email</h2></th>
         <th><h2>Points</h2></th>
         <th><h2>Member Status</h2></th>
         <th><h2>Actions </h2></th>
+      </tr>
       </thead>
       <tbody>
         <% @members.each do |user| %>
           <tr id=<%= "member_row_#{user.id}" %>>
-            <td><%= user.full_name %></td>
-            <td><%= user.email %></td>
-            <td><%= link_to get_points(user), "/show_user_attendance/#{user.id}", class:'pink-link' %></td>
-            <td><%= get_user_status(user) %>
-            <td>
-              <div class="dropdown">
+            <td scope="row" data-label="Name"><%= user.full_name %></td>
+            <td data-label="Email"><%= user.email %></td>
+            <td data-label="Points"><%= link_to get_points(user), "/show_user_attendance/#{user.id}", class:'pink-link' %></td>
+            <td data-label="Member Status"><%= get_user_status(user) %>
+            <td data-label="Actions">
+              <div class="btn-group dropdown">
                 <button class="pink_button dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Manage
                 </button>
@@ -103,7 +100,8 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+  
+  
   <% else %>
     <p>No members.</p>
   <% end %>
@@ -112,6 +110,7 @@
 <div class="box">
   <h1 class="table-title">Alumni</h1>
   <% if @alumni.length > 0 %>
+  <div style="overflow-x:auto, overflow-y:visible">
     <table class="table table-borderless table-class">
       <thead>
         <th><h2>Name</h2></th>
@@ -160,9 +159,10 @@
         <% end %>
       </tbody>
     </table>
+  </div>
   <% else %>
     <p>No alumni.</p>
   <% end %>
-</div>
+
 
 </div>
