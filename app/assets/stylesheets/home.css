@@ -1,19 +1,173 @@
-.container {
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Sansita&display=swap');
+
+.box {
+  overflow-wrap: break-word;
+  word-wrap    : break-word;
+}
+
+.box-title-logo {
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap:nowrap;
+}
+
+.image-logo {
+  flex-basis: 40%;
+  width: 15vw;
+  height: auto;
+}
+
+.home-title {
+  font-size:5vw;
+  border: none;
+  overflow-wrap: break-word;
+}
+
+/* larger quote */
+/* Learning Leads To Change */
+h2 {
+  font-family: 'Sansita';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 4.5vw;
+  line-height: 69%;
   display: flex;
   align-items: center;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: 0.07em;
+
+  /* color: #FFCBBA; */
+  color: #FFAB8F;
+  text-shadow: -1px 2px 5px #000000;
+
+  padding: 2% 2% 2% 2%;
+}
+
+/* quote */
+/* “The well-being of women & children determines 
+    the health of future generations” 
+*/
+h3 {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 2.5vw;
+  line-height: 139%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  letter-spacing: 0.065em;
+
+  color: #000000;
+
+  padding: 2% 1% 2% 1%;
+}
+
+.p-horiz {
+  font-family: 'Roboto';
+  font-size: 1.8vw;
+  font-style: normal;
+  line-height:126%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+
+  color: #000000;
+
+  padding: 3% 3% 3% 3%;
+}
+
+.image-heart {
+  flex-basis: 40%;
+  width: 75vw;
+  height: auto;  
+}
+
+.image-center {
+  display: flex;
+  justify-content: center;
+  width:75vw;
+}
+
+.home-title {
+  font-size:5vw;
+  border: none;
+}
+
+/* larger quote */
+/* Learning Leads To Change */
+h2 {
+  font-family: 'Sansita';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 4.5vw;
+  line-height: 69%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: 0.07em;
+
+  /* color: #FFCBBA; */
+  color: #FFAB8F;
+  text-shadow: -1px 2px 5px #000000;
+
+  padding: 2% 2% 2% 2%;
+}
+
+/* quote */
+/* “The well-being of women & children determines 
+    the health of future generations” 
+*/
+h3 {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 2.5vw;
+  line-height: 139%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  letter-spacing: 0.065em;
+
+  color: #000000;
+
+  padding: 2% 1% 2% 1%;
+}
+
+.p-horiz {
+  font-family: 'Roboto';
+  font-size: 1.8vw;
+  font-style: normal;
+  line-height:126%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+
+  color: #000000;
+
+  padding: 3% 3% 3% 3%;
+}
+
+.image-heart {
+  flex-basis: 40%;
+  width: 75vw;
+  height: auto;  
+}
+
+.image-center {
+  display: flex;
   justify-content: center;
 }
 
-.image {
-  flex-basis: 40%;
-  width: 20vw;
-  height: auto;
-  order: 2;
-}
-
-h1 {
-  padding-left: 2vw;
-  font-size: 4vw;
-  /* color: #CD5C5C; */
-  /* font: italic 20px "Fira Sans", serif; */
-}

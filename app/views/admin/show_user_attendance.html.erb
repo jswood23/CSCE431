@@ -1,33 +1,43 @@
-<h1>Showing attendance for <%= @this_user.full_name %></h1>
+<%= stylesheet_link_tag "attendance" %>
 
-<p><%= "Total Points: #{get_points(@this_user)}" %></p>
-<%= form_tag('change_user_points', method: 'post') do %>
-  <%= hidden_field_tag 'userid', @this_user.id %>
-  <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
-  <% @scores.each do |user_score| %>
-    <%= label_tag user_score.points_type_name %>
-    <br />
-    <%= number_field_tag user_score.points_type_name, user_score.score %>
-    <br />
-  <% end %>
-  <%= submit_tag "Save" %>
-<% end %>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Showing attendance for <%= @this_user.full_name %></h1>
 
-<h2>Events Attended</h2>
-<% if @records.length.positive? %>
-  <% @records.each do |record| %>
-  <% event = Event.find(record.event_id) %>
-    <%= render :partial => 'shared/event_card', :locals => {
-      :event_id => event.id,
-      :event_name => event.event_name,
-      :event_date => event.date,
-      :points_type_id => event.points_type_id,
-      :event_description => event.description,
-      :show_passcode => event.passcode,
-      :is_attend => false,
-      :is_admin => true
-      } %>
-  <% end %>
-<% end %>
+      <h2><%= "Total Points: #{get_points(@this_user)}" %></h2>
+      <%= form_tag('change_user_points', method: 'post') do %>
+        <div class="center">
+          <%= hidden_field_tag 'userid', @this_user.id %>
+          <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+          <% @scores.each do |user_score| %>
+            <%= label_tag user_score.points_type_name %>
+            <%= number_field_tag user_score.points_type_name, user_score.score %>
+          <% end %>
+          <%= submit_tag "Save", class: 'pink_button' %>
+        </div>
+      <% end %>
 
-<%= link_to 'Back', '/manage_members' %>
+      <h2>Events Attended</h2>
+      <% if @records.length.positive? %>
+        <div class="events_container">
+          <% @records.each do |record| %>
+          <% event = Event.find(record.event_id) %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :is_attend => false,
+              :is_admin => true
+              } %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <%= link_to 'Back', '/manage_members', class: 'black_button' %>
+    </div>
+  </div>
+</body>

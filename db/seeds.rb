@@ -37,15 +37,17 @@ Page.create([
           "instagram" : "https://www.instagram.com/mchsoaggies/?hl=en"
         }
   }'
+
   },
   {
     page_name: 'home',
     page_data: '{
-        "title" : "The Maternal and Child Health Student Organization",
 
-        "blurb" : "Welcome blurb, summary of the history and basic information of the org."
-  }'
-  }
+      "title" : "The Maternal and Child Health Student Organization",
+
+      "blurb" : "Welcome blurb, summary of the history and basic information of the org."
+ }'
+ }
 ]
            )
 # end

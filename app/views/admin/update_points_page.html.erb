@@ -1,22 +1,32 @@
-<h1>Points Types</h1>
+<%= stylesheet_link_tag "update_points_page" %>
 
-<% if @points_types.length > 0 %>
-    <% @points_types.each do |points_type| %>
-      <%= form_tag('change_points_type', method: 'post', id: "points_type_row_#{points_type.id}") do %>
-        <%= hidden_field_tag 'points_type_id', points_type.id %>
-        <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
-        <%= text_field_tag('name', points_type.name) %>
-        <%= submit_tag 'Update' %>
-        <%= link_to 'X', "/remove_points_type/#{points_type.id}" %>
+<body>
+  <div class="container">
+    <div class="box narrow">
+      <h1>Points Types</h1>
+
+      <% if @points_types.length > 0 %>
+          <% @points_types.each do |points_type| %>
+            <%= form_tag('change_points_type', method: 'post', id: "points_type_row_#{points_type.id}") do %>
+            <div class='update_points_type_form'>
+              <%= hidden_field_tag 'points_type_id', points_type.id %>
+              <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+              <%= text_field_tag('name', points_type.name) %>
+              <%= submit_tag 'Update', class: 'pink_button' %>
+              <%= link_to 'Remove', "/remove_points_type/#{points_type.id}", class: 'black_button' %>
+            </div>
+            <% end %>
+          <% end %>
+      <% else %>
+        <p>No points types yet.</p>
       <% end %>
-    <% end %>
-<% else %>
-  <p>No points types yet.</p>
-<% end %>
-<%= form_tag('change_points_type', method: 'post', id: 'points_type_row_0') do %>
-    <%= hidden_field_tag 'points_type_id', '0' %>
-    <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
-    <%= submit_tag 'New Points Type' %>
-<% end %>
+      <%= form_tag('change_points_type', method: 'post', id: 'points_type_row_0') do %>
+          <%= hidden_field_tag 'points_type_id', '0' %>
+          <%= hidden_field_tag 'authenticity_token', form_authenticity_token %>
+          <%= submit_tag 'New Points Type', class: 'black_button' %>
+      <% end %>
 
-<%= link_to 'Back', '/events' %>
+      <%= link_to 'Back', '/events' %>
+    </div>
+  </div>
+</body>
