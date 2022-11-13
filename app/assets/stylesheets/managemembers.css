@@ -14,7 +14,12 @@
 }
 
 .table-title {
-    border-style: none;   
+  border-style: none;   
+}
+
+.caption-text {
+  text-align: center;
+  font-size: 22px;
 }
 
 .pink_button {
