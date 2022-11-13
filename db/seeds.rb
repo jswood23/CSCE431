@@ -19,9 +19,9 @@ Page.create([
 
         "Membership Dues" : "Membership is open to any Aggie (undergraduate or graduate/ any concentration). Dues are $15 one time.",
 
-        "Expectations" : "Attend monthly meetings,Respond in GroupMe when needed (ex. polls),Attend supplemental meetings if able, Respect opinions of fellow members",
+        "Expectations" : "Attend monthly meetings, Respond in GroupMe when needed (ex. polls), Attend supplemental meetings if able, Respect opinions of fellow members",
 
-        "What We Do" : "Field Trips, Volunteering, Book Club, Guest Speakers, Donation Drives, Profit Shares, Craft Events, Socials, Research Opportunities, Certificate Opportunities"
+        "What We Do" : "Field trips, Volunteering, Book club, Guest speakers, Donation drives, Profit shares, Craft events, Socials, Research opportunities, Certificate opportunities"
   }'
   },
   {
