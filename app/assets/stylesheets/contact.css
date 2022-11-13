@@ -1,70 +1,58 @@
 @import url("./components/buttons.css");
-
-body {
-    background-color: #F5D7CD;
-}
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
 
 .content {
-    background-color: #F5D7CD;
-    display: flex;
-    flex-direction: column;
-    padding: 0 20px;
-    justify-content: center;
-}
-
-.container {
-    margin: 20px auto ;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    border-top: solid;
-    border-color: #fff;
-    border-width: 8px;
-    border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  justify-content: center;
 }
 
 #heading {
-    margin: auto;
-    margin: 30px auto 20px;
-    font-family: 'Sansita One';
-    font-style: italic;
-    color: #fff;
-    text-shadow: 2;
-    font-size: calc(max(10vw, 80px));
+  font-size: 5em;
 }
 
 #blurb {
-    margin: 0px auto 20px;
-    font-family: 'Sansita One';
-    font-weight: 100;
-    color: #fff;
-    text-align: center;
+  margin: 0px auto 20px;
+  text-align: center;
+  font-size: 3em;
+}
+
+/* sizing for mobile */
+@media (max-width: 768px) {
+  #heading {
+    font-size: 3em;
+  }
+
+  #blurb {
+    font-size: 1.5em;
+  }
 }
 
 .card-img-top {
-    width: 9rem;
-    margin: auto;
-    margin: 20px auto;
+  width: 9rem;
+  margin: auto;
+  margin: 20px auto;
 }
 
 .card {
-    background-color: #FFFFFF90;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 5px 2px 5px #00000020;
-    width: fit-content;
-    margin: 20px;
+  background-color: #ffffff90;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 5px 2px 5px #00000020;
+  width: fit-content;
+  margin: 20px;
 }
 
 .logo {
-    opacity: 70%;
-    transition: opacity .25s;
-    width: 5rem;
-    margin: 20px;
+  opacity: 70%;
+  transition: opacity 0.25s;
+  width: 5rem;
+  margin: 20px;
 }
 
 .logo:hover {
-    opacity: 100%;
-    cursor: pointer;
+  opacity: 100%;
+  cursor: pointer;
 }
