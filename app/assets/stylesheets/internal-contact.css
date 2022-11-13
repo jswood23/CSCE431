@@ -6,11 +6,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.container {
-  display: flex;
-  align-items: center;
-}
-
 h1 {
    padding: 2%;
    border:none;
@@ -24,17 +19,22 @@ h1 {
    justify-content: space-evenly;
    align-content: center;
    padding-bottom: 4%;
-   border-bottom: black 1px dotted;
+   /* border-bottom: black 1px dotted; */
    height:auto;
    margin:none;
 }
 
+.table-avatar {
+   text-align: right;
+   padding-right: 5%;
+}
+
 .search-bar {
-   width:50vw;
+   /* width:50vw; */
    padding-top:8px;
    padding-left:2%;
    padding-right:2%;
-
+   width:100%;
 }
 
 .rounded-circle {
@@ -42,4 +42,54 @@ h1 {
    /* min-width: 20px;
    min-height:20px; */
 }
+
+/* sizing for mobile */
+@media (max-width: 768px) {
+   th, td {
+      font-size: .75rem;
+   }
+
+   .rounded-circle {
+      max-width: 30px;
+      max-height: 30px;
+   }
+
+   .input-group {
+      width: 250px;
+   }
+ }
+ 
+ /* sizing for tablet */
+ @media (min-width: 769px) {
+   th, td {
+      font-size: 1rem;
+   }
+
+   .rounded-circle {
+      max-width: 40px;
+      max-height: 40px;
+   }
+
+   .input-group {
+      width: 700px;
+   }
+
+   .search-bar {
+      width:70%;
+   }
+ }
+ 
+ /* sizing for small desktop */
+@media (min-width: 992px) {
+   .input-group {
+      width: 900px;
+   }
+ }
+ 
+ /* sizing for wide desktop */
+ @media (min-width: 1200px) {
+   .input-group {
+      width: 1000px;
+   }
+ }
 
