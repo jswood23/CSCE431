@@ -2,8 +2,14 @@
 @import url("./components/fancy_headers.css");
 @import url("./components/buttons.css");
 
-table {
+
+.table-class {
+    border-collapse: separate;
     background-color: white;
+    border-radius: 20px;
+    margin: auto;
+    border: 1px solid black;
+    padding: 20px;
 }
 
 .table-title {
@@ -22,5 +28,5 @@ table {
 
   padding-top: 50px;
   padding-bottom: 50px;
-  gap: 10px;
+  
 }

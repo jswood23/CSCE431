@@ -1,15 +1,20 @@
 <%= stylesheet_link_tag "managemembers" %>
 
+
+
+
 <div class="manage-container">
 
 <h1>Manage Members</h1>
 <p class="center">You can manage members here.</p>
 
 
+
+
 <div class="box">
   <h1 class="table-title">New Users</h1>
   <% if @new_users.length > 0 %>
-    <table class="table border border-dark table-borderless">
+    <table class="table table-borderless table-class">
 
     <th><h2>Name</h2></th>
     <th><h2>Email</h2></th>
@@ -40,17 +45,17 @@
       <% end %>
     </tbody>
   </table>
-<% else %>
-  <p>No new users.</p>
-<% end %>
+  <% else %>
+    <p>No new users.</p>
+  <% end %>
 </div>
 
 <div class="box">
   <h1 class="table-title">Members</h1>
   <% if @members.length > 0 %>
-
   
-    <table class="table border border-dark table-borderless">
+  <div style="overflow-x:auto, overflow-y:visible">
+    <table class="table table-borderless table-class">
       <thead>
         <th><h2>Name</h2></th>
         <th><h2>Email</h2></th>
@@ -98,7 +103,7 @@
         <% end %>
       </tbody>
     </table>
-  
+  </div>
   <% else %>
     <p>No members.</p>
   <% end %>
@@ -107,7 +112,7 @@
 <div class="box">
   <h1 class="table-title">Alumni</h1>
   <% if @alumni.length > 0 %>
-    <table class="table border border-dark table-borderless">
+    <table class="table table-borderless table-class">
       <thead>
         <th><h2>Name</h2></th>
         <th><h2>Email</h2></th>
@@ -159,4 +164,5 @@
     <p>No alumni.</p>
   <% end %>
 </div>
+
 </div>
