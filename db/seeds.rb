@@ -8,12 +8,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if Page.all.count < 3
-  Page.create([
-    {
-      page_name: 'about',
-      page_data: '{
-          "Purpose" : "The purpose of this organization shall be to advocate for maternal and child public health-related issues for all students.",
+# if Page.count < 3
+Page.create([
+  {
+    page_name: 'about',
+    page_data: '{
+        "Purpose" : "The purpose of this organization shall be to advocate for maternal and child public health-related issues for all students.",
 
           "Goal" : "The goal will be to enhance the quality and scope of maternal and child public health by educating students and providing them with opportunities to impact the community positively.",
 
@@ -45,12 +45,12 @@ if Page.all.count < 3
 
         "title" : "The Maternal and Child Health Student Organization",
 
-        "blurb" : "Welcome blurb, summary of the history and basic information of the org."
-  }'
-    }
-  ]
-             )
-end
+      "blurb" : "Welcome blurb, summary of the history and basic information of the org."
+ }'
+  }
+]
+           )
+# end
 
 if PointsType.all.count.zero?
   PointsType.create([
