@@ -56,3 +56,8 @@
   opacity: 100%;
   cursor: pointer;
 }
+
+.logos {
+  display: flex;
+  justify-content: center;
+}
