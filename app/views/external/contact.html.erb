@@ -9,7 +9,7 @@
             <p style="text-align:center;">Please feel free to send us an email or find us at one of the links provided below.</p>
             
             <%= link_to "Email Us", @page['Email'], class: "btn pink_button"%>
-            <div class="container">
+            <div class="logos">
                     <% if @page['links'] %>
                         <% @page['links'].each do |key, value| %>
                             <%= link_to image_tag("/assets/"+key+".png", class: "logo"), value %>

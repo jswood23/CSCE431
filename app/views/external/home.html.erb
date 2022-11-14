@@ -10,32 +10,27 @@
             <div class="box-title-logo">
                <img class="image-logo" src="/assets/mchso-logo.png" alt="logo" />
                <h1 class= "home-title">
-                  The Maternal and Child Health Student Organization
+                  <%= @page['title'] %>
                </h1>
             </div>
             <div>
-               <h3> “The well-being of women & children determines the health of future generations” </h3>
-               <h2> Learning Leads To Change </h2>
+               <h3> “<%= @page['quote'] %>” </h3>
+               <h2> <%= @page['learning'] %> </h2>
             </div>
             <div class="p-horiz">
-               <p> Maternal health is the health of women during pregnancy,
-                  childbirth, and the postnatal period while children’s health is
-                  the extent to which children can thrive, satisfy
-                  their needs, and develop the capacities that allow them to
-                  interact successfully with their environments. Maternal and
-                  child health is the overlap and interaction between the
-                  development, needs, and health of both the mother and child.
+               <p>
+                  <%= @page['para1'] %>
                </p>
-               <b> What are some components of MCHSO? </b>
+               <b> <%= @page['list_header'] %> </b>
+               <% if @page['components'] %>
                   <ul>
-                     <li> Family planning and reproductive health services</li>
-                     <li>Maternal, newborn, and child health services </li>              
-                     <li>Health communications</li>
-                     <li>Health commodities and supplies</li>
-                     <li>Health systems strenghening</li>
+                     <% @page['components'].each do |i| %>
+                        <li> <%= i %> </li>
+                     <% end %>
                   </ul>
-               <h3> Learn more about maternal and child health, gain certificates,
-                  volunteer, network, and share your passion for MCHSO!
+               <% end %>
+               <h3> 
+                  <%= @page['para2'] %>
                </h3>
             </div>
             <div class="image-center"> 
@@ -45,7 +40,3 @@
       </div>
    </body>
 </html>
-
-<%#= @page['title'] %> 
-<%#= @page['blurb'] %>
-
