@@ -1,0 +1,95 @@
+@import url("./components/buttons.css");
+@import url("./components/fancy_headers.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  text-align: center;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.top-section {
+  display: flex; 
+  flex-direction: column;
+  height: 100vh;
+  background-color:#F5D7CD; 
+  justify-content: center;
+}
+
+.about_button {
+  margin: 40px;
+  padding: 20px;
+  scale: 1.5; 
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.inner {
+  vertical-align: middle;
+  text-align:center;
+}
+
+/* flex display so new buttons are added horizontally */
+.title-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around; 
+}
+
+/* flex display so new sections are added vertically */
+.description-section {
+  height: 2000px;
+  background-color: #F5D7CD; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.desc-box {
+  display: flex;
+  padding: 100px 45px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.desc-header {
+  font-weight: bold;
+  font-size: 36px;
+  width: 300px;
+}
+
+.desc-text {
+  font-size: 18px;
+}
+
+.main {
+  padding: 0 20px;
+}
+.main .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+.title-text {
+  color: black;
+  font-size: 8vw;
+  text-shadow: none;
+}
+
+.down-button {
+  cursor: pointer;
+  margin-top: 10px;
+  size: 100px;
+} 
