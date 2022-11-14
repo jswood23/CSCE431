@@ -28,6 +28,8 @@
   padding: 50px;
 }
 
+/* sizing for mobile views */
+/* collapse table to stack data items vertically */
 @media (max-width: 825px) {
   .pink_button {
     width: 75px;
