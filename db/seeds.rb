@@ -37,17 +37,25 @@ Page.create([
             "instagram" : "https://www.instagram.com/mchsoaggies/?hl=en"
           }
     }'
-
     },
     {
       page_name: 'home',
       page_data: '{
-
-        "title" : "The Maternal and Child Health Student Organization",
-
-      "blurb" : "Welcome blurb, summary of the history and basic information of the org."
- }'
-  }
+          "title" : "The Maternal and Child Health Student Organization",
+          
+          "quote" : "The well-being of women & children determines the health of future generations",
+          
+          "learning" : "Learning Leads To Change",
+          
+          "para1" : "Maternal health is the health of women during pregnancy, childbirth, and the postnatal period while children’s health is the extent to which children can thrive, satisfy their needs, and develop the capacities that allow them to interact successfully with their environments. Maternal and child health is the overlap and interaction between the development, needs, and health of both the mother and child.",
+          
+          "list_header" : "What are some components of MCHSO?",
+          
+          "components" : ["Family planning and reproductive health services", "Maternal, newborn, and child health services", "Health communications", "Health commodities and supplies", "Health systems strenghening"],
+          
+          "para2" : "Learn more about maternal and child health, gain certificates, volunteer, network, and share your passion for MCHSO!"
+    }'
+    }
 ]
            )
 # end
