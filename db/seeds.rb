@@ -8,7 +8,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# if Page.count < 3
+if Page.count < 3
 Page.create([
   {
     page_name: 'about',
@@ -58,7 +58,7 @@ Page.create([
   }
 ]
            )
-# end
+end
 
 if PointsType.all.count.zero?
   PointsType.create([
