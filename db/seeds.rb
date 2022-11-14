@@ -23,10 +23,10 @@ Page.create([
 
           "What We Do" : "Field trips, Volunteering, Book club, Guest speakers, Donation drives, Profit shares, Craft events, Socials, Research opportunities, Certificate opportunities"
     }'
-    },
-    {
-      page_name: 'contact',
-      page_data: '{
+  },
+  {
+    page_name: 'contact',
+    page_data: '{
           "description" : "Below you can find our email and social links, be sure to follow MCHSO on Facebook!",
 
           "Email" : "mailto:hannahbartosh@tamu.edu",
@@ -37,25 +37,25 @@ Page.create([
             "instagram" : "https://www.instagram.com/mchsoaggies/?hl=en"
           }
     }'
-    },
-    {
-      page_name: 'home',
-      page_data: '{
+  },
+  {
+    page_name: 'home',
+    page_data: '{
           "title" : "The Maternal and Child Health Student Organization",
-          
+
           "quote" : "The well-being of women & children determines the health of future generations",
-          
+
           "learning" : "Learning Leads To Change",
-          
+
           "para1" : "Maternal health is the health of women during pregnancy, childbirth, and the postnatal period while children’s health is the extent to which children can thrive, satisfy their needs, and develop the capacities that allow them to interact successfully with their environments. Maternal and child health is the overlap and interaction between the development, needs, and health of both the mother and child.",
-          
+
           "list_header" : "What are some components of MCHSO?",
-          
+
           "components" : ["Family planning and reproductive health services", "Maternal, newborn, and child health services", "Health communications", "Health commodities and supplies", "Health systems strenghening"],
-          
+
           "para2" : "Learn more about maternal and child health, gain certificates, volunteer, network, and share your passion for MCHSO!"
     }'
-    }
+  }
 ]
            )
 # end
