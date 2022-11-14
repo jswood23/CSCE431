@@ -57,7 +57,7 @@ if Page.count < 3
       }'
     }
   ]
-            )
+             )
 end
 
 if PointsType.all.count.zero?
