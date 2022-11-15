@@ -1,2 +1,22 @@
-<h1>Contact Page</h1>
-<p>Contact page stuff goes here</p>
+<%= stylesheet_link_tag "contact" %>
+
+<body>
+  <div class="container">
+    <div class="box">
+        <div class="content" style="display: flex;">
+            <h1 id="heading">Get In Touch</h1><br/>
+            <h2 id="blurb">Interested in contacting MCHSO?</h2>
+            <p style="text-align:center;">Please feel free to send us an email or find us at one of the links provided below.</p>
+            
+            <%= link_to "Email Us", @page['Email'], class: "btn pink_button"%>
+            <div class="logos">
+                    <% if @page['links'] %>
+                        <% @page['links'].each do |key, value| %>
+                            <%= link_to image_tag("/assets/"+key+".png", class: "logo"), value %>
+                        <% end %>
+                    <% end %>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>

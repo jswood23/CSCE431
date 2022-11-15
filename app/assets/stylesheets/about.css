@@ -1,0 +1,74 @@
+@import url("./components/buttons.css");
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5d7cd;
+  justify-content: center;
+}
+
+.about_button {
+  margin: 40px;
+  padding: 20px;
+  scale: 1.5;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* flex display so new buttons are added horizontally */
+.title-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* flex display so new sections are added vertically */
+.description-section {
+  height: 2000px;
+  background-color: #f5d7cd;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.desc-box {
+  display: flex;
+  padding: 100px 45px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.desc-header {
+  font-weight: bold;
+  font-size: 36px;
+  width: 300px;
+}
+
+.desc-text {
+  font-size: 18px;
+}
+
+.title-text {
+  color: black;
+  font-size: 8vw;
+  text-shadow: none;
+}
+
+.down-button {
+  cursor: pointer;
+  margin-top: 10px;
+  size: 100px;
+}

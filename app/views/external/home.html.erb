@@ -2,22 +2,41 @@
 <html>
    <head>
       <%= stylesheet_link_tag "home" %>
-
       <title> Home Page </title>
    </head>
    <body>
       <div class = "container">
-         <div>
-            <img class="image" src="/assets/mchso-logo.png" alt="logo">
-         </div>
-         <div>
-            <h1> Welcome to the Maternal and Child Health Student Organization </h1>
+         <div class="box">
+            <div class="box-title-logo">
+               <img class="image-logo" src="/assets/mchso-logo.png" alt="logo" />
+               <h1 class= "home-title">
+                  <%= @page['title'] %>
+               </h1>
+            </div>
+            <div>
+               <h3> “<%= @page['quote'] %>” </h3>
+               <h2> <%= @page['learning'] %> </h2>
+            </div>
+            <div class="p-horiz">
+               <p>
+                  <%= @page['para1'] %>
+               </p>
+               <b> <%= @page['list_header'] %> </b>
+               <% if @page['components'] %>
+                  <ul>
+                     <% @page['components'].each do |i| %>
+                        <li> <%= i %> </li>
+                     <% end %>
+                  </ul>
+               <% end %>
+               <h3> 
+                  <%= @page['para2'] %>
+               </h3>
+            </div>
+            <div class="image-center"> 
+               <img class = "image-heart" src="/assets/MchsoWordCloud.png" alt="word cloud with various values of MCHSO" />
+            </div>
          </div>
       </div>
-
-      </div>
-         <p>Welcome blurb, summary of the history and basic information of the org. </p>
-      <div>
-
    </body>
 </html>

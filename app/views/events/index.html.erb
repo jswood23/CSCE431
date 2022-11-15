@@ -1,64 +1,80 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "events" %>
 
-<%= link_to 'New Event', new_event_path, class: "btn btn-outline-dark my-2 my-sm-0 m-1"%>
+<body>
+  <div class="container">
+    <div class="box">
+      <p>
+      <%= link_to 'New Event', new_event_path, class: "pink_button link_button" %>
+      &ensp;
+      <%= link_to 'Update Points Types', '/update_points', class: "black_button link_button" %>
+      </p>
 
 
-<h1>Events Today</h1>
-<%= @current_time %>
-<%= @print_time %>
+      <h1>Events Today</h1>
+      <%= @current_time %>
+      <%= @print_time %>
 
-<% if @events_today.length > 0 %>
-  <% @events_today.each do |event| %>
-    <%= render :partial => 'shared/event_card', :locals => {
-      :event_id => event.id,
-      :event_name => event.event_name,
-      :event_date => event.date,
-      :event_description => event.description,
-      :show_passcode => event.passcode,
-      :passcode => false,
-      :show_attendance => true,
-      :edit => true
-      } %>
-  <% end %>
-<% else %>
-  <p>No Events</p>
-<% end %>
+      <% if @events_today.length > 0 %>
+        <div class="events_container">
+          <% @events_today.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :is_attend => false,
+              :is_admin => true
+              } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No events today.</p>
+      <% end %>
 
-<h1>Upcoming Events</h1>
+      <h1>Upcoming Events</h1>
 
-<% if @upcoming_events.length > 0 %>
-  <% @upcoming_events.each do |event| %>
-    <%= render :partial => 'shared/event_card', :locals => {
-      :event_id => event.id,
-      :event_name => event.event_name,
-      :event_date => event.date,
-      :event_description => event.description,
-      :show_passcode => event.passcode,
-      :passcode => false,
-      :show_attendance => true,
-      :edit => true
-      } %>
-  <% end %>
-<% else %>
-  <p>No Upcoming Events</p>
-<% end %>
+      <% if @upcoming_events.length > 0 %>
+        <div class="events_container">
+          <% @upcoming_events.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :is_attend => false,
+              :is_admin => true
+              } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No upcoming events.</p>
+      <% end %>
 
-<br>
+      <br>
 
-<h2>Past Events</h2>
-<% if @past_events.length > 0 %>
-  <% @past_events.each do |event| %>
-    <%= render :partial => 'shared/event_card', :locals => {
-      :event_id => event.id,
-      :event_name => event.event_name,
-      :event_date => event.date,
-      :event_description => event.description,
-      :show_passcode => event.passcode,
-      :passcode => false,
-      :show_attendance => true,
-      :edit => true
-      } %>
-  <% end %>
-<% else %>
-  <p>No Past Events</p>
-<% end %>
+      <h1>Past Events</h1>
+      <% if @past_events.length > 0 %>
+        <div class="events_container">
+          <% @past_events.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => event.passcode,
+              :is_attend => false,
+              :is_admin => true
+              } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No past events.</p>
+      <% end %>
+    </div>
+  </div>
+</body>

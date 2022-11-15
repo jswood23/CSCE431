@@ -77,7 +77,14 @@ rails console -e development
 
 ## Environmental Variables/Files ##
 
-** (Add instructions/description if your application requires it.)
+Below are environmental variables used:
+
+Authentication
+* Google Client ID
+* Google Client Secret
+
+Mailer
+* Google app password
 
 
 ## Deployment ##

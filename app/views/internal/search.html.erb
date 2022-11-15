@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag "internal-contact" %>
+<body>
+
+<div class = "container">
+  <div class="box">
+
+    <h3>Search Results</h3>
+      <% if @results.length > 0%>
+      <div class="table-style">
+        <table>
+          <thead>
+            <th> </th>
+            <th>Name</th>
+            <th>Member Status</th>
+            <th>Years Active</th>
+            <th class="long-cell">Email</th>
+          </thead>
+          <tbody>
+            <% @results.each do |result| %>
+              <tr id=<%= "member_row_#{result.id}" %>>
+              <td class="table-avatar">
+                <% if result.avatar_url %>
+                  <%= image_tag(result.avatar_url, class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+                <% else %>
+                  <%= image_tag("/assets/default.jpg", class: 'rounded-circle', size: 45, alt: "Profile Picture") %>
+                <% end %>
+              </td>
+                <td><%= result.full_name %></td>
+                <td><%= get_user_status(result) %>
+                <td><%= result.information.start_year %> - <%= result.information.end_year %></td>
+                <td class="long-cell"><%= result.email %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="no-results">No members found.</p>
+    <% end %>
+    <%= link_to 'Back', '/internal_contact', class: "btn pink_button"%>
+  </div>
+<div>

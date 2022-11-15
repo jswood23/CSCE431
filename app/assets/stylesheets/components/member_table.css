@@ -1,0 +1,31 @@
+table {
+   width:100%;
+   table-layout:auto;
+}
+
+.table-style {
+   display:flex;
+   justify-content: center;
+   margin: 2%;
+   overflow-x:auto;
+
+   border-collapse: separate;
+   background-color: white;
+   border-radius: 20px;
+
+   border: 1px solid black;
+   padding: 2%;  
+   width:100%;
+}
+
+
+th {
+   font-family: "Sansita One";
+   margin-bottom:4%;
+   padding:2%;
+}
+
+td {
+   font-family: 'Roboto';
+   padding:2%;
+}

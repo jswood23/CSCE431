@@ -1,0 +1,29 @@
+@import url("./components/buttons.css");
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+@import url("./components/forms.css");
+
+ul {
+  list-style-position: outside;
+}
+
+.box {
+  min-height: 90vh;
+  display: block;
+}
+
+.faq-box {
+  margin: auto;
+  margin-top: 5vh;
+  background-color: #ffffff90;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.accordion-body {
+  background-color: #ffffff;
+}
+
+.accordion-button {
+  background-color: #ffffff00;
+}

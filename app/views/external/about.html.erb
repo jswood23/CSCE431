@@ -1,53 +1,61 @@
-<h1>About MCHSO (Established 2017)</h1>
-<div>
-    <h2>Purpose</h2>
-    <p>
-    The purpose of this organization shall be to advocate for maternal and child public health-related issues for all students.
+<%= stylesheet_link_tag "about" %>
+<head>
+    <script src="https://kit.fontawesome.com/0c70f2312b.js" crossorigin="anonymous"></script>
+    <script>
+        // button action handlers to scroll to corresponding description boxes 
+        function buttonOnClick(attr_name) {
+            var e = document.getElementById(attr_name);
+            e.scrollIntoView(true);
+        }
 
-    </p>
+        function downButtonOnClick() {
+            var e = document.getElementById("desc-section");
+            e.scrollIntoView(true);
+        }
+        
+        // jump back to top when page is refreshed 
+        window.onbeforeunload = function () {
+            window.scroll({
+            top: -200,
+            behavior: 'instant'
+        })
+            
+        }
 
-</div>
-<div>
-    <h2>Goal</h2>
-    <p>
-    The goal will be to enhance the quality and scope of maternal and child public health by educating students 
-    and providing them with opportunities to impact the community positively. 
-    </p>
+    </script>
+</head>
 
-</div>
-<div>
-    <h2>Membership and Dues</h2>
-    <p>
-    Membership is open to any Aggie (undergraduate or graduate/ any concentration).
-    Dues are $15 one time.
-    </p>
+<body>
+    <div class="about-container">
+        <div class="top-section">
+            <div class="inner">
+                <h1 class="title-text">About Us</h1>
+                        
+                <div class="title-buttons">
+                    <%# button for each header %>
+                    <% @page.each do |attr_name, attr_value| %>
+                        <a onclick="buttonOnClick('<%= attr_name %>')"  class="about_button black_button"><%= attr_name %></a>
+                    <% end %>
+                </div>
+                        
+            </div>
+        
+            <i onclick="downButtonOnClick()" class="fa-solid fa-angle-down fa-xl down-button"></i>
+        </div>
 
-</div>
-<div>
-    <h2>Membership Expectations</h2>
-    <ul>
-        <li>Attend monthly meetings</li>
-        <li>Respond in GroupMe when needed (ex. polls)</li>
-        <li>Attend supplemental meetings if able</li>
-        <li>Respect opinions of fellow members</li>
-    </ul>
-</div>
-
-<div>
-    <h2>What We Do</h2>
-    <ul>
-        <li>Field Trips</li>
-        <li>Volunteering</li>
-        <li>Book Club</li>
-        <li>Guest Speakers</li>
-        <li>Donation Drives</li>
-        <li>Profit Shares</li>
-        <li>Craft Events</li>
-        <li>Socials</li>
-        <li>Research Opportunities</li>
-        <li>Certificate Opportunities</li>
-    </ul>
-   
-
-</div>
-
+        <div class="description-section" id="desc-section">
+            <%# description text corresponding to each header  %>
+            <% @page.each do |attr_name, attr_value| %>
+                <div class="desc-box" id="<%= attr_name %>">
+                    <h4 class="desc-header">
+                        <%= attr_name %>
+                    </h4>
+                    <p class="desc-text">
+                        <%= attr_value %>
+                    </p>
+                </div>
+            <% end %>
+            
+        </div>
+    </div>
+</body>

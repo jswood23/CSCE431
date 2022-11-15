@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './spec/support/user_helpers'
+require './spec/support/entity_helpers'
 
 RSpec.describe('google auth', type: :feature) do
   describe 'correct mock account' do
@@ -16,7 +16,7 @@ RSpec.describe('google auth', type: :feature) do
 
     it 'successful login' do
       expect(page).to(have_content('Successfully authenticated from Google account.'))
-      expect(page).to(have_content('Authenticated by: Google'))
+      expect(page).to(have_content('Authenticated by Google'))
     end
 
     it 'update email' do
@@ -31,7 +31,7 @@ RSpec.describe('google auth', type: :feature) do
     end
 
     it 'update full_name' do
-      fill_in 'Full name', with: 'changed name'
+      fill_in 'Full Name', with: 'changed name'
       click_on 'Update'
       expect(page).to(have_content('Your account has been updated successfully.'))
       log_out
@@ -43,6 +43,13 @@ RSpec.describe('google auth', type: :feature) do
 
     it 'update position' do
       fill_in 'Position', with: 'officer'
+      click_on 'Update'
+      expect(page).to(have_content('Your account has been updated successfully.'))
+    end
+
+    it 'update years active' do
+      select '2017', from: 'user[information_attributes][start_year]'
+      select '2020', from: 'user[information_attributes][end_year]'
       click_on 'Update'
       expect(page).to(have_content('Your account has been updated successfully.'))
     end
@@ -87,7 +94,7 @@ RSpec.describe('google auth', type: :feature) do
       before_count = User.count
       visit edit_user_registration_path
       find('#google_signin_button').click
-      expect(page).to(have_content('Authenticated by: Google'))
+      expect(page).to(have_content('Authenticated by Google'))
       expect(User.count).to(eq(before_count))
     end
   end

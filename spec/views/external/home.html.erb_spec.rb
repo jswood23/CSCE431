@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './spec/support/user_helpers'
+require './spec/support/entity_helpers'
 
 RSpec.describe('external/home.html.erb', type: :feature) do
   before do
@@ -9,6 +9,6 @@ RSpec.describe('external/home.html.erb', type: :feature) do
   end
 
   it 'shows introduction content' do
-    expect(page).to(have_content('Welcome to the Maternal and Child Health Student Organization'))
+    expect(page).to(have_content('The Maternal and Child Health Student Organization'))
   end
 end

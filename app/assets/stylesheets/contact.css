@@ -1,0 +1,63 @@
+@import url("./components/buttons.css");
+@import url("./components/containers.css");
+@import url("./components/fancy_headers.css");
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  justify-content: center;
+}
+
+#heading {
+  font-size: 5em;
+}
+
+#blurb {
+  margin: 0px auto 20px;
+  text-align: center;
+  font-size: 3em;
+}
+
+/* sizing for mobile */
+@media (max-width: 768px) {
+  #heading {
+    font-size: 3em;
+  }
+
+  #blurb {
+    font-size: 1.5em;
+  }
+}
+
+.card-img-top {
+  width: 9rem;
+  margin: auto;
+  margin: 20px auto;
+}
+
+.card {
+  background-color: #ffffff90;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 5px 2px 5px #00000020;
+  width: fit-content;
+  margin: 20px;
+}
+
+.logo {
+  opacity: 70%;
+  transition: opacity 0.25s;
+  width: 5rem;
+  margin: 20px;
+}
+
+.logo:hover {
+  opacity: 100%;
+  cursor: pointer;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+}

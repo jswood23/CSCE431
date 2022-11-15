@@ -1,0 +1,46 @@
+/* spacing for large navbar */
+@media only screen and (min-width: 992px) {
+  .navbar {
+    padding: 0 0 0 2px;
+  }
+
+  .navbar .navbar-nav .nav-link {
+    padding: 0.5em 2px;
+  }
+
+  .navbar .navbar-nav .nav-item {
+    margin: 0 0.7em;
+  }
+}
+
+.navbar a {
+  font-size: 16px;
+}
+
+.navbar .navbar-nav .nav-item {
+  position: relative;
+}
+
+/* Add hidden underline and transition */
+.navbar .navbar-nav .nav-item::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: #000000;
+  width: 0%;
+  content: "";
+  height: 2px;
+  transition: all 0.5s;
+}
+
+/* Show underline */
+.navbar .navbar-nav .nav-item:hover::after {
+  width: 100%;
+}
+
+/* background color after clicking dropdown item */
+.dropdown-item:active {
+  background-color: #ff7c93;
+}

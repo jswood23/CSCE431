@@ -4,14 +4,19 @@ require 'rails_helper'
 
 RSpec.describe('events/new', type: :view) do
   before do
+    without_partial_double_verification do
+      allow(view).to(receive(:get_points_type).and_return('Member'))
+    end
     assign(:event, Event.new(
                      event_name: 'MyString',
                      description: 'MyText',
                      passcode: 'MyString',
                      date: Time.zone.now,
-                     points: 1
+                     points: 1,
+                     points_type_id: 1
                    )
     )
+    @points_types = PointsType.all.order('id ASC')
   end
 
   it 'renders new event form' do
@@ -23,8 +28,6 @@ RSpec.describe('events/new', type: :view) do
       assert_select 'textarea[name=?]', 'event[description]'
 
       assert_select 'input[name=?]', 'event[passcode]'
-
-      assert_select 'input[name=?]', 'event[points]'
     end
   end
 end

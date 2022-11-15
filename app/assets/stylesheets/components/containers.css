@@ -1,0 +1,81 @@
+/* styling for background, wide and narrow containers, and  */
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #f5d7cd;
+}
+
+.box {
+  padding: 5% 4% 5% 4%;
+  background-color: #ffffff90;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 5px 2px 5px #00000020;
+  gap: 10px;
+}
+
+/* sizing for mobile */
+@media (max-width: 768px) {
+  .box {
+    max-width: 480px;
+  }
+  .narrow {
+    max-width: 450px;
+  }
+}
+
+/* sizing for tablet */
+@media (min-width: 769px) {
+  .box {
+    width: 769px;
+  }
+  .narrow {
+    width: 500px;
+  }
+}
+
+/* sizing for small desktop */
+@media (min-width: 992px) {
+  .box {
+    width: 992px;
+  }
+  .narrow {
+    width: 450px;
+  }
+}
+
+/* sizing for wide desktop */
+@media (min-width: 1200px) {
+  .box {
+    width: 1200px;
+  }
+  .narrow {
+    width: 500px;
+  }
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  gap: 10px;
+}

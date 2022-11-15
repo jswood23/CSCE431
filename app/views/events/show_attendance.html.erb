@@ -1,25 +1,43 @@
-<h1>Attendance Record</h1>
-<h2>Event Name: <%= @this_event.event_name %></h2>
-<h3>Event Date: <%= @this_event.date.to_formatted_s(:get_date) + ", " + @this_event.date.to_formatted_s(:get_time) %>
+<%= stylesheet_link_tag "attendance" %>
 
-<% if @records.length > 0 %>
-  <h3>Members in attendance:</h3>
-  <table>
-    <thead>
-      <th>Name</th>
-      <th>Time of attendance</th>
-      <th></th>
-    </thead>
-    <% @records.each do |record| %>
-      <tr id=<%= "attendance_row_#{record.uid}"%>>
-        <td><%= record.member_name %></td>
-        <td><%= record.date_log.to_formatted_s(:get_time) %>
-        <td><%= link_to 'Remove', "/events/remove_from_attendance/#{record.event_id}/#{record.uid}" %></td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <p>No one has attended this event yet.</p>
-<% end %>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Attendance Record</h1>
+      <div class="events_container">
+        <%= render :partial => 'shared/event_card', :locals => {
+          :event_id => @this_event.id,
+          :event_name => @this_event.event_name,
+          :event_date => @this_event.date,
+          :points_type_id => @this_event.points_type_id,
+          :event_description => @this_event.description,
+          :show_passcode => nil,
+          :is_attend => false,
+          :is_admin => false
+        } %>
+      </div>
 
-<%= link_to 'Back', events_path %>
+      <% if @records.length > 0 %>
+        <h3>Members in attendance:</h3>
+        <table class="user_table">
+          <thead>
+            <th>Name</th>
+            <th>Time of attendance</th>
+            <th></th>
+          </thead>
+          <% @records.each do |record| %>
+            <tr id=<%= "attendance_row_#{record.uid}"%>>
+              <td><%= record.member_name %></td>
+              <td><%= record.date_log.to_formatted_s(:get_time) %>
+              <td><%= link_to 'Remove', "/events/remove_from_attendance/#{record.event_id}/#{record.uid}", class: 'remove_link' %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <p>No one has attended this event yet.</p>
+      <% end %>
+
+      <%= link_to 'Back', events_path, class: 'black_button' %>
+    </div>
+  </div>
+</body>

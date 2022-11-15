@@ -63,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :account_update,
       keys: [
         :full_name,
-        { information_attributes: %i[position phone bios private] }
+        { information_attributes: %i[id position phone start_year end_year bios private] }
       ]
     )
   end

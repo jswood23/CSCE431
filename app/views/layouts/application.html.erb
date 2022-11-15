@@ -7,16 +7,21 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Sansita+One" />
   </head>
 
   <body>
     <%= render "nav_bar" %>
-    <%= yield %>
     
-    <% flash.each do |type, msg| %>
-      <div <%= "class='flash #{type}'"%>>
-        <%= msg %>
-      </div>
-    <% end %>
+    
+    <div class="position-absolute w-100">
+      <% flash.each do |type, msg| %>
+          <div class="alert alert-dark alert-dismissible fade show d-flex" role="alert">
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      <% end %>
+    </div>
+    <%= yield %>
   </body>
 </html>

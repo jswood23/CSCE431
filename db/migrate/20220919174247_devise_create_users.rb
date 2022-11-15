@@ -14,6 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## User permissions
       t.boolean :admin
       t.boolean :member
+      t.boolean :alumni
 
       ## Recoverable
       t.string   :reset_password_token

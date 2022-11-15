@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require './spec/support/user_helpers'
+require './spec/support/entity_helpers'
 
 RSpec.describe('Visiting the home page', type: :feature) do
   it 'nav bar for non-user shows correct content' do
@@ -14,12 +14,8 @@ RSpec.describe('Visiting the home page', type: :feature) do
     expect(page).to(have_content('Contact Us'))
 
     # does not have dropdowns for members or admins
-    expect(page).not_to(have_content('MCHSO Member'))
-    expect(page).not_to(have_content('MCHSO Admin'))
-
-    # has login buttons
-    expect(page).to(have_content('Login'))
-    expect(page).to(have_content('Create Account'))
+    expect(page).not_to(have_content('Member'))
+    expect(page).not_to(have_content('Admin'))
   end
 
   it 'nav bar for user with no permissions shows correct content' do
@@ -33,12 +29,8 @@ RSpec.describe('Visiting the home page', type: :feature) do
     expect(page).to(have_content('Contact Us'))
 
     # does not have dropdowns for members or admins
-    expect(page).not_to(have_content('MCHSO Member'))
-    expect(page).not_to(have_content('MCHSO Admin'))
-
-    # has user buttons
-    expect(page).to(have_content('Edit Account'))
-    expect(page).to(have_content('Logout'))
+    expect(page).not_to(have_content('Member'))
+    expect(page).not_to(have_content('Admin'))
 
     log_out
   end
@@ -54,18 +46,14 @@ RSpec.describe('Visiting the home page', type: :feature) do
     expect(page).to(have_content('Contact Us'))
 
     # has member dropdown
-    expect(page).to(have_content('MCHSO Member'))
-    click_on 'MCHSO Member'
+    expect(page).to(have_content('Member'))
+    click_on 'Member'
     # expect(page).to(have_content('My Profile'))
-    expect(page).to(have_content('Member List'))
+    expect(page).to(have_content('Contact List'))
     expect(page).to(have_content('Attend an Event'))
 
     # does not have admin dropdown
-    expect(page).not_to(have_content('MCHSO Admin'))
-
-    # has user buttons
-    expect(page).to(have_content('Edit Account'))
-    expect(page).to(have_content('Logout'))
+    expect(page).not_to(have_content('Admin'))
 
     log_out
   end
@@ -81,22 +69,23 @@ RSpec.describe('Visiting the home page', type: :feature) do
     expect(page).to(have_content('Contact Us'))
 
     # has member dropdown
-    expect(page).to(have_content('MCHSO Member'))
-    click_on 'MCHSO Member'
+    expect(page).to(have_content('Member'))
+    click_on 'Member'
     # expect(page).to(have_content('My Profile'))
-    expect(page).to(have_content('Member List'))
+    expect(page).to(have_content('Contact List'))
     expect(page).to(have_content('Attend an Event'))
 
     # has admin dropdown
-    expect(page).to(have_content('MCHSO Admin'))
-    click_on 'MCHSO Admin'
+    expect(page).to(have_content('Admin'))
+    click_on 'Admin'
     expect(page).to(have_content('Manage Events'))
     expect(page).to(have_content('Manage Members'))
     expect(page).to(have_content('Manage Pages'))
 
     # has user buttons
-    expect(page).to(have_content('Edit Account'))
-    expect(page).to(have_content('Logout'))
+    find('#navbarProfileDropdown').click
+    expect(page).to(have_content('Manage Account'))
+    expect(page).to(have_content('Log out'))
 
     log_out
   end
