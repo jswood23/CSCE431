@@ -10,21 +10,20 @@
 
 .box-title-logo {
   display: flex;
-  flex-direction: column;
-  /* flex-direction: row; */
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
   flex-wrap:nowrap;
 }
 
 .image-logo {
-  flex-basis: 40%;
-  width: 15vw;
+  flex-basis: 20%;
+  width: 10vw;
   height: auto;
 }
 
 .home-title {
-  font-size:5vw;
+  font-size: clamp(20px, 3.5vw, 50px);
   border: none;
   overflow-wrap: break-word;
 }
@@ -35,8 +34,7 @@ h2 {
   font-family: 'Sansita';
   font-style: italic;
   font-weight: 400;
-  font-size: 4.5vw;
-  line-height: 69%;
+  font-size: clamp(18px, 3vw, 45px);
   display: flex;
   align-items: center;
   text-align: center;
@@ -57,7 +55,7 @@ h2 {
 h3 {
   font-family: 'Roboto';
   font-weight: 400;
-  font-size: 2.5vw;
+  font-size: clamp(12px, 2vw, 32px);
   line-height: 139%;
   display: flex;
   align-items: center;
@@ -73,7 +71,7 @@ h3 {
 
 .p-horiz {
   font-family: 'Roboto';
-  font-size: 1.8vw;
+  font-size: clamp(12px, 1.8vw, 25px);
   font-style: normal;
   line-height:126%;
   display: flex;
@@ -96,78 +94,5 @@ h3 {
   display: flex;
   justify-content: center;
   width:75vw;
-}
-
-.home-title {
-  font-size:5vw;
-  border: none;
-}
-
-/* larger quote */
-/* Learning Leads To Change */
-h2 {
-  font-family: 'Sansita';
-  font-style: italic;
-  font-weight: 400;
-  font-size: 4.5vw;
-  line-height: 69%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  letter-spacing: 0.07em;
-
-  /* color: #FFCBBA; */
-  color: #FFAB8F;
-  text-shadow: -1px 2px 5px #000000;
-
-  padding: 2% 2% 2% 2%;
-}
-
-/* quote */
-/* “The well-being of women & children determines 
-    the health of future generations” 
-*/
-h3 {
-  font-family: 'Roboto';
-  font-weight: 400;
-  font-size: 2.5vw;
-  line-height: 139%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-
-  letter-spacing: 0.065em;
-
-  color: #000000;
-
-  padding: 2% 1% 2% 1%;
-}
-
-.p-horiz {
-  font-family: 'Roboto';
-  font-size: 1.8vw;
-  font-style: normal;
-  line-height:126%;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  align-items: center;
-
-  color: #000000;
-
-  padding: 3% 3% 3% 3%;
-}
-
-.image-heart {
-  flex-basis: 40%;
-  width: 75vw;
-  height: auto;  
-}
-
-.image-center {
-  display: flex;
-  justify-content: center;
 }
 

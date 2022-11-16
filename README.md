@@ -89,14 +89,14 @@ Mailer
 
 ## Deployment ##
 
-** Create a pull request and when the pull request is merged, it will be automatically deployed to Heroku
+* Create a pull request and when the pull request is merged, it will be automatically deployed to Heroku
 
 
 ## CI/CD ##
 
-** CI is implemented with rspec tests, brakeman, and rubocop through GitHub Actions.
+* CI is implemented with rspec tests, brakeman, and rubocop through GitHub Actions.
 
-** CD is implemented so that all branches will be deployed to Heroku when new changes are made to the development branch.
+* CD is implemented so that all branches will be deployed to Heroku when new changes are made to the development branch.
 
 
 ## Support ##

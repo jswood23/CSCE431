@@ -64,6 +64,8 @@ module UserHelpers
     end
     expect(page).to(have_content('Welcome! You have signed up successfully.'))
     log_out
+
+    expect(User.all.count).to(eq(3))
   end
 
   def log_in_admin
