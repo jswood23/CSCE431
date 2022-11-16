@@ -91,4 +91,26 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
 
     log_out
   end
+
+  it 'check error messages for manage members actions' do
+    log_in_admin
+
+    # attempt to make nonexistant user a member
+    visit '/make_user_member/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to make nonexistant user an admin
+    visit '/make_user_admin/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to remove member permissions from a nonexistant user
+    visit '/remove_user_member/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to make nonexistant user an alumni
+    visit '/make_user_alumni/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    log_out
+  end
 end
