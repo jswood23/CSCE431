@@ -151,18 +151,20 @@ class AdminController < ApplicationController
   end
 
   def delete_user
-    # get the matching user to the id provided
-    user = User.find(params[:userid])
-    if !user
+    if User.exists?(params[:userid])
+      # get the matching user to the id provided
+      user = User.find(params[:userid])
+      if user.member || user.admin
+        # return error if user is member or admin
+        flash.alert = "Error: please remove user's permissions before deletion."
+      else
+        # otherwise: delete user
+        user.destroy!
+        flash.notice = "User #{user.full_name} has been successfully deleted."
+      end
+    else
       # return error if user does not exist
       flash.alert = "Error: user #{params[:userid]} does not exist."
-    elsif user.member || user.admin
-      # return error if user is member or admin
-      flash.alert = "Error: please remove user's permissions before deletion."
-    else
-      # otherwise: delete user
-      user.destroy!
-      flash.notice = "User #{user.full_name} has been successfully deleted."
     end
     # go back to manage_members
     redirect_to('/manage_members')
