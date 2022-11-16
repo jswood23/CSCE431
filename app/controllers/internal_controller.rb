@@ -36,7 +36,8 @@ class InternalController < ApplicationController
   def check_has_member_access
     return true if member?
 
-    redirect_to('/home')
+    flash.alert = 'You do not have permission to access this.'
+    redirect_to(home_path)
     false
   end
 end

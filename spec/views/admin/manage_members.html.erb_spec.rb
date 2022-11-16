@@ -91,4 +91,49 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
 
     log_out
   end
+
+  it 'check error messages for manage members nonexistant user' do
+    log_in_admin
+
+    # attempt to make nonexistant user a member
+    visit '/make_user_member/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to make nonexistant user an admin
+    visit '/make_user_admin/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to remove member permissions from a nonexistant user
+    visit '/remove_user_member/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to make nonexistant user an alumni
+    visit '/make_user_alumni/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    # attempt to delete nonexistant user
+    visit '/delete_user/23'
+    expect(page).to(have_content('Error: user 23 does not exist.'))
+
+    log_out
+  end
+
+  it 'check error messages for manage members unavailable action' do
+    log_in_admin
+    visit '/home'
+
+    # attempt to make user an admin who is already an admin
+    visit '/make_user_admin/1'
+    expect(page).to(have_content('Error: user Administrator is already an admin.'))
+
+    # attempt to make user not a member who is already not a member
+    visit '/remove_user_member/3'
+    expect(page).to(have_content('Error: user Alumni is already not a member.'))
+
+    # attempt to delete admin
+    visit '/delete_user/1'
+    expect(page).to(have_content("Error: please remove user's permissions before deletion."))
+
+    log_out
+  end
 end

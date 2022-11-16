@@ -89,4 +89,16 @@ RSpec.describe('Visiting the home page', type: :feature) do
 
     log_out
   end
+
+  it 'attempt to access internal page without access' do
+    visit '/attend'
+    expect(page).to(have_content('The Maternal and Child Health Student Organization'))
+    expect(page).to(have_content('You do not have permission to access this.'))
+  end
+
+  it 'attempt to access admin page without access' do
+    visit '/manage_members'
+    expect(page).to(have_content('The Maternal and Child Health Student Organization'))
+    expect(page).to(have_content('You do not have permission to access this.'))
+  end
 end
