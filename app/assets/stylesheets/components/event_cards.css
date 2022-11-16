@@ -61,17 +61,17 @@
 
 .event_month {
   font-size: 1.5em;
-  line-height: 0.5em;
+  line-height: 0.9em;
 }
 
 .event_day {
   font-size: 2.75em;
-  line-height: 0.9em;
+  line-height: 0.8em;
 }
 
 .event_year {
   font-size: 1.25em;
-  line-height: 1em;
+  line-height: 0.9em;
 }
 
 /* styling for event info (right section of event card) */
