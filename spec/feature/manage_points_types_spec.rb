@@ -20,7 +20,7 @@ RSpec.describe('manage points types', type: :feature) do
       fill_in 'name', with: 'Test Type'
       click_button('Update')
     end
-    
+
     # delete points type
     within(new_type_row) do
       click_link('Remove')

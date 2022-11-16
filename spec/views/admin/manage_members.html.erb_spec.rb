@@ -122,15 +122,13 @@ RSpec.describe('admin/manage_members.html.erb', type: :feature) do
     log_in_admin
     visit '/home'
 
-    admin_name = UserHelpers.class_variable_get(:@@admin_name)
-
     # attempt to make user an admin who is already an admin
     visit '/make_user_admin/1'
-    expect(page).to(have_content("Error: user Administrator is already an admin."))
+    expect(page).to(have_content('Error: user Administrator is already an admin.'))
 
     # attempt to make user not a member who is already not a member
     visit '/remove_user_member/3'
-    expect(page).to(have_content("Error: user Alumni is already not a member."))
+    expect(page).to(have_content('Error: user Alumni is already not a member.'))
 
     # attempt to delete admin
     visit '/delete_user/1'

@@ -6,7 +6,6 @@ require './spec/support/entity_helpers'
 RSpec.describe('Contact List', type: :feature) do
   describe 'view contacts' do
     it 'shows contact list' do
-
       admin_name = UserHelpers.class_variable_get(:@@admin_name)
       log_in_member
       visit '/internal_contact'
