@@ -73,11 +73,11 @@ class ApplicationController < ActionController::Base
     lines = input_string.split("\n")
     lines.each_with_index do |this_line, index|
       output_string += this_line
-      if index < lines.size - 1
-        output_string += '<br>'
-      end
+      output_string += '<br>' if index < lines.size - 1
     end
     output_string += '</p>'
-    return output_string.html_safe
+    # rubocop:disable Rails/OutputSafety
+    output_string.html_safe
+    # rubocop:enable Rails/OutputSafety
   end
 end
