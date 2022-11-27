@@ -12,7 +12,7 @@
     <div class='event_body'>
       <p class='event_time'><%= event_date.to_formatted_s(:get_time) %></p>
       <h1 class='event_name'><%= event_name %></h1>
-      <p><%= event_description %></p>
+      <%= convert_line_breaks(event_description) %>
     </div>
 
     <% if is_attend %>
@@ -39,7 +39,8 @@
 
     <% if is_admin %>
       <p class='event_card_footer'>
-        <div style='user-select:none;'><br/></div>
+        <%# space between description and footer %>
+        <div style='user-select:none;'></div>
         <%# show event type %>
         Event type: <b><%= get_points_type(points_type_id.to_i) %></b> <br/>
         <%# show password %>

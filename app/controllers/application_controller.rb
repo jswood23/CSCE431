@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :admin?, :member?, :get_user_status, :get_points, :get_points_type, :attended?
+  helper_method :admin?, :member?, :get_user_status, :get_points, :get_points_type, :attended?, :convert_line_breaks
 
   def admin?(user = current_user)
     if user
@@ -65,5 +65,19 @@ class ApplicationController < ActionController::Base
 
   def attended?(event_id)
     AttendanceRecord.where(event_id: event_id, uid: current_user.id).count.positive?
+  end
+
+  def convert_line_breaks(input_string)
+    # output_string = "<p>#{input_string}<br>howdy</p>"
+    output_string = '<p>'
+    lines = input_string.split("\n")
+    lines.each_with_index do |this_line, index|
+      output_string += this_line
+      if index < lines.size - 1
+        output_string += '<br>'
+      end
+    end
+    output_string += '</p>'
+    return output_string.html_safe
   end
 end
