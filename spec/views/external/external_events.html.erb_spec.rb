@@ -6,6 +6,7 @@ RSpec.describe('external/events', type: :view) do
   before do
     without_partial_double_verification do
       allow(view).to(receive(:get_points_type).and_return('Member'))
+      allow(view).to(receive(:convert_line_breaks).and_return('<p>MyText</p>'.html_safe))
     end
     assign(:events, [
       Event.create!(
@@ -42,7 +43,7 @@ RSpec.describe('external/events', type: :view) do
   it 'renders a list of events' do
     render
     assert_select 'h1', text: 'Event Name'.to_s, count: 2
-    assert_select 'p', text: 'MyText'.to_s, count: 2
+    assert_select 'p', text: 'MyText'.to_s, count: 3
   end
 
   it 'assigns @events_today' do
