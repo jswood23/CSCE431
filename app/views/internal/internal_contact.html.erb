@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "internal-contact" %>
-<body>
 
+<body>
 <div class = "container">
   <div class="box">
 
@@ -15,6 +15,7 @@
         </div>
       </div>
     <% end %>
+
     <% if @members.length > 0%>
       <div id="member-table" class="table-style">
         <table>
@@ -23,7 +24,8 @@
             <th> Name</th>
             <th> Member Status</th>
             <th> Years Active</th>
-            <th class="long-cell"> Email</th>
+            <th> Email</th>
+            <th> Bio </th>
           </thead>
           <tbody>
             <% @members.each do |user| %>
@@ -36,9 +38,10 @@
                   <% end %>
                 </td>
                 <td><%= user.full_name %></td>
-                <td><%= get_user_status(user) %>
+                <td><%= get_user_status(user) %></td>
                 <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
-                <td class="long-cell"><%= user.email %></td>
+                <td><%= user.email %></td>
+                <td><%= user.information.bios %> </td>
               </tr>
             <% end %>
             <% @alumni.each do |user| %>
@@ -51,9 +54,10 @@
                 <% end %>
               </td>
                 <td><%= user.full_name %></td>
-                <td><%= get_user_status(user) %>
+                <td><%= get_user_status(user) %></td>
                 <td><%= user.information.start_year %> - <%= user.information.end_year %></td>
                 <td class="long-cell"><%= user.email %></td>
+                <td><%= user.information.bios %> </td>
               </tr>
             <% end %>
           </tbody>
