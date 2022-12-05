@@ -73,6 +73,7 @@
                     Manage
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><%= link_to "Manage Points", "/show_user_attendance/#{user.id}", class: "dropdown-item" %></li>
                     <% if !user.admin %>
                       <%# option to give user admin status %>
                       <li><%= link_to "Make Admin", "/make_user_admin/#{user.id}", class: "dropdown-item" %></li>

@@ -7,6 +7,7 @@ RSpec.describe('events/index', type: :view) do
     view.lookup_context.prefixes << 'application'
     without_partial_double_verification do
       allow(view).to(receive(:get_points_type).and_return('Member'))
+      allow(view).to(receive(:convert_line_breaks).and_return('<p>MyText</p>'.html_safe))
     end
     assign(:events, [
       Event.create!(
@@ -45,6 +46,6 @@ RSpec.describe('events/index', type: :view) do
   it 'renders a list of events' do
     render
     assert_select 'h1', text: 'Event Name'.to_s, count: 3
-    assert_select 'p', text: 'MyText'.to_s, count: 3
+    assert_select 'p', text: 'MyText'.to_s, count: 4
   end
 end

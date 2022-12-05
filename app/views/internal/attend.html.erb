@@ -6,7 +6,6 @@
       <h1>Attend an Event</h1>
 
       <h2>Events Today</h2>
-
       <% if @events_today.length > 0 %>
         <div class="events_container">
           <% @events_today.each do |event| %>
@@ -27,7 +26,6 @@
       <% end %>
 
       <h2>Upcoming Events</h2>
-
       <% if @upcoming_events.length > 0 %>
         <div class="events_container">
           <% @upcoming_events.each do |event| %>
@@ -45,6 +43,26 @@
         </div>
       <% else %>
         <p>No upcoming events.</p>
+      <% end %>
+
+      <h2>Past Events</h2>
+      <% if @past_events.length > 0 %>
+        <div class="events_container">
+          <% @past_events.each do |event| %>
+            <%= render :partial => 'shared/event_card', :locals => {
+              :event_id => event.id,
+              :event_name => event.event_name,
+              :event_date => event.date,
+              :points_type_id => event.points_type_id,
+              :event_description => event.description,
+              :show_passcode => nil,
+              :is_attend => false,
+              :is_admin => false
+              } %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>No past events.</p>
       <% end %>
     </div>
   </div>
